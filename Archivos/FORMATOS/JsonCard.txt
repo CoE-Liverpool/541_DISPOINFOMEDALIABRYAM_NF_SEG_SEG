@@ -1,0 +1,65 @@
+{
+  'cardsV2': [
+    {
+      'cardId': 'unique-card-id',
+      'card': {
+        'header': {
+          'title': '[NAME_BOT]',
+          'subtitle': 'USR: [USR_NAME] -- MACHINE: [NAME_MACHINE]',
+          'imageUrl':'https://marketplace.uipath.com/static/favicons/android-chrome-512x512.png',
+          'imageType': 'SQUARE',
+          'imageAltText': 'Uipath',
+        },
+        'sections': [
+          {
+            'header': 'PROCESS DETAIL',
+            'collapsible': true,
+            'uncollapsibleWidgetsCount': 1,
+            'widgets': [
+              {
+                'decoratedText': {
+                  'startIcon': {'knownIcon': 'PERSON',},
+		  'topLabel': 'Developer:',
+                  'text': '<a href=\'https://cloud.uipath.com/serviciosliverpool/RPA_Liverpool/orchestrator_/?tid=8383&fid=1273653\'>@[NAME_DEVELOPER]',
+		  'wrapText' : true,
+                }
+              },
+              {
+                'decoratedText': {
+                  'startIcon': {'knownIcon': 'DESCRIPTION',},
+                  'topLabel': 'Transaccion:',
+                  'text': '[TXT]',
+                  'wrapText' : true,
+                },
+              },
+		{
+                'decoratedText': {
+                  'startIcon': {'knownIcon': 'DESCRIPTION',},
+                  'topLabel': 'Actividad:',
+                  'text': '[BOX]',
+                  'wrapText' : true,
+                },
+              },
+		{
+                'decoratedText': {
+                  'startIcon': {'knownIcon': 'DESCRIPTION',},
+                  'topLabel': 'Error:',
+		  'text': '[ERROR]',
+		  'wrapText' : true,
+                },
+              },
+              {
+                'decoratedText': {
+                  'startIcon': {'knownIcon': 'CLOCK',},
+                  'topLabel': 'Start - Stop:',
+                  'text': 'Started: <b>[STARTED]</b> \n Ended: <b>[ENDED]</b>',
+		  'wrapText' : true,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    }
+  ],
+}

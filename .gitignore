@@ -1,0 +1,16 @@
+#Git Ignorame los txt y los Screenshots
+*.bak
+/.screenshots/*
+/.entities/*
+/.local/*
+/.settings/*
+/.templates/*
+/.tmh/*
+Archivos/LOG/*.csv
+Archivos/LOG/*.xls
+Archivos/LOG/*.log
+Archivos/LOG/*.xlsx
+/Archivos/Exceptions_Screenshots/*
+/Archivos/Temporal/*.txt
+/Archivos/Temporal/*.xlsx
+/Archivos/Temporal/*.csv
