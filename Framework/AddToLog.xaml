@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1793.3333333333333,1104.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>757.3333333333334,1104.6666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GenerateLog_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
@@ -100,6 +100,7 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Append a Status based on robot excecution." DisplayName="generateLog" sap:VirtualizedContainerService.HintSize="496,1040" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -118,7 +119,7 @@
         <OutArgument x:TypeArguments="x:String">[ExcelName]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["LOG_"+System.DateTime.Now.ToString(in_Config("logFormat").toString)+"_"+in_config("botName").toString]</InArgument>
+        <InArgument x:TypeArguments="x:String">["LOG_"+System.DateTime.Now.ToString(in_Config("logFormat").toString)+"_"+in_Config("botName").toString]</InArgument>
       </Assign.Value>
     </Assign>
     <If Condition="[Not Directory.Exists(in_config(&quot;LogPath&quot;).ToString)]" DisplayName="If screenshot folder does not exist, create it" sap:VirtualizedContainerService.HintSize="434,266" sap2010:WorkflowViewState.IdRef="If_1">
