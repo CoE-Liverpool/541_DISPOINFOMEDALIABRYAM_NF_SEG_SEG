@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>757.3333333333334,732.6666666666666</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>859.3333333333334,817.3333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendNotificationMail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -147,7 +147,7 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message (Send Notification Mail)" sap:VirtualizedContainerService.HintSize="880,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Sending default notification mail&quot;]" />
             <ui:ReadTextFile File="{x:Null}" Content="[botSignature]" DisplayName="getBotSignature" FileName="Data\Extras\Bot_Signature.html" sap:VirtualizedContainerService.HintSize="880,82" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
-            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[LogExists]" sap:VirtualizedContainerService.HintSize="880,118.66666666666667" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Config(&quot;LogPath&quot;).ToString+&quot;\LOG_&quot;+System.DateTime.Now.ToString(in_Config(&quot;logFormat&quot;).toString)+&quot;_&quot;+in_Config(&quot;botName&quot;).toString+&quot;.csv&quot;]" PathType="File" />
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists Log" Exists="[LogExists]" sap:VirtualizedContainerService.HintSize="880,118.66666666666667" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Config(&quot;LogPath&quot;).ToString+&quot;\LOG_&quot;+System.DateTime.Now.ToString(in_Config(&quot;logFormat&quot;).toString)+&quot;_&quot;+in_Config(&quot;botName&quot;).toString+&quot;.csv&quot;]" PathType="File" />
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetOrchestratorCredentials workflow" sap:VirtualizedContainerService.HintSize="880,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\GetOrchestratorCredentials.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">[in_Config("Cred_RPA").ToString]</InArgument>

@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>661,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>859.3333333333334,817.3333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TerminalWorkflow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -101,86 +101,98 @@
       <AssemblyReference>UiPath.Terminal.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="TerminalWorkflow" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="TerminalWorkflow" sap:VirtualizedContainerService.HintSize="634,637.3333333333334" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
-      <Variable x:TypeArguments="x:String" Name="User" />
-      <Variable x:TypeArguments="ss:SecureString" Name="Pwd" />
       <Variable x:TypeArguments="uit:TerminalConnection" Name="TerminalConn" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
-        <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+        <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.16666666666667 300,107.16666666666667 290,107.16666666666667 290,123.33333333333334</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID0">
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">200,247.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,299.5 300,329.5 300.5,329.5 300.5,354</av:PointCollection>
+          <av:Point x:Key="ShapeLocation">190,353</av:Point>
+          <av:Size x:Key="ShapeSize">200,54</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">290,407 290,463</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <uit:TerminalSession ContinueOnError="{x:Null}" ExistingConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="False" ConnectionString="{}{'AttachExisting':false,'ConnectionProtocol':0,'ConnectionType':1,'EhllBasicMode':false,'EhllDll':null,'EhllEnhanced':true,'EhllFunction':'hllapi','EhllSession':'A','EnableSSL':true,'Host':'livp.liverpool.com.mx','InProcessMode':false,'InternalEncoding':'IBM2978','Mode':1,'Port':1423,'Profile':null,'ProviderType':9,'ShowTerminal':true,'TerminalModel':0,'TerminalType':0}" DelayMS="1000" DisplayName="Abrir Terminal Session" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TerminalSession_1" OutputConnection="[TerminalConn]" TimeoutMS="50000">
+      <uit:TerminalSession ContinueOnError="{x:Null}" ExistingConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="False" ConnectionString="{}{'AttachExisting':false,'ConnectionProtocol':0,'ConnectionType':1,'EhllBasicMode':false,'EhllDll':null,'EhllEnhanced':true,'EhllFunction':'hllapi','EhllSession':'A','EnableSSL':true,'Host':'livp.liverpool.com.mx','InProcessMode':false,'InternalEncoding':'IBM2978','Mode':1,'Port':1423,'Profile':null,'ProviderType':9,'ShowTerminal':true,'TerminalModel':0,'TerminalType':0}" DelayMS="1000" DisplayName="Abrir Terminal Session" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="TerminalSession_1" OutputConnection="[TerminalConn]" TimeoutMS="50000">
         <uit:TerminalSession.Body>
           <ActivityAction x:TypeArguments="uit:TerminalConnection">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="uit:TerminalConnection" Name="terminalSession" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1221" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1531.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="User" />
+                <Variable x:TypeArguments="ss:SecureString" Name="Pwd" />
+              </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <uit:TerminalWaitScreenText MatchCase="{x:Null}" DelayMS="1300" DisplayName="Wait Screen Text" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalWaitScreenText_1" Text="TECLEE SU" TimeoutMS="30000" WaitType="READY" />
+              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[InAsset]" CacheStrategy="None" DisplayName="Get Credential Asset" FolderPath="[AssetFolder]" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[Pwd]" Username="[User]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:GetRobotCredential>
+              <uit:TerminalWaitScreenText MatchCase="{x:Null}" DelayMS="1300" DisplayName="Wait Screen Text &quot;TECLEE SU&quot;" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalWaitScreenText_1" Text="TECLEE SU" TimeoutMS="30000" WaitType="READY" />
               <uit:TerminalSendKeys DelayMS="300" DisplayName="&quot;Send Keys (CTE)&quot;" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_1" Keys="CTE" TimeoutMS="5000" WaitType="READY" />
-              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_1" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
-              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_2" Key="Clear" TimeoutMS="5000" WaitType="READY" />
+              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key Enter" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_1" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key Clear" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_2" Key="Clear" TimeoutMS="5000" WaitType="READY" />
               <uit:TerminalSendKeys DelayMS="300" DisplayName="&quot;Send Keys (T000)&quot;" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_2" Keys="T000" TimeoutMS="5000" WaitType="READY" />
-              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_3" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key Enter" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_3" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
               <uit:TerminalSendKeys DelayMS="300" DisplayName="&quot;Send Keys (DIPAVE2)&quot;" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_3" Keys="[User]" TimeoutMS="5000" WaitType="READY" />
-              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_4" Key="Tab" TimeoutMS="5000" WaitType="READY" />
-              <uit:TerminalSendKeysSecure DelayMS="300" DisplayName="Send Keys Secure" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="TerminalSendKeysSecure_1" SecureText="[Pwd]" TimeoutMS="5000" WaitType="READY" />
-              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_5" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
-              <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key Tab" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_4" Key="Tab" TimeoutMS="5000" WaitType="READY" />
+              <uit:TerminalSendKeysSecure DelayMS="300" DisplayName="Send Keys Secure Pwd" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="TerminalSendKeysSecure_2" SecureText="[Pwd]" TimeoutMS="5000" WaitType="READY" />
+              <uit:TerminalSendKeysSecure DelayMS="300" DisplayName="Send Keys Secure Pwd" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="TerminalSendKeysSecure_1" SecureText="[Pwd]" TimeoutMS="5000" WaitType="READY" />
+              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key Enter" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_5" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+              <Delay DisplayName="Delay Sig In" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="Delay_1" />
             </Sequence>
           </ActivityAction>
         </uit:TerminalSession.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </uit:TerminalSession>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID1">
+        <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">200,354</av:Point>
-              <av:Size x:Key="ShapeSize">200,52</av:Size>
+              <av:Point x:Key="ShapeLocation">190,463</av:Point>
+              <av:Size x:Key="ShapeSize">200,54</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uit:TerminalSession ConnectionString="{x:Null}" ContinueOnError="{x:Null}" OutputConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="True" DelayMS="1000" DisplayName="Terminal Session 622" ExistingConnection="[TerminalConn]" sap:VirtualizedContainerService.HintSize="789,2298" sap2010:WorkflowViewState.IdRef="TerminalSession_2" TimeoutMS="50000">
+          <uit:TerminalSession ConnectionString="{x:Null}" ContinueOnError="{x:Null}" OutputConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="True" DelayMS="1000" DisplayName="Terminal Session 622" ExistingConnection="[TerminalConn]" sap:VirtualizedContainerService.HintSize="728.6666666666666,2254" sap2010:WorkflowViewState.IdRef="TerminalSession_2" TimeoutMS="50000">
             <uit:TerminalSession.Body>
               <ActivityAction x:TypeArguments="uit:TerminalConnection">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="uit:TerminalConnection" Name="terminalSession" />
                 </ActivityAction.Argument>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="755,2198" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[split(in_Config(&quot;Concepto&quot;).ToString,&quot;|&quot;)]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Terminal Sssion 622" sap:VirtualizedContainerService.HintSize="694.6666666666666,2154" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[split(in_Config(&quot;Concepto&quot;).ToString,&quot;|&quot;)]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="721,2012" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="660.6666666666666,1964" sap2010:WorkflowViewState.IdRef="Sequence_5">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:Int32" Name="ContadorCTE" />
                         </Sequence.Variables>
@@ -189,11 +201,11 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uit:TerminalSendKeys DelayMS="300" DisplayName="&quot;Send Keys (0301)&quot;" sap:VirtualizedContainerService.HintSize="679,60" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_4" Keys="[item]" TimeoutMS="5000" WaitType="READY" />
-                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="679,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_6" Key="Tab" TimeoutMS="5000" WaitType="READY" />
-                        <uit:TerminalSendKeys DelayMS="300" DisplayName="&quot;Send Keys (TOTAL )&quot;" sap:VirtualizedContainerService.HintSize="679,60" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_5" Keys="TOTAL " TimeoutMS="5000" WaitType="READY" />
-                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="679,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_7" Key="F5" TimeoutMS="5000" WaitType="READY" />
-                        <Assign sap2010:Annotation.AnnotationText="INCREMENTAR EL CONTADOR HASTA ENCONTRAR EL TOTAL DE LAS PAGINAS}" sap:VirtualizedContainerService.HintSize="679,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <uit:TerminalSendKeys DelayMS="300" DisplayName="&quot;Send Keys (0301)&quot;" sap:VirtualizedContainerService.HintSize="618.6666666666666,60" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_4" Keys="[item]" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key Tab" sap:VirtualizedContainerService.HintSize="618.6666666666666,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_6" Key="Tab" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalSendKeys DelayMS="300" DisplayName="&quot;Send Keys (TOTAL )&quot;" sap:VirtualizedContainerService.HintSize="618.6666666666666,60" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_5" Keys="TOTAL " TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key F5" sap:VirtualizedContainerService.HintSize="618.6666666666666,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_7" Key="F5" TimeoutMS="5000" WaitType="READY" />
+                        <Assign sap2010:Annotation.AnnotationText="INCREMENTAR EL CONTADOR HASTA ENCONTRAR EL TOTAL DE LAS PAGINAS}" DisplayName="Assign countCTE" sap:VirtualizedContainerService.HintSize="618.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Int32">[ContadorCTE]</OutArgument>
                           </Assign.To>
@@ -206,7 +218,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <DoWhile DisplayName="Iterar Obtener Informacion Concepto.301" sap:VirtualizedContainerService.HintSize="679,1301" sap2010:WorkflowViewState.IdRef="DoWhile_1">
+                        <DoWhile DisplayName="Iterar Obtener Informacion Concepto.301" sap:VirtualizedContainerService.HintSize="618.6666666666666,1251.3333333333333" sap2010:WorkflowViewState.IdRef="DoWhile_1">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -214,7 +226,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <DoWhile.Condition>[ContadorCTE&lt;=6]</DoWhile.Condition>
-                          <Sequence sap:VirtualizedContainerService.HintSize="450,1139" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Sequence sap:VirtualizedContainerService.HintSize="572,1085.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:String" Name="texto_CTE" />
                               <Variable x:TypeArguments="sd:DataTable" Name="dt_CTE" />
@@ -225,14 +237,14 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <uit:TerminalGetText sap2010:Annotation.AnnotationText="OBTENER EL NUMERO DE PAGINAS&#xA;" DelayMS="300" DisplayName="Get Text CTE" sap:VirtualizedContainerService.HintSize="388,67" sap2010:WorkflowViewState.IdRef="TerminalGetText_1" Text="[texto_CTE]" TimeoutMS="5000" WaitType="READY">
+                            <uit:TerminalGetText sap2010:Annotation.AnnotationText="OBTENER EL NUMERO DE PAGINAS&#xA;" DelayMS="300" DisplayName="Get Text CTE" sap:VirtualizedContainerService.HintSize="510,70.66666666666667" sap2010:WorkflowViewState.IdRef="TerminalGetText_1" Text="[texto_CTE]" TimeoutMS="5000" WaitType="READY">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uit:TerminalGetText>
-                            <ui:GenerateDataTable ColumnSeparators="{x:Null}" ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" sap2010:Annotation.AnnotationText="DE UN TEXTO ME GENERA UNA DT" CSVParsing="False" DataTable="[dt_CTE]" DisplayName="Genera una data table para colocar la info que de CTE" sap:VirtualizedContainerService.HintSize="388,94" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[texto_CTE]">
+                            <ui:GenerateDataTable ColumnSeparators="{x:Null}" ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" sap2010:Annotation.AnnotationText="DE UN TEXTO ME GENERA UNA DT" CSVParsing="False" DataTable="[dt_CTE]" DisplayName="Genera una data table para colocar la info que de CTE" sap:VirtualizedContainerService.HintSize="510,99.33333333333333" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[texto_CTE]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -241,7 +253,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:GenerateDataTable>
-                            <ui:AppendRange DataTable="[dt_CTE]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="[item]" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString+&quot;PROSA_&quot;+item.ToString+&quot;_&quot; + DiaEjecucion.ToString(&quot;yyyyMMdd&quot;) + &quot;.xlsx&quot;]">
+                            <ui:AppendRange DataTable="[dt_CTE]" DisplayName="Append Range CTE" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="[item]" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString+&quot;PROSA_&quot;+item.ToString+&quot;_&quot; + DiaEjecucion.ToString(&quot;yyyyMMdd&quot;) + &quot;.xlsx&quot;]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -249,17 +261,17 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:AppendRange>
-                            <Delay DisplayName="00:00:02" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_2" />
-                            <If Condition="[not texto_CTE.Contains(&quot;NO HAY INFORMACION&quot;)]" sap:VirtualizedContainerService.HintSize="388,501" sap2010:WorkflowViewState.IdRef="If_1">
+                            <Delay DisplayName="00:00:02" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                            <If Condition="[not texto_CTE.Contains(&quot;NO HAY INFORMACION&quot;)]" DisplayName="VALIDAMOS_ TXTCTE" sap:VirtualizedContainerService.HintSize="510,436.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
                               <If.Then>
-                                <Sequence sap:VirtualizedContainerService.HintSize="242,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                <Sequence sap:VirtualizedContainerService.HintSize="300,80" sap2010:WorkflowViewState.IdRef="Sequence_2">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <uit:TerminalSendControlKey DelayMS="1000" DisplayName="F8 (Siguiente pagina)" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_8" Key="F8" TimeoutMS="5000" WaitType="READY">
+                                  <uit:TerminalSendControlKey DelayMS="1000" DisplayName="F8 (Siguiente pagina)" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_8" Key="F8" TimeoutMS="5000" WaitType="READY">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -267,7 +279,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </uit:TerminalSendControlKey>
-                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                  <Assign DisplayName="Assign Increment counCTE" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:Int32">[ContadorCTE]</OutArgument>
                                     </Assign.To>
@@ -278,13 +290,13 @@
                                 </Sequence>
                               </If.Then>
                               <If.Else>
-                                <Sequence sap:VirtualizedContainerService.HintSize="304,253" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                  <Assign DisplayName="Assign in" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:Int32">[ContadorCTE]</OutArgument>
                                     </Assign.To>
@@ -292,13 +304,12 @@
                                       <InArgument x:TypeArguments="x:Int32">[ContadorCTE+10]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[ContadorCTE.ToString]" />
                                 </Sequence>
                               </If.Else>
                             </If>
                           </Sequence>
                         </DoWhile>
-                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="679,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_9" Key="BackTab" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key BackTap" sap:VirtualizedContainerService.HintSize="618.6666666666666,60" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_9" Key="BackTab" TimeoutMS="5000" WaitType="READY" />
                       </Sequence>
                     </ActivityAction>
                   </ui:ForEach.Body>
@@ -320,25 +331,21 @@
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID2">
+    <x:Reference>__ReferenceID0</x:Reference>
+    <FlowStep x:Name="__ReferenceID1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,179.5 300,247.5</av:PointCollection>
+          <av:Point x:Key="ShapeLocation">190,123.33333333333334</av:Point>
+          <av:Size x:Key="ShapeSize">200,54</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[InAsset]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[AssetFolder]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Pwd]" Username="[User]">
+      <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Modulo Terminal Workflow&quot;]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-      </ui:GetRobotCredential>
-      <FlowStep.Next>
-        <x:Reference>__ReferenceID0</x:Reference>
-      </FlowStep.Next>
+      </ui:LogMessage>
     </FlowStep>
-    <x:Reference>__ReferenceID1</x:Reference>
   </Flowchart>
 </Activity>

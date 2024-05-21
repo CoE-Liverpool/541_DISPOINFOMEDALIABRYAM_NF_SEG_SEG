@@ -19,7 +19,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1793.3333333333333,817.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>859.3333333333334,817.3333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="108">
@@ -131,6 +131,15 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -140,38 +149,39 @@
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
   <Flowchart DisplayName="Proceso Enviar Correo" sap:VirtualizedContainerService.HintSize="634,637.3333333333334" sap2010:WorkflowViewState.IdRef="Flowchart_1">
-    <Flowchart.Variables>
-      <Variable x:TypeArguments="x:String" Name="usr" />
-      <Variable x:TypeArguments="ss:SecureString" Name="psw" />
-      <Variable x:TypeArguments="x:String" Name="psw_aux" />
-    </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.16666666666667 300,217</av:PointCollection>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID0</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID1">
+    <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">200,107</av:Point>
+          <av:Point x:Key="ShapeLocation">200,217</av:Point>
           <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,191.66666666666669 300,217</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="CREDENTIAL" sap:VirtualizedContainerService.HintSize="496,380.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_194">
+      <Sequence DisplayName="ENVIAR CORREO" sap:VirtualizedContainerService.HintSize="450,916.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_224">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;logoNotiLiv&quot;).ToString]" Name="imgHeader" />
+          <Variable x:TypeArguments="ss:SecureString" Name="psw" />
+          <Variable x:TypeArguments="x:String" Name="usr" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Cred_RPA&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="434,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_8" Password="[psw]" Username="[usr]">
+        <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Modulo Send Mail General&quot;]" />
+        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Cred_RPA&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential Cred RPA" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_9" Password="[psw]" Username="[usr]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -179,169 +189,133 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:GetRobotCredential>
-        <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_47">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[psw_aux]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">[new System.Net.NetworkCredential(string.Empty,psw).Password]</InArgument>
-          </Assign.Value>
+        <Switch x:TypeArguments="x:String" DisplayName="DEFINIR LA IMAGEN DEL HEADER SEGUN EL MES" Expression="[NOW.ToString(&quot;MM&quot;)]" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+          <Switch.Default>
+            <Assign DisplayName="ESTABLECER LINK DE LA IMAGEN" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_48">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["https://i.ibb.co/cvFSq0K/BASE.gif"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Switch.Default>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign x:Key="01" DisplayName="ESTABLECER LINK DE LA IMAGEN ENE" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_49">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/Zx1YpqZ/ENERO.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="02" DisplayName="ESTABLECER LINK DE LA IMAGEN FEB" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_50">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/WpmyCkM/FEBRERO.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="03" DisplayName="ESTABLECER LINK DE LA IMAGEN MAR" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_51">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/9bGvxtv/MARZO.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="04" DisplayName="ESTABLECER LINK DE LA IMAGEN ABR" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_52">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/5R5VS4s/ABRIL.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="05" DisplayName="ESTABLECER LINK DE LA IMAGEN MAY" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_53">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/jML2Sg7/MAYO.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="06" DisplayName="ESTABLECER LINK DE LA IMAGEN JUN" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_54">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/kQWvx8S/JUNIO.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="07" DisplayName="ESTABLECER LINK DE LA IMAGEN JUL" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_55">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/vdjHwsF/JULIO.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="08" DisplayName="ESTABLECER LINK DE LA IMAGEN AGO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_56">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/g40KNj9/AGOSTO.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="09" DisplayName="ESTABLECER LINK DE LA IMAGEN SEP" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_57">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/J2gbqV9/SEPTIEMBRE.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="10" DisplayName="ESTABLECER LINK DE LA IMAGEN OCT" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_58">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/PDn54cc/OCTUBRE.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="11" DisplayName="ESTABLECER LINK DE LA IMAGEN NOV" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_59">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/8Xt1R93/NOVIEMBRE.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign x:Key="12" DisplayName="ESTABLECER LINK DE LA IMAGEN DIC" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_60">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["https://i.ibb.co/ft3jq2p/DICIEMBRE.gif"]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Switch>
+        <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot; &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset='UTF-8'&gt; &lt;meta content='width=device-width, initial-scale=1' name='viewport'&gt; &lt;meta name='x-apple-disable-message-reformatting'&gt; &lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt; &lt;meta content='telephone=no' name='format-detection'&gt; &lt;style type='text/css'&gt; #outlook a { padding: 0; } .es-button { mso-style-priority: 100 !important; text-decoration: none !important; } a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; } .es-desk-hidden { display: none; float: left; overflow: hidden; width: 0; max-height: 0; line-height: 0; mso-hide: all; } .txtBtn { display: inline; padding-top: 1%; padding-right: 2%; } [data-ogsb] .es-button { border-width: 0 !important; padding: 10px 20px 10px 20px !important; } @media only screen and (max-width:600px) { .txtBtn { display: inline; padding-top: 10%; padding-right: 2%; } p, ul li, ol li, a { line-height: 150% !important } h1, h2, h3, h1 a, h2 a, h3 a { line-height: 120% !important } h1 { font-size: 30px !important; text-align: left } h2 { font-size: 24px !important; text-align: left } h3 { font-size: 20px !important; text-align: center } h1 a { text-align: left } .es-header-body h1 a, .es-content-body h1 a, .es-footer-body h1 a { font-size: 30px !important } h2 a { text-align: left } .es-header-body h2 a, .es-content-body h2 a, .es-footer-body h2 a { font-size: 24px !important } h3 a { text-align: left } .es-header-body h3 a, .es-content-body h3 a, .es-footer-body h3 a { font-size: 20px !important } .es-menu td a { font-size: 14px !important } .es-header-body p, .es-header-body ul li, .es-header-body ol li, .es-header-body a { font-size: 14px !important } .es-content-body p, .es-content-body ul li, .es-content-body ol li, .es-content-body a { font-size: 14px !important } .es-footer-body p, .es-footer-body ul li, .es-footer-body ol li, .es-footer-body a { font-size: 16px !important } .es-infoblock p, .es-infoblock ul li, .es-infoblock ol li, .es-infoblock a { font-size: 12px !important } *[class='gmail-fix'] { display: none !important } .es-m-txt-c, .es-m-txt-c h1, .es-m-txt-c h2, .es-m-txt-c h3 { text-align: center !important } .es-m-txt-r, .es-m-txt-r h1, .es-m-txt-r h2, .es-m-txt-r h3 { text-align: right !important } .es-m-txt-l, .es-m-txt-l h1, .es-m-txt-l h2, .es-m-txt-l h3 { text-align: left !important } .es-m-txt-r img, .es-m-txt-c img, .es-m-txt-l img { display: inline !important } .es-button-border { display: inline-block !important } a.es-button, button.es-button { font-size: 18px !important; display: inline-block !important } .es-adaptive table, .es-left, .es-right { width: 100% !important } .es-content table, .es-header table, .es-footer table, .es-content, .es-footer, .es-header { width: 100% !important; max-width: 600px !important } .es-adapt-td { display: block !important; width: 100% !important } .adapt-logo { width: 30% !important; height: auto !important } .adapt-img { width: 100% !important; height: auto !important } .es-m-p0 { padding: 0px !important } .es-m-p0r { padding-right: 0px !important } .es-m-p0l { padding-left: 0px !important } .es-m-p0t { padding-top: 0px !important } .es-m-p0b { padding-bottom: 0 !important } .es-m-p20b { padding-bottom: 20px !important } .es-mobile-hidden, .es-hidden { display: none !important } tr.es-desk-hidden, td.es-desk-hidden, table.es-desk-hidden { width: auto !important; overflow: visible !important; float: none !important; max-height: inherit !important; line-height: inherit !important } tr.es-desk-hidden { display: table-row !important } table.es-desk-hidden { display: table !important } td.es-desk-menu-hidden { display: table-cell !important } .es-menu td { width: 1% !important } table.es-table-not-adapt, .esd-block-html table { width: auto !important } table.es-social { display: inline-block !important } table.es-social td { display: inline-block !important } .es-desk-hidden { display: table-row !important; width: auto !important; overflow: visible !important; max-height: inherit !important } } table { text-align: center; border-collapse: collapse; font-weight: large; font-size: large; } th, td { padding: 10px; /*Espaciado de cada celda*/ } thead { background-color: #8A2387; border-bottom: solid 5px #ac74a4; color: white; /*COLOR DE TEXTO*/ } .row { --bs-gutter-x: 1.5rem; --bs-gutter-y: 0; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; } .row&gt;* { -ms-flex-negative: 0; flex-shrink: 0; width: 100%; max-width: 100%; } .col { -webkit-box-flex: 1; -ms-flex: 1 0 0%; flex: 1 0 0%; margin-right: 5%; } th:hover { background: #fc6c24 !important; border-color: #fc6c24 !important; } .tableUipath tr:hover { background: #fca474 !important; border-color: #fc6c24 !important; } .btnUipath:hover { background: #fc6c24 !important; } @import url('https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap'); body { margin: 0; padding: 0; word-spacing: normal; text-size-adjust: 100%; text-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: 'Quicksand', sans-serif; } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class='es-wrapper-color' style='background-color:#F6F6F6'&gt; &lt;table class='es-wrapper' cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#F6F6F6'&gt; &lt;tr&gt; &lt;td valign='top' style='padding:0;Margin:0'&gt; &lt;table class='es-header' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-header-body' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px' cellspacing='0' cellpadding='0' bgcolor='#ffffff' align='center'&gt; &lt;tr&gt; &lt;td style='padding:10px;Margin:0;background-color:#ffffff' bgcolor='#ffffff' align='left'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:580px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;font-size:0px'&gt;&lt;img src='&quot;+imgHeader+&quot;' alt width='100%' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;center&gt; &lt;h3 style='Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333'&gt; &lt;strong&gt; &quot;+saludoMail+&quot; &lt;/strong&gt;&lt;/h3&gt; &lt;/center&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table class='es-content' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-content-body' cellspacing='0' cellpadding='0' bgcolor='#ffffff' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:600px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:15px;Margin:0;font-size:0'&gt; &lt;table border='0' width='100%' height='100%' cellpadding='0' cellspacing='0' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td style='padding:0;Margin:0;border-bottom:1px solid #cccccc;background:unset;height:1px;width:100%;margin:0px'&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='left' style='padding:10px;Margin:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:560px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td class='es-m-txt-c' align='center' style='padding:0;Margin:0'&gt; &lt;h3 style='Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;font-size:24px;font-style:normal;font-weight:normal;color:#333333'&gt; &quot;+nombreProceso+&quot; &lt;/h3&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:10px;padding-left:20px;padding-right:20px;font-size:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='85%' height='100%' border='0' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td style='padding:0;Margin:0;border-bottom:3px solid #fc6c24;background:none;height:1px;width:100%;margin:0px'&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='left' style='padding:20px;Margin:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0;width:560px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:15px'&gt; &lt;h3 style='Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333'&gt; &quot;+estadoEjecucion+&quot; &lt;/h3&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:10px;padding-bottom:10px'&gt; &lt;p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;line-height:21px;color:#333333;font-size:14px'&gt; &quot;+descripcionEjecucion+&quot; &lt;/p&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:10px;padding-bottom:10px'&gt; &lt;p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;line-height:21px;color:#333333;font-size:14px'&gt; &lt;!--ESPACIO PARA PONER LA TABLA--&gt; &lt;/p&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style='padding:0;Margin:0'&gt; &lt;!--Aqui Colocar la estructura de la tabla--&gt; &lt;center&gt; &lt;table class='tableUipath' border='3' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;thead&gt; &lt;!-- Colocar etiqueta th para cada columna --&gt; &lt;tr&gt; &quot;+headerTable+&quot; &lt;/tr&gt; &lt;/thead&gt; &lt;!-- Estructura de las tablas tr class='tr' dentro td--&gt; &quot;+contentTable+&quot; &lt;/table&gt; &lt;/center&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='color: #fff;padding:0;Margin:0;padding-top:5px;padding-right:10px'&gt; &lt;br&gt; &lt;a class='btnUipath m_-3064089135223440970ak-button__appearance-primary' href='&quot;+linkBoton+&quot;' style='text-decoration:none;text-align: center;box-sizing:border-box;border-radius:15px;border-width:0;display:inline-flex;font-style:normal;font-size:inherit;height:3em;line-height:3em;margin:0;outline:none;padding:0 12px;background:#8A2387;text-align:center;vertical-align:middle;white-space:nowrap;color:#ffffff;text-decoration:none;font-size:15px;' target='_blank'&gt; &lt;div class='txtBtn'&gt;&lt;b&gt;&quot;+textoBoton+&quot;&lt;/b&gt;&lt;/div&gt; &lt;img height='80%' style='padding-top: 2%;' src='&quot;+iconoBoton+&quot;'&gt; &lt;/a&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table class='es-content' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-content-body' cellspacing='0' cellpadding='0' bgcolor='#ffffff' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:20px;Margin:0'&gt; &lt;table class='es-left' cellspacing='0' cellpadding='0' align='left' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left'&gt; &lt;tr&gt; &lt;td class='es-m-p0r es-m-p20b' valign='top' align='center' style='padding:0;Margin:0;width:180px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;font-size:0px'&gt;&lt;img class='adapt-logo' src='&quot;+imgLogo+&quot;' alt='LOGOBOT' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;border-radius: 50%;' width='180'&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table cellspacing='0' cellpadding='0' align='right' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td class='es-m-p20b' align='left' style='padding:0;Margin:0;width:360px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='justify' style='padding:0;Margin:0;padding-top:0;padding-bottom:10px'&gt; &quot;+textoContacto+&quot; &lt;br&gt; Este mensaje y los datos adjuntos son para uso exclusivo de la persona o entidad a la que expresamente ha sido enviada y puede contener información PRIVILEGIADA y CONFIDENCIAL. &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table cellpadding='0' cellspacing='0' class='es-content' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table bgcolor='#ffffff' class='es-content-body' align='center' cellpadding='0' cellspacing='0' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0'&gt; &lt;table cellpadding='0' cellspacing='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' valign='top' style='padding:0;Margin:0;width:600px'&gt; &lt;table cellpadding='0' cellspacing='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;font-size:0px'&gt;&lt;img class='adapt-img' src='https://i.ibb.co/X3Qf6kJ/banner-act.gif' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic' width='600'&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table class='es-footer' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-footer-body' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#666666;width:600px' cellspacing='0' cellpadding='0' bgcolor='#666666' align='center'&gt; &lt;tr&gt; &lt;td style='Margin:0;padding-top:30px;padding-bottom:30px;padding-left:40px;padding-right:40px;background-color:#666666' bgcolor='#666666' align='left'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:520px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0'&gt; &lt;center&gt; &lt;b style='text-align: center; Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color: #fff;'&gt; ESTA ES UNA NOTIFICACIÓN AUTOMÁTICA, FAVOR DE NO RESPONDER. &lt;/b&gt;&lt;/center&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; &quot;]" Cc="[CCMail]" DisplayName="ENVIAR CORREO" Email="[usr]" EnableSSL="True" From="[usr]" sap:VirtualizedContainerService.HintSize="388,158" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="True" Name="CoE DIP NF" Port="[CINT(in_Config(&quot;SMTPPort&quot;).ToString)]" SecureConnection="Auto" SecurePassword="[psw]" Server="[in_Config(&quot;SMTPServer&quot;).ToString]" Subject="[Correos_Subjet]" To="[notificationMail]">
+          <ui:SendMail.Files>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+          </ui:SendMail.Files>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-        </Assign>
+        </ui:SendMail>
+        <ui:LogMessage DisplayName="LOG DE ENVIO EXITOSO" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;CORREO ENVIADO EXITOSAMENTE&quot;]" />
       </Sequence>
-      <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID0">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">200,217</av:Point>
-              <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="ENVIAR CORREO" sap:VirtualizedContainerService.HintSize="200,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_224">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="str_plantillaMail" />
-              <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;logoNotiLiv&quot;).ToString]" Name="imgHeader" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Switch x:TypeArguments="x:String" DisplayName="DEFINIR LA IMAGEN DEL HEADER SEGUN EL MES" Expression="[NOW.ToString(&quot;MM&quot;)]" sap:VirtualizedContainerService.HintSize="497,1756" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-              <Switch.Default>
-                <Assign DisplayName="ESTABLECER LINK DE LA IMAGEN" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_48">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">["https://i.ibb.co/cvFSq0K/BASE.gif"]</InArgument>
-                  </Assign.Value>
-                </Assign>
-              </Switch.Default>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Assign x:Key="01" DisplayName="ESTABLECER LINK DE LA IMAGEN ENE" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_49">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/Zx1YpqZ/ENERO.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="02" DisplayName="ESTABLECER LINK DE LA IMAGEN FEB" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_50">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/WpmyCkM/FEBRERO.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="03" DisplayName="ESTABLECER LINK DE LA IMAGEN MAR" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_51">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/9bGvxtv/MARZO.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="04" DisplayName="ESTABLECER LINK DE LA IMAGEN ABR" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_52">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/5R5VS4s/ABRIL.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="05" DisplayName="ESTABLECER LINK DE LA IMAGEN MAY" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_53">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/jML2Sg7/MAYO.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="06" DisplayName="ESTABLECER LINK DE LA IMAGEN JUN" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_54">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/kQWvx8S/JUNIO.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="07" DisplayName="ESTABLECER LINK DE LA IMAGEN JUL" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_55">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/vdjHwsF/JULIO.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="08" DisplayName="ESTABLECER LINK DE LA IMAGEN AGO" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_56">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/g40KNj9/AGOSTO.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="09" DisplayName="ESTABLECER LINK DE LA IMAGEN SEP" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_57">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/J2gbqV9/SEPTIEMBRE.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="10" DisplayName="ESTABLECER LINK DE LA IMAGEN OCT" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_58">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/PDn54cc/OCTUBRE.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="11" DisplayName="ESTABLECER LINK DE LA IMAGEN NOV" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_59">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/8Xt1R93/NOVIEMBRE.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign x:Key="12" DisplayName="ESTABLECER LINK DE LA IMAGEN DIC" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_60">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[imgHeader]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["https://i.ibb.co/ft3jq2p/DICIEMBRE.gif"]</InArgument>
-                </Assign.Value>
-              </Assign>
-            </Switch>
-            <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot; &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset='UTF-8'&gt; &lt;meta content='width=device-width, initial-scale=1' name='viewport'&gt; &lt;meta name='x-apple-disable-message-reformatting'&gt; &lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt; &lt;meta content='telephone=no' name='format-detection'&gt; &lt;style type='text/css'&gt; #outlook a { padding: 0; } .es-button { mso-style-priority: 100 !important; text-decoration: none !important; } a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; } .es-desk-hidden { display: none; float: left; overflow: hidden; width: 0; max-height: 0; line-height: 0; mso-hide: all; } .txtBtn { display: inline; padding-top: 1%; padding-right: 2%; } [data-ogsb] .es-button { border-width: 0 !important; padding: 10px 20px 10px 20px !important; } @media only screen and (max-width:600px) { .txtBtn { display: inline; padding-top: 10%; padding-right: 2%; } p, ul li, ol li, a { line-height: 150% !important } h1, h2, h3, h1 a, h2 a, h3 a { line-height: 120% !important } h1 { font-size: 30px !important; text-align: left } h2 { font-size: 24px !important; text-align: left } h3 { font-size: 20px !important; text-align: center } h1 a { text-align: left } .es-header-body h1 a, .es-content-body h1 a, .es-footer-body h1 a { font-size: 30px !important } h2 a { text-align: left } .es-header-body h2 a, .es-content-body h2 a, .es-footer-body h2 a { font-size: 24px !important } h3 a { text-align: left } .es-header-body h3 a, .es-content-body h3 a, .es-footer-body h3 a { font-size: 20px !important } .es-menu td a { font-size: 14px !important } .es-header-body p, .es-header-body ul li, .es-header-body ol li, .es-header-body a { font-size: 14px !important } .es-content-body p, .es-content-body ul li, .es-content-body ol li, .es-content-body a { font-size: 14px !important } .es-footer-body p, .es-footer-body ul li, .es-footer-body ol li, .es-footer-body a { font-size: 16px !important } .es-infoblock p, .es-infoblock ul li, .es-infoblock ol li, .es-infoblock a { font-size: 12px !important } *[class='gmail-fix'] { display: none !important } .es-m-txt-c, .es-m-txt-c h1, .es-m-txt-c h2, .es-m-txt-c h3 { text-align: center !important } .es-m-txt-r, .es-m-txt-r h1, .es-m-txt-r h2, .es-m-txt-r h3 { text-align: right !important } .es-m-txt-l, .es-m-txt-l h1, .es-m-txt-l h2, .es-m-txt-l h3 { text-align: left !important } .es-m-txt-r img, .es-m-txt-c img, .es-m-txt-l img { display: inline !important } .es-button-border { display: inline-block !important } a.es-button, button.es-button { font-size: 18px !important; display: inline-block !important } .es-adaptive table, .es-left, .es-right { width: 100% !important } .es-content table, .es-header table, .es-footer table, .es-content, .es-footer, .es-header { width: 100% !important; max-width: 600px !important } .es-adapt-td { display: block !important; width: 100% !important } .adapt-logo { width: 30% !important; height: auto !important } .adapt-img { width: 100% !important; height: auto !important } .es-m-p0 { padding: 0px !important } .es-m-p0r { padding-right: 0px !important } .es-m-p0l { padding-left: 0px !important } .es-m-p0t { padding-top: 0px !important } .es-m-p0b { padding-bottom: 0 !important } .es-m-p20b { padding-bottom: 20px !important } .es-mobile-hidden, .es-hidden { display: none !important } tr.es-desk-hidden, td.es-desk-hidden, table.es-desk-hidden { width: auto !important; overflow: visible !important; float: none !important; max-height: inherit !important; line-height: inherit !important } tr.es-desk-hidden { display: table-row !important } table.es-desk-hidden { display: table !important } td.es-desk-menu-hidden { display: table-cell !important } .es-menu td { width: 1% !important } table.es-table-not-adapt, .esd-block-html table { width: auto !important } table.es-social { display: inline-block !important } table.es-social td { display: inline-block !important } .es-desk-hidden { display: table-row !important; width: auto !important; overflow: visible !important; max-height: inherit !important } } table { text-align: center; border-collapse: collapse; font-weight: large; font-size: large; } th, td { padding: 10px; /*Espaciado de cada celda*/ } thead { background-color: #8A2387; border-bottom: solid 5px #ac74a4; color: white; /*COLOR DE TEXTO*/ } .row { --bs-gutter-x: 1.5rem; --bs-gutter-y: 0; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; } .row&gt;* { -ms-flex-negative: 0; flex-shrink: 0; width: 100%; max-width: 100%; } .col { -webkit-box-flex: 1; -ms-flex: 1 0 0%; flex: 1 0 0%; margin-right: 5%; } th:hover { background: #fc6c24 !important; border-color: #fc6c24 !important; } .tableUipath tr:hover { background: #fca474 !important; border-color: #fc6c24 !important; } .btnUipath:hover { background: #fc6c24 !important; } @import url('https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap'); body { margin: 0; padding: 0; word-spacing: normal; text-size-adjust: 100%; text-decoration: none; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: 'Quicksand', sans-serif; } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class='es-wrapper-color' style='background-color:#F6F6F6'&gt; &lt;table class='es-wrapper' cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#F6F6F6'&gt; &lt;tr&gt; &lt;td valign='top' style='padding:0;Margin:0'&gt; &lt;table class='es-header' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-header-body' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px' cellspacing='0' cellpadding='0' bgcolor='#ffffff' align='center'&gt; &lt;tr&gt; &lt;td style='padding:10px;Margin:0;background-color:#ffffff' bgcolor='#ffffff' align='left'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:580px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;font-size:0px'&gt;&lt;img src='&quot;+imgHeader+&quot;' alt width='100%' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;center&gt; &lt;h3 style='Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333'&gt; &lt;strong&gt; &quot;+saludoMail+&quot; &lt;/strong&gt;&lt;/h3&gt; &lt;/center&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table class='es-content' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-content-body' cellspacing='0' cellpadding='0' bgcolor='#ffffff' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:600px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:15px;Margin:0;font-size:0'&gt; &lt;table border='0' width='100%' height='100%' cellpadding='0' cellspacing='0' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td style='padding:0;Margin:0;border-bottom:1px solid #cccccc;background:unset;height:1px;width:100%;margin:0px'&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='left' style='padding:10px;Margin:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:560px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td class='es-m-txt-c' align='center' style='padding:0;Margin:0'&gt; &lt;h3 style='Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;font-size:24px;font-style:normal;font-weight:normal;color:#333333'&gt; &quot;+nombreProceso+&quot; &lt;/h3&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:10px;padding-left:20px;padding-right:20px;font-size:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='85%' height='100%' border='0' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td style='padding:0;Margin:0;border-bottom:3px solid #fc6c24;background:none;height:1px;width:100%;margin:0px'&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='left' style='padding:20px;Margin:0'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0;width:560px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:15px'&gt; &lt;h3 style='Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333'&gt; &quot;+estadoEjecucion+&quot; &lt;/h3&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:10px;padding-bottom:10px'&gt; &lt;p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;line-height:21px;color:#333333;font-size:14px'&gt; &quot;+descripcionEjecucion+&quot; &lt;/p&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;padding-top:10px;padding-bottom:10px'&gt; &lt;p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, ' Quicksand neue', Quicksand, sans-serif;line-height:21px;color:#333333;font-size:14px'&gt; &lt;!--ESPACIO PARA PONER LA TABLA--&gt; &lt;/p&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style='padding:0;Margin:0'&gt; &lt;!--Aqui Colocar la estructura de la tabla--&gt; &lt;center&gt; &lt;table class='tableUipath' border='3' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;thead&gt; &lt;!-- Colocar etiqueta th para cada columna --&gt; &lt;tr&gt; &quot;+headerTable+&quot; &lt;/tr&gt; &lt;/thead&gt; &lt;!-- Estructura de las tablas tr class='tr' dentro td--&gt; &quot;+contentTable+&quot; &lt;/table&gt; &lt;/center&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align='center' style='color: #fff;padding:0;Margin:0;padding-top:5px;padding-right:10px'&gt; &lt;br&gt; &lt;a class='btnUipath m_-3064089135223440970ak-button__appearance-primary' href='&quot;+linkBoton+&quot;' style='text-decoration:none;text-align: center;box-sizing:border-box;border-radius:15px;border-width:0;display:inline-flex;font-style:normal;font-size:inherit;height:3em;line-height:3em;margin:0;outline:none;padding:0 12px;background:#8A2387;text-align:center;vertical-align:middle;white-space:nowrap;color:#ffffff;text-decoration:none;font-size:15px;' target='_blank'&gt; &lt;div class='txtBtn'&gt;&lt;b&gt;&quot;+textoBoton+&quot;&lt;/b&gt;&lt;/div&gt; &lt;img height='80%' style='padding-top: 2%;' src='&quot;+iconoBoton+&quot;'&gt; &lt;/a&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table class='es-content' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-content-body' cellspacing='0' cellpadding='0' bgcolor='#ffffff' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:20px;Margin:0'&gt; &lt;table class='es-left' cellspacing='0' cellpadding='0' align='left' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left'&gt; &lt;tr&gt; &lt;td class='es-m-p0r es-m-p20b' valign='top' align='center' style='padding:0;Margin:0;width:180px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;font-size:0px'&gt;&lt;img class='adapt-logo' src='&quot;+imgLogo+&quot;' alt='LOGOBOT' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;border-radius: 50%;' width='180'&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table cellspacing='0' cellpadding='0' align='right' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td class='es-m-p20b' align='left' style='padding:0;Margin:0;width:360px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='justify' style='padding:0;Margin:0;padding-top:0;padding-bottom:10px'&gt; &quot;+textoContacto+&quot; &lt;br&gt; Este mensaje y los datos adjuntos son para uso exclusivo de la persona o entidad a la que expresamente ha sido enviada y puede contener información PRIVILEGIADA y CONFIDENCIAL. &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table cellpadding='0' cellspacing='0' class='es-content' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table bgcolor='#ffffff' class='es-content-body' align='center' cellpadding='0' cellspacing='0' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0'&gt; &lt;table cellpadding='0' cellspacing='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' valign='top' style='padding:0;Margin:0;width:600px'&gt; &lt;table cellpadding='0' cellspacing='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0;font-size:0px'&gt;&lt;img class='adapt-img' src='https://i.ibb.co/X3Qf6kJ/banner-act.gif' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic' width='600'&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;table class='es-footer' cellspacing='0' cellpadding='0' align='center' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top'&gt; &lt;tr&gt; &lt;td align='center' style='padding:0;Margin:0'&gt; &lt;table class='es-footer-body' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#666666;width:600px' cellspacing='0' cellpadding='0' bgcolor='#666666' align='center'&gt; &lt;tr&gt; &lt;td style='Margin:0;padding-top:30px;padding-bottom:30px;padding-left:40px;padding-right:40px;background-color:#666666' bgcolor='#666666' align='left'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td valign='top' align='center' style='padding:0;Margin:0;width:520px'&gt; &lt;table cellspacing='0' cellpadding='0' width='100%' style='mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px'&gt; &lt;tr&gt; &lt;td align='left' style='padding:0;Margin:0'&gt; &lt;center&gt; &lt;b style='text-align: center; Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color: #fff;'&gt; ESTA ES UNA NOTIFICACIÓN AUTOMÁTICA, FAVOR DE NO RESPONDER. &lt;/b&gt;&lt;/center&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; &quot;]" Cc="[CCMail]" DisplayName="ENVIAR CORREO" Email="[usr]" EnableSSL="True" From="[usr]" sap:VirtualizedContainerService.HintSize="497,148" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="True" Name="CoE DIP NF" Password="[psw_aux]" Port="[CINT(in_Config(&quot;SMTPPort&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;SMTPServer&quot;).ToString]" Subject="[Correos_Subjet]" To="[notificationMail]">
-              <ui:SendMail.Files>
-                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-              </ui:SendMail.Files>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:SendMail>
-            <ui:LogMessage DisplayName="LOG DE ENVIO EXITOSO" sap:VirtualizedContainerService.HintSize="497,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;CORREO ENVIADO EXITOSAMENTE&quot;]" />
-          </Sequence>
-        </FlowStep>
-      </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID0</x:Reference>
   </Flowchart>
 </Activity>

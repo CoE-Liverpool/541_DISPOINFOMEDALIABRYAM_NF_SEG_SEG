@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1397.3333333333333,817.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>859.3333333333334,817.3333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LimpiarChrome_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -100,26 +100,23 @@
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="LimpiarChrome" sap:VirtualizedContainerService.HintSize="634,637.3333333333334" sap2010:WorkflowViewState.IdRef="Flowchart_1">
-    <Flowchart.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="Existe" />
-    </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,134</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.16666666666667 300,107.16666666666667 290,107.16666666666667 290,133</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">200,134</av:Point>
+          <av:Point x:Key="ShapeLocation">190,233</av:Point>
           <av:Size x:Key="ShapeSize">200,54</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,188 300,236</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">290,287 290,333</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="/F /IM CHROME.EXE" DisplayName="Start Process  Cerrando Chrome" FileName="TASKKILL" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="StartProcess_2">
@@ -133,12 +130,12 @@
         <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">200,236</av:Point>
+              <av:Point x:Key="ShapeLocation">190,333</av:Point>
               <av:Size x:Key="ShapeSize">200,54</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">300,290 300,338</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">290,387 290,433</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="Delay_4">
+          <Delay DisplayName="Delay LimpiarChrome " Duration="00:00:05" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="Delay_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -149,26 +146,23 @@
             <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">200,338</av:Point>
+                  <av:Point x:Key="ShapeLocation">190,433</av:Point>
                   <av:Size x:Key="ShapeSize">200,54</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Google" sap:VirtualizedContainerService.HintSize="1050,1004" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="cbdf5d8a-8f4d-450c-b13a-83dc88ee58a1" Version="V2" WindowResize="Maximize">
+              <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Google" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="cbdf5d8a-8f4d-450c-b13a-83dc88ee58a1" Version="V2" WindowResize="Maximize">
                 <uix:NApplicationCard.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,784.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                      <Sequence.Variables>
-                        <Variable x:TypeArguments="ui:UiElement" Name="ElemExist" />
-                      </Sequence.Variables>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="816,744.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NCheckState DisplayName="Check App State 'Restore'" sap:VirtualizedContainerService.HintSize="954,536.6666666666666" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="cbdf5d8a-8f4d-450c-b13a-83dc88ee58a1" Timeout="10" Version="V3">
+                      <uix:NCheckState DisplayName="Check App State 'Restore'" sap:VirtualizedContainerService.HintSize="754,496.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="cbdf5d8a-8f4d-450c-b13a-83dc88ee58a1" Timeout="10" Version="V3">
                         <uix:NCheckState.IfExists>
                           <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,275.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
                             <sap:WorkflowViewStateService.ViewState>
@@ -183,15 +177,6 @@
                             </uix:NClick>
                           </Sequence>
                         </uix:NCheckState.IfExists>
-                        <uix:NCheckState.IfNotExists>
-                          <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,107.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Sequence>
-                        </uix:NCheckState.IfNotExists>
                         <uix:NCheckState.Target>
                           <uix:TargetAnchorable CvElementArea="142, 166, 80, 41" CvTextArea="160, 180, 47, 12" CvTextArgument="Restore" CvType="Button" DesignTimeRectangle="145, 167, 77, 38" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Restore'" FullSelectorArgument="&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Restore' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Restore' role='push button' automationid='' check:text='Restore' /&gt;" Guid="1a6943d3-094f-4628-9b02-084eff74999c" InformativeScreenshot="ba24f232238a167f4c6a7600dab3ebd6.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Restore pages?' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
                         </uix:NCheckState.Target>
@@ -202,7 +187,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </uix:NCheckState>
-                      <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="954,92" sap2010:WorkflowViewState.IdRef="Delay_5" />
+                      <Delay DisplayName="Delay Abrir Chrome" Duration="00:00:05" sap:VirtualizedContainerService.HintSize="754,92" sap2010:WorkflowViewState.IdRef="Delay_5" />
                     </Sequence>
                   </ActivityAction>
                 </uix:NApplicationCard.Body>
@@ -223,5 +208,24 @@
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
+    <FlowStep x:Name="__ReferenceID3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">190,133</av:Point>
+          <av:Size x:Key="ShapeSize">200,54</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">290,187 290,233</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Modulo Limpiar Chrome&quot;]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+      <FlowStep.Next>
+        <x:Reference>__ReferenceID2</x:Reference>
+      </FlowStep.Next>
+    </FlowStep>
   </Flowchart>
 </Activity>
