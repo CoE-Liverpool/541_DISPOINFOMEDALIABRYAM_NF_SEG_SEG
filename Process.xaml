@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1010,817.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,780.6666666666666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -136,13 +136,13 @@
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">495,116.66666666666666</av:Point>
           <av:Size x:Key="ShapeSize">70,86.66666666666667</av:Size>
-          <av:PointCollection x:Key="TXN1Connector">495,138.33333333333331 465,138.33333333333331 465,140 200,140</av:PointCollection>
+          <av:PointCollection x:Key="TXN1Connector">495,138.33333333333331 465,138.33333333333331 465,160 320,160</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <FlowStep x:Key="TXN1" x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">0,97.66666666666666</av:Point>
+            <av:Point x:Key="ShapeLocation">120,117.66666666666666</av:Point>
             <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>

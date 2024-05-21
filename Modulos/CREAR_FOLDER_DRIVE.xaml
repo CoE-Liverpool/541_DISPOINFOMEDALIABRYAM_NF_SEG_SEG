@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>859.3333333333334,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="84">
@@ -152,7 +152,7 @@
           <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="CARGA A DRIVE Y CORREO" sap:VirtualizedContainerService.HintSize="572,2303.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_144">
+      <Sequence DisplayName="CARGA A DRIVE Y CORREO" sap:VirtualizedContainerService.HintSize="200,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_144">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="FECHA" />
           <Variable x:TypeArguments="x:String" Name="usr" />
@@ -164,7 +164,7 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="510,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Obtencion de Credenciales&quot;]" />
+        <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="510,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Modulo CREAR_FOLDER_DRIVE&quot;]" />
         <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Cred_RPA&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential Cred RPA" sap:VirtualizedContainerService.HintSize="510,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_9" Password="[psw]" Username="[usr]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">

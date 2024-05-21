@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>624,817.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SubirArchivosDrive_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -133,7 +133,7 @@
           <av:Size x:Key="ShapeSize">200,54</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="TryCatch Subir a Drive" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="TryCatch Subir a Drive" sap:VirtualizedContainerService.HintSize="524.6666666666666,2144.6666666666665" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
           <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" BucketId="[Nothing]" BucketName="[Nothing]" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Subir a Drive" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="486,1905.3333333333333" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;PathJsonSA&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="[in_Config(&quot;Password_Drive&quot;).ToString]" ServiceAccountEmail="[in_Config(&quot;UserSA&quot;).ToString]" Services="Drive, Sheets, Docs" UseConnectionService="False" UserEmail="[string.Format(&quot;in_Config(&quot;&quot;UserSA&quot;&quot;).ToString&quot;)]">
             <uga:GSuiteApplicationScope.AuthenticationScopes>

@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>859.3333333333334,817.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="84">
@@ -136,6 +136,7 @@
       <Variable x:TypeArguments="x:String" Name="folderDad" />
       <Variable x:TypeArguments="x:String" Name="FolderZIP" />
       <Variable x:TypeArguments="x:String" Name="FECHA_DOC" />
+      <Variable x:TypeArguments="x:String" Name="FECHA" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -157,10 +158,7 @@
           <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="CARGA A DRIVE Y CORREO" sap:VirtualizedContainerService.HintSize="200,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_144">
-        <Sequence.Variables>
-          <Variable x:TypeArguments="x:String" Name="FECHA" />
-        </Sequence.Variables>
+      <Sequence DisplayName="CARGA A DRIVE Y CORREO" sap:VirtualizedContainerService.HintSize="506,2734" sap2010:WorkflowViewState.IdRef="Sequence_144">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -307,7 +305,7 @@
           <av:PointCollection x:Key="ConnectorLocation">290,282.3333333333333 290,337.6666666666667</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="CREDENTIAL" sap:VirtualizedContainerService.HintSize="450,255.33333333333337" sap2010:WorkflowViewState.IdRef="Sequence_194">
+      <Sequence DisplayName="CREDENTIAL" sap:VirtualizedContainerService.HintSize="200,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_194">
         <Sequence.Variables>
           <Variable x:TypeArguments="ss:SecureString" Name="psw" />
         </Sequence.Variables>

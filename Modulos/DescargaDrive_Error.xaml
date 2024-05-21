@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>859.3333333333334,817.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="84">
@@ -120,6 +120,8 @@
     <Flowchart.Variables>
       <Variable x:TypeArguments="gadvd:File[]" Name="folder1" />
       <Variable x:TypeArguments="x:String" Name="folderWrk" />
+      <Variable x:TypeArguments="x:String" Name="FECHA" />
+      <Variable x:TypeArguments="x:String" Name="FECHA_DOC" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -141,10 +143,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Sequence DisplayName="Valida cambio de Servidor" sap:VirtualizedContainerService.HintSize="700,2986" sap2010:WorkflowViewState.IdRef="Sequence_207">
-        <Sequence.Variables>
-          <Variable x:TypeArguments="x:String" Name="FECHA" />
-          <Variable x:TypeArguments="x:String" Name="FECHA_DOC" />
-        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>

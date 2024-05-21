@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>859.3333333333334,817.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TerminalWorkflow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -113,18 +113,18 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.16666666666667 300,107.16666666666667 290,107.16666666666667 290,123.33333333333334</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.16666666666667 300,113</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_2">
+    <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">190,353</av:Point>
+          <av:Point x:Key="ShapeLocation">200,193</av:Point>
           <av:Size x:Key="ShapeSize">200,54</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">290,407 290,463</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,247 300,293</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <uit:TerminalSession ContinueOnError="{x:Null}" ExistingConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="False" ConnectionString="{}{'AttachExisting':false,'ConnectionProtocol':0,'ConnectionType':1,'EhllBasicMode':false,'EhllDll':null,'EhllEnhanced':true,'EhllFunction':'hllapi','EhllSession':'A','EnableSSL':true,'Host':'livp.liverpool.com.mx','InProcessMode':false,'InternalEncoding':'IBM2978','Mode':1,'Port':1423,'Profile':null,'ProviderType':9,'ShowTerminal':true,'TerminalModel':0,'TerminalType':0}" DelayMS="1000" DisplayName="Abrir Terminal Session" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="TerminalSession_1" OutputConnection="[TerminalConn]" TimeoutMS="50000">
@@ -176,11 +176,11 @@
         <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">190,463</av:Point>
+              <av:Point x:Key="ShapeLocation">200,293</av:Point>
               <av:Size x:Key="ShapeSize">200,54</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uit:TerminalSession ConnectionString="{x:Null}" ContinueOnError="{x:Null}" OutputConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="True" DelayMS="1000" DisplayName="Terminal Session 622" ExistingConnection="[TerminalConn]" sap:VirtualizedContainerService.HintSize="728.6666666666666,2254" sap2010:WorkflowViewState.IdRef="TerminalSession_2" TimeoutMS="50000">
+          <uit:TerminalSession ConnectionString="{x:Null}" ContinueOnError="{x:Null}" OutputConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="True" DelayMS="1000" DisplayName="Terminal Session 622" ExistingConnection="[TerminalConn]" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="TerminalSession_2" TimeoutMS="50000">
             <uit:TerminalSession.Body>
               <ActivityAction x:TypeArguments="uit:TerminalConnection">
                 <ActivityAction.Argument>
@@ -332,11 +332,12 @@
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <FlowStep x:Name="__ReferenceID1">
+    <FlowStep x:Name="__ReferenceID2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">190,123.33333333333334</av:Point>
+          <av:Point x:Key="ShapeLocation">200,113</av:Point>
           <av:Size x:Key="ShapeSize">200,54</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,167 300,193</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Modulo Terminal Workflow&quot;]">
@@ -346,6 +347,9 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
+      <FlowStep.Next>
+        <x:Reference>__ReferenceID1</x:Reference>
+      </FlowStep.Next>
     </FlowStep>
   </Flowchart>
 </Activity>
