@@ -688,38 +688,6 @@
         "DefaultValueSource": "Property"
       }
     ],
-    "UiPath.GSuite.Activities.ApplyEmailLabelsConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.1",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [],
-        "DefaultValueSource": "Property"
-      }
-    ],
     "UiPath.GSuite.Activities.ApplyFileLabelsConnections": [
       {
         "Type": "Connection",
@@ -1016,7 +984,7 @@
                 "ValueSource": "Constant"
               },
               "ObjectName": {
-                "Value": "SecondaryObjectName",
+                "Value": "ObjectName",
                 "ValueSource": "Property"
               },
               "DisplayLabel": {
@@ -1953,8 +1921,8 @@
                 "Value": "LocationFriendlyName",
                 "ValueSource": "Property"
               },
-              "ParentID": {
-                "Value": "BrowserLocationBindingId",
+              "ID": {
+                "Value": "BrowserLocation",
                 "ValueSource": "Property"
               }
             },
@@ -1973,10 +1941,6 @@
               },
               "DisplayLabel": {
                 "Value": "FullName",
-                "ValueSource": "Constant"
-              },
-              "PrimaryKey": {
-                "Value": "ParentID",
                 "ValueSource": "Constant"
               }
             },
@@ -2040,8 +2004,8 @@
                 "Value": "LocationFriendlyName",
                 "ValueSource": "Property"
               },
-              "ParentID": {
-                "Value": "BrowserLocationBindingId",
+              "ID": {
+                "Value": "BrowserLocation",
                 "ValueSource": "Property"
               }
             },
@@ -2060,10 +2024,6 @@
               },
               "DisplayLabel": {
                 "Value": "FullName",
-                "ValueSource": "Constant"
-              },
-              "PrimaryKey": {
-                "Value": "ParentID",
                 "ValueSource": "Constant"
               }
             },
@@ -2127,83 +2087,8 @@
                 "Value": "LocationFriendlyName",
                 "ValueSource": "Property"
               },
-              "ParentID": {
-                "Value": "BrowserLocationBindingId",
-                "ValueSource": "Property"
-              }
-            },
-            "Arguments": {
-              "ActivityName": {
-                "Value": "DisplayName",
-                "ValueSource": "Property"
-              },
-              "BindingsVersion": {
-                "Value": "2.1",
-                "ValueSource": "Constant"
-              },
-              "ObjectName": {
-                "Value": "ObjectName",
-                "ValueSource": "Property"
-              },
-              "DisplayLabel": {
-                "Value": "FullName",
-                "ValueSource": "Constant"
-              },
-              "PrimaryKey": {
-                "Value": "ParentID",
-                "ValueSource": "Constant"
-              }
-            },
-            "SubBindings": [],
-            "DefaultValueSource": "Property"
-          }
-        ],
-        "DefaultValueSource": "Property"
-      }
-    ],
-    "UiPath.GSuite.Activities.FindAndReplaceTextConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.1",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [
-          {
-            "Type": "Property",
-            "PublishNullValues": false,
-            "Key": {
-              "Value": "ResourceKey",
-              "ValueSource": "Property"
-            },
-            "Values": {
-              "FullName": {
-                "Value": "FileFriendlyName",
-                "ValueSource": "Property"
-              },
               "ID": {
-                "Value": "BrowserFileId",
+                "Value": "BrowserLocation",
                 "ValueSource": "Property"
               }
             },
@@ -2651,38 +2536,6 @@
         "DefaultValueSource": "Property"
       }
     ],
-    "UiPath.GSuite.Activities.GetDriveLabelsConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.1",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [],
-        "DefaultValueSource": "Property"
-      }
-    ],
     "UiPath.GSuite.Activities.GetEmailByIdConnections": [
       {
         "Type": "Connection",
@@ -2938,77 +2791,6 @@
               },
               "ID": {
                 "Value": "ParentFileFolderId",
-                "ValueSource": "Property"
-              }
-            },
-            "Arguments": {
-              "ActivityName": {
-                "Value": "DisplayName",
-                "ValueSource": "Property"
-              },
-              "BindingsVersion": {
-                "Value": "2.1",
-                "ValueSource": "Constant"
-              },
-              "ObjectName": {
-                "Value": "ObjectName",
-                "ValueSource": "Property"
-              },
-              "DisplayLabel": {
-                "Value": "FullName",
-                "ValueSource": "Constant"
-              }
-            },
-            "SubBindings": [],
-            "DefaultValueSource": "Property"
-          }
-        ],
-        "DefaultValueSource": "Property"
-      }
-    ],
-    "UiPath.GSuite.Activities.GetFileLabelsConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.1",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [
-          {
-            "Type": "Property",
-            "PublishNullValues": false,
-            "Key": {
-              "Value": "ResourceKey",
-              "ValueSource": "Property"
-            },
-            "Values": {
-              "FullName": {
-                "Value": "FileFriendlyName",
-                "ValueSource": "Property"
-              },
-              "ID": {
-                "Value": "BrowserFileId",
                 "ValueSource": "Property"
               }
             },
@@ -3497,7 +3279,7 @@
                 "ValueSource": "Constant"
               },
               "ObjectName": {
-                "Value": "SecondaryObjectName",
+                "Value": "ObjectName",
                 "ValueSource": "Property"
               },
               "DisplayLabel": {
@@ -3689,38 +3471,6 @@
             "DefaultValueSource": "Property"
           }
         ],
-        "DefaultValueSource": "Property"
-      }
-    ],
-    "UiPath.GSuite.Activities.RemoveEmailLabelsConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.1",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [],
         "DefaultValueSource": "Property"
       }
     ],
@@ -4086,6 +3836,10 @@
               "spreadSheetId": {
                 "Value": "ReferenceId",
                 "ValueSource": "Property"
+              },
+              "sheetName": {
+                "Value": "SheetName",
+                "ValueSource": "Property"
               }
             },
             "Arguments": {
@@ -4106,57 +3860,11 @@
                 "ValueSource": "Constant"
               },
               "PrimaryKey": {
-                "Value": "spreadSheetId",
+                "Value": "spreadSheetId,sheetName",
                 "ValueSource": "Constant"
               },
               "TriggerCreateParameters": {
-                "Value": "spreadSheetId",
-                "ValueSource": "Constant"
-              }
-            },
-            "SubBindings": [],
-            "DefaultValueSource": "Property"
-          },
-          {
-            "Type": "Property",
-            "PublishNullValues": false,
-            "Key": {
-              "Value": "SheetNameBindingKey",
-              "ValueSource": "Property"
-            },
-            "Values": {
-              "sheetName": {
-                "Value": "SheetName",
-                "ValueSource": "Property"
-              }
-            },
-            "Arguments": {
-              "ActivityName": {
-                "Value": "DisplayName",
-                "ValueSource": "Property"
-              },
-              "BindingsVersion": {
-                "Value": "2.1",
-                "ValueSource": "Constant"
-              },
-              "ObjectName": {
-                "Value": "ObjectName",
-                "ValueSource": "Property"
-              },
-              "DisplayLabel": {
-                "Value": "sheetName",
-                "ValueSource": "Constant"
-              },
-              "PrimaryKey": {
-                "Value": "sheetName",
-                "ValueSource": "Constant"
-              },
-              "TriggerCreateParameters": {
-                "Value": "sheetName",
-                "ValueSource": "Constant"
-              },
-              "Overwritable": {
-                "Value": "false",
+                "Value": "spreadSheetId,sheetName",
                 "ValueSource": "Constant"
               }
             },
@@ -4227,45 +3935,7 @@
               "spreadSheetId": {
                 "Value": "ReferenceId",
                 "ValueSource": "Property"
-              }
-            },
-            "Arguments": {
-              "ActivityName": {
-                "Value": "DisplayName",
-                "ValueSource": "Property"
               },
-              "BindingsVersion": {
-                "Value": "2.1",
-                "ValueSource": "Constant"
-              },
-              "ObjectName": {
-                "Value": "ObjectName",
-                "ValueSource": "Property"
-              },
-              "DisplayLabel": {
-                "Value": "FullName",
-                "ValueSource": "Constant"
-              },
-              "PrimaryKey": {
-                "Value": "spreadSheetId",
-                "ValueSource": "Constant"
-              },
-              "TriggerCreateParameters": {
-                "Value": "spreadSheetId",
-                "ValueSource": "Constant"
-              }
-            },
-            "SubBindings": [],
-            "DefaultValueSource": "Property"
-          },
-          {
-            "Type": "Property",
-            "PublishNullValues": false,
-            "Key": {
-              "Value": "SheetCellBindingKey",
-              "ValueSource": "Property"
-            },
-            "Values": {
               "sheetName": {
                 "Value": "SheetName",
                 "ValueSource": "Property"
@@ -4289,19 +3959,15 @@
                 "ValueSource": "Property"
               },
               "DisplayLabel": {
-                "Value": "sheetName",
+                "Value": "FullName",
                 "ValueSource": "Constant"
               },
               "PrimaryKey": {
-                "Value": "sheetName,cellAddress",
+                "Value": "spreadSheetId,sheetName,cellAddress",
                 "ValueSource": "Constant"
               },
               "TriggerCreateParameters": {
-                "Value": "sheetName,cellAddress",
-                "ValueSource": "Constant"
-              },
-              "Overwritable": {
-                "Value": "false",
+                "Value": "spreadSheetId,sheetName,cellAddress",
                 "ValueSource": "Constant"
               }
             },
@@ -4404,70 +4070,6 @@
             "DefaultValueSource": "Property"
           }
         ],
-        "DefaultValueSource": "Property"
-      }
-    ],
-    "UiPath.GSuite.Activities.TurnOffAutomaticRepliesConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.1",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [],
-        "DefaultValueSource": "Property"
-      }
-    ],
-    "UiPath.GSuite.Activities.TurnOnAutomaticRepliesConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.1",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [],
         "DefaultValueSource": "Property"
       }
     ],

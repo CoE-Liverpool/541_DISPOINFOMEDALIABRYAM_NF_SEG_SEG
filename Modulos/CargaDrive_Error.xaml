@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1249.3333333333333,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="84">
@@ -135,7 +135,7 @@
       <Variable x:TypeArguments="gadvd:File[]" Name="folder1" />
       <Variable x:TypeArguments="x:String" Name="folderDad" />
       <Variable x:TypeArguments="x:String" Name="FolderZIP" />
-      <Variable x:TypeArguments="x:String" Name="FECHA_DOC" />
+      <Variable x:TypeArguments="x:String" Name="fechaDoc" />
       <Variable x:TypeArguments="x:String" Name="FECHA" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -158,7 +158,7 @@
           <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="CARGA A DRIVE Y CORREO" sap:VirtualizedContainerService.HintSize="506,2734" sap2010:WorkflowViewState.IdRef="Sequence_144">
+      <Sequence DisplayName="CARGA A DRIVE Y CORREO" sap:VirtualizedContainerService.HintSize="506,2626" sap2010:WorkflowViewState.IdRef="Sequence_144">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -167,7 +167,7 @@
         </sap:WorkflowViewStateService.ViewState>
         <Assign DisplayName="DETERMINA FECHA" sap:VirtualizedContainerService.HintSize="444,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_49">
           <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[FECHA_DOC]</OutArgument>
+            <OutArgument x:TypeArguments="x:String">[fechaDoc]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="x:String">[Now.ToString("dd")]</InArgument>
@@ -181,7 +181,7 @@
             <InArgument x:TypeArguments="x:String">[Now.ToString("yyyyMM")]</InArgument>
           </Assign.Value>
         </Assign>
-        <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BucketId="{x:Null}" BucketName="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="CARGA ARCHIVOS" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="444,2372.6666666666665" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_32" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
+        <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="CARGA ARCHIVOS" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="444,2264.6666666666665" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
           <uga:GSuiteApplicationScope.AuthenticationScopes>
             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
               <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.file</InArgument>
@@ -195,14 +195,14 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ugac:IGoogleWorkspaceTarget" Name="GSuiteScope" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="ARCHIVO" sap:VirtualizedContainerService.HintSize="410,2125.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_201">
+              <Sequence DisplayName="ARCHIVO" sap:VirtualizedContainerService.HintSize="410,2125.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_195">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA MES/AÑO" FirstResultId="[folderWrk]" sap:VirtualizedContainerService.HintSize="368,82" sap2010:WorkflowViewState.IdRef="FindFiles_74" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot;+FECHA.ToString+&quot;' and parents='&quot;+in_Config(&quot;Id_Carpeta_Principal&quot;).ToString+&quot;'&quot;]" SupportsTeamDrives="False">
+                <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA MES/AÑO" FirstResultId="[folderWrk]" sap:VirtualizedContainerService.HintSize="368,82" sap2010:WorkflowViewState.IdRef="FindFiles_1" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot;+FECHA.ToString+&quot;' and parents='&quot;+in_Config(&quot;Id_Carpeta_Principal&quot;).ToString+&quot;'&quot;]" SupportsTeamDrives="False">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -210,7 +210,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </uga:FindFiles>
-                <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA MES/AÑO" sap:VirtualizedContainerService.HintSize="368,370.6666666666667" sap2010:WorkflowViewState.IdRef="If_148">
+                <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA MES/AÑO" sap:VirtualizedContainerService.HintSize="368,370.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -218,19 +218,13 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <uga:CreateFolder ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FolderDescription="{x:Null}" ParentFriendlyName="{x:Null}" AuthScopesInvalid="False" DisplayName="Create Folder año y mes" FolderName="[FECHA.ToString]" sap:VirtualizedContainerService.HintSize="334,186.66666666666666" sap2010:WorkflowViewState.IdRef="CreateFolder_59" ParentId="[in_Config(&quot;Id_Carpeta_Principal&quot;).ToString]" ParentIdSelectionMode="Browse" Result="[folderWrk]" SupportsTeamDrives="False" />
+                    <uga:CreateFolder ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FolderDescription="{x:Null}" ParentFriendlyName="{x:Null}" AuthScopesInvalid="False" DisplayName="Create Folder año y mes" FolderName="[FECHA.ToString]" sap:VirtualizedContainerService.HintSize="334,186.66666666666666" sap2010:WorkflowViewState.IdRef="CreateFolder_1" ParentId="[in_Config(&quot;Id_Carpeta_Principal&quot;).ToString]" ParentIdSelectionMode="Browse" Result="[folderWrk]" SupportsTeamDrives="False" />
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_208">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </Sequence>
+                    <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_196" />
                   </If.Else>
                 </If>
-                <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA DIA" FirstResultId="[folderDad]" sap:VirtualizedContainerService.HintSize="368,82" sap2010:WorkflowViewState.IdRef="FindFiles_75" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot;+FECHA_DOC.ToString+&quot;' and parents='&quot;+folderWrk+&quot;'&quot;]" SupportsTeamDrives="False">
+                <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA DIA" FirstResultId="[folderDad]" sap:VirtualizedContainerService.HintSize="368,82" sap2010:WorkflowViewState.IdRef="FindFiles_2" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot;+fechaDoc.ToString+&quot;' and parents='&quot;+folderWrk+&quot;'&quot;]" SupportsTeamDrives="False">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -238,7 +232,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </uga:FindFiles>
-                <If Condition="[folder1.Count=0]" DisplayName="EXISTE ARCHIVO" sap:VirtualizedContainerService.HintSize="368,370.6666666666667" sap2010:WorkflowViewState.IdRef="If_149">
+                <If Condition="[folder1.Count=0]" DisplayName="EXISTE ARCHIVO" sap:VirtualizedContainerService.HintSize="368,370.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -246,18 +240,18 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <uga:CreateFolder ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FolderDescription="{x:Null}" ParentFriendlyName="{x:Null}" AuthScopesInvalid="False" DisplayName="Create Folder dia carpeta" FolderName="[FECHA_DOC.ToString]" sap:VirtualizedContainerService.HintSize="334,186.66666666666666" sap2010:WorkflowViewState.IdRef="CreateFolder_60" ParentId="[folderWrk]" ParentIdSelectionMode="Browse" Result="[folderDad]" SupportsTeamDrives="False" />
+                    <uga:CreateFolder ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FolderDescription="{x:Null}" ParentFriendlyName="{x:Null}" AuthScopesInvalid="False" DisplayName="Create Folder dia carpeta" FolderName="[fechaDoc.ToString]" sap:VirtualizedContainerService.HintSize="334,186.66666666666666" sap2010:WorkflowViewState.IdRef="CreateFolder_2" ParentId="[folderWrk]" ParentIdSelectionMode="Browse" Result="[folderDad]" SupportsTeamDrives="False" />
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_209" />
+                    <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_197" />
                   </If.Else>
                 </If>
-                <InvokeMethod DisplayName="Invocar método" sap:VirtualizedContainerService.HintSize="368,135.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeMethod_25" MethodName="CreateFromDirectory" TargetType="sic:ZipFile">
+                <InvokeMethod DisplayName="Invocar método" sap:VirtualizedContainerService.HintSize="368,135.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="CreateFromDirectory" TargetType="sic:ZipFile">
                   <InArgument x:TypeArguments="x:String">[in_Config("Temporal").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String">[in_Config("Temporal_Error").ToString+"_ERROR.zip"]</InArgument>
                 </InvokeMethod>
-                <Delay DisplayName="Retraso" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="368,92" sap2010:WorkflowViewState.IdRef="Delay_7" />
-                <uga:UploadFile ContinueOnError="{x:Null}" DriveTarget="{x:Null}" ParentFolderName="{x:Null}" AuthScopesInvalid="False" Convert="False" DisplayName="CARGA TEMPORAL" sap:VirtualizedContainerService.HintSize="368,244.66666666666666" sap2010:WorkflowViewState.IdRef="UploadFile_133" LocalFilePath="[in_Config(&quot;Temporal_Error&quot;).ToString+&quot;_ERROR.zip&quot;]" ParentId="[folderDad]" ParentIdSelectionMode="Browse" Result="[FolderZIP]" SupportsTeamDrives="False" UpdateExisting="True">
+                <Delay DisplayName="Retraso" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="368,92" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                <uga:UploadFile ContinueOnError="{x:Null}" DriveTarget="{x:Null}" ParentFolderName="{x:Null}" AuthScopesInvalid="False" Convert="False" DisplayName="CARGA TEMPORAL" sap:VirtualizedContainerService.HintSize="368,244.66666666666666" sap2010:WorkflowViewState.IdRef="UploadFile_1" LocalFilePath="[in_Config(&quot;Temporal_Error&quot;).ToString+&quot;_ERROR.zip&quot;]" ParentId="[folderDad]" ParentIdSelectionMode="Browse" Result="[FolderZIP]" SupportsTeamDrives="False" UpdateExisting="True">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -265,7 +259,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </uga:UploadFile>
-                <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" DisplayName="Delete File Temporal Error" sap:VirtualizedContainerService.HintSize="368,136.66666666666666" sap2010:WorkflowViewState.IdRef="Delete_33" Path="[in_Config(&quot;Temporal_Error&quot;).ToString+&quot;_ERROR.zip&quot;]">
+                <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" DisplayName="Delete Temporal Error" sap:VirtualizedContainerService.HintSize="368,136.66666666666666" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[in_Config(&quot;Temporal_Error&quot;).ToString+&quot;_ERROR.zip&quot;]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -285,9 +279,6 @@
               </Sequence>
             </ActivityAction>
           </uga:GSuiteApplicationScope.Body>
-          <uga:GSuiteApplicationScope.User>
-            <InArgument x:TypeArguments="x:String" />
-          </uga:GSuiteApplicationScope.User>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
