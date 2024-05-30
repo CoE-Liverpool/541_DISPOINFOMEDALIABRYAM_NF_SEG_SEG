@@ -15,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>859.3333333333334,1400</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,1400</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetTransactionStatus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -356,7 +356,7 @@
                   <av:Size x:Key="ShapeSize">200,180</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="200,180" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="500.66666666666674,2480.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="QueueRetry" />
                   <Variable x:TypeArguments="x:String" Name="ScreenshotPath" />
@@ -476,7 +476,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Close applications" sap:VirtualizedContainerService.HintSize="500.6666666666667,490.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <Sequence DisplayName="Close applications" sap:VirtualizedContainerService.HintSize="500.6666666666667,650" sap2010:WorkflowViewState.IdRef="Sequence_16">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -521,9 +521,11 @@
                 </TryCatch>
                 <If Condition="[in_Config(&quot;STATUS_CAR_DES&quot;).ToString = &quot;x&quot; OR in_Config(&quot;STATUS_CAR_DES&quot;).ToString = &quot;X&quot;]" DisplayName="EVALUAR MODULO  CARGAR DRIVE - ERRORES TEMPORAL" sap:VirtualizedContainerService.HintSize="438.6666666666667,299.3333333333333" sap2010:WorkflowViewState.IdRef="If_5">
                   <If.Then>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MODULO CARGA DRIVE - ERROR" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Modulos\CargaDrive_Error.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MODULO CARGA DRIVE - ERROR" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Framework\CargaDrive_Error.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </If.Then>
@@ -539,21 +541,11 @@
                 </If>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MODULO DE ENVIO DE CHAR - Chat_RPA_NF" sap:VirtualizedContainerService.HintSize="438.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Framework\Chat_RPA_NF.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_TXN">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(0).ToString" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                      <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_HoraInicio">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_HoraInicio" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_error">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SystemException.Message" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_activitiBox">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SystemException.Source" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TXN">[in_TransactionItem(0).ToString]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_HoraInicio">[in_HoraInicio]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_error">[in_SystemException.Message]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_activitiBox">[in_SystemException.Source]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
                 <Throw DisplayName="Throw SystemException" Exception="[in_SystemException]" sap:VirtualizedContainerService.HintSize="438.6666666666667,92" sap2010:WorkflowViewState.IdRef="Throw_2" />
