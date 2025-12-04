@@ -7,6 +7,7 @@
     "UiPath.Excel.Activities": "[2.22.3]",
     "UiPath.GSuite.Activities": "[2.4.3]",
     "UiPath.Mail.Activities": "[1.22.2]",
+    "UiPath.Python.Activities": "[1.7.1]",
     "UiPath.System.Activities": "[23.10.5]",
     "UiPath.Terminal.Activities": "[2.7.1]",
     "UiPath.UIAutomation.Activities": "[23.10.9]",
