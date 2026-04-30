@@ -1,0 +1,952 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Inicio_De_Sesión" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_UnidadesNegocio" Type="InArgument(s:String[])" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>2372,7686.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Inicio_De_Sesión_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Python.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Terminal</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Módulo InicioDeSesion: se encarga de iniciar sesión en el portal de Medallia y, una vez dentro, descarga los documentos necesarios para el tratamiento y luego los sube a los sheets correspondientes por cada unidad de negocio" DisplayName="MODULO: INICIO DE SESION" sap:VirtualizedContainerService.HintSize="2382,7622" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="PathArchivo" />
+      <Variable x:TypeArguments="x:String" Name="Temporal" />
+      <Variable x:TypeArguments="x:String" Name="NuevoNombreArchivo" />
+      <Variable x:TypeArguments="x:String" Name="NombreArchivo" />
+      <Variable x:TypeArguments="s:String[]" Name="ListaDescargas" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="PANTALLA DE INICIO DE SESION" sap:VirtualizedContainerService.HintSize="2418.6666666666665,9149.333333333334" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="2384.6666666666665,8930.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="INTENTAR INGRESAR A PORTAL MEDALLIA" sap:VirtualizedContainerService.HintSize="2322.6666666666665,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_32">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NCheckState sap2010:Annotation.AnnotationText="Determinamos que si existen sesiones o cuentas guardas nos loggeamos con la cuenta del bot exclusivamente." DisplayName="DETERMINAR SI EXISTEN CUENTAS GUARDADAS" sap:VirtualizedContainerService.HintSize="388,132.66666666666666" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                <uix:NCheckState.IfExists>
+                  <Sequence DisplayName="EXISTEN CUENTAS GUARDADAS / REGISTRADAS" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR 'USE ANOTHER ACCOUNT'" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvTextArea="795, 755, 208, 22" CvTextArgument="Use another account" CvType="Text" DesignTimeRectangle="779, 729, 456, 72" DesignTimeScaleFactor="1.5" FriendlyName="'Use another account'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='2' parentid='otherTile' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='table-cell text-left content' parentid='otherTile' tag='DIV' aaname='                                                      ' check:innerText='Use another account' /&gt;" Guid="2c8a7249-00e0-4778-b793-872526427ee6" InformativeScreenshot="1851ffc1be6e02d2d0ea7b83802bdf7a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvElementArea="703, 727, 78, 75" CvTextArea="720, 743, 43, 43" CvType="Icon" DesignTimeRectangle="707, 729, 72, 72" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentid='otherTile' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentid='otherTile' tag='IMG' type='' class='tile-img' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOQSURBVHhe7ZuLruogEEXvp/k7fo//6FujxleMkZPlTSut0xZaSqeGnezEnIN0WFEYBvxnkryUgHkqAfPUYMAej4e5XC7meDya3W5n1uu1WS6XZrFYmPl8/jav+Rv/ow1teQ/vHUrRgD2fz/dg9/t9AUpb0wd90Sd9x1LvwK7Xq9lut+KgQ5pn8Ky+1Quw1+tlTqeTWa1W4uD6NM/k2cTQh4IDO5/PQb5yXU0MxBJawYDd7/f35CwFP6SJidhCKQiww+EgBqvJxBhCnYCxvG82GzFAjSbWrilJa2C3200Magwm9rZqBYzcRwpkTGYMbeQNjJVHCmCMbrOKegH7hU9W2b6fNGdgY56zmuwzpzkBY2WRHvRLdl09nYCNKXVoa8bookZgY0hKQ9klua0FxpZC6viX3bSNqgWmcW/YtxlznSqBDZVvzWYzM5lM3ua11KZv1+VnIjBqSUOVaDQAY+xV9TQRGAU4qaMY1gAMw0CSCGyISmlmLcBgIOkLGHVxqYNY1gIMS2cEX8BiHFjUWRMwWJRVAMZxlfTGmNYEDJeP8ArANFQjtAErVzMKwDgYld4U09qAwcRWAZiG4zFtwGBiKwempYSjDRi2Sz85MC3VVI3A7HksB8bNGKlxbGsEBptMOTCuE0mNY1sjMNhkyoFpKeVoBGaXfHJgXFyTGse2RmCwyZQDC5VSMMgunk6nOTBeS218LMXoazu1yIFJDds4G6wWSzG2caYEzNGZ0lfSweJXMk361RYn/ZRWVFtMK1LiWm0xcU1bo2qLW6O0+a62uPlO5Z1qi+UdFCq16GJtwOyUAhWApRL1t2tL1BrmMW3A7PkLFYClY7Zv1x6zoXSQ+3HjQS5KVwU+droqgNJlFI/LKChdd/K87pQu1HleqEPpyqasSmBIS8knpu1SjqRaYOna+bdqgaH0w4aiGoGh9NOZj5yAaSn99Gm7hFMnJ2Ao/fzvv5yBIS1V2ZAuVyOa5AUMDZWf9eG6fKtK3sDQL3zSfD9ZmVoBQ2Oe03zmrLJaA0OsLGNKOYjVdTWsUidgmcaQ3LokpS4KAgyxpdC49ySmpu2Oj4IBy8TKo+G4jhjarIJNCg4MUUuiADdE5ZZn8uyqelZX9QLMFnXxGAcrPEOqwYdW78AycVxF7sPBaIivLH3QF32Wj8L6VDRgZbG8M1huxnCdiMmZi2s2TF7zN/5HG9rynq6pQRcNBmycMuYPLbuvOjF6LwwAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </uix:NCheckState.IfExists>
+                <uix:NCheckState.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvTextArea="705, 549, 260, 33" CvTextArgument="Pick an account" CvType="Text" DesignTimeRectangle="707, 543, 528, 42" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Pick an account'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Pick an account' check:innerText='Pick an account' /&gt;" Guid="d3e6e568-f11f-42bd-936c-ad42a8869c4d" ImageBase64="" InformativeScreenshot="92511703f27f603b7def6e6181042828.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="720, 743, 283, 43" CvTextArgument="+ Use another account" CvType="Text" DesignTimeRectangle="641, 711, 660, 108" ElementType="Button" FriendlyName="'Use another account'" FullSelectorArgument="&lt;webctrl id='otherTile' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='otherTile' tag='DIV' type='' class='table' aaname='                                      ' check:innerText='Use another account' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NCheckState.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NCheckState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR INPUT 'INICIAR SESION'" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvElementArea="702, 462, 533, 49" CvType="InputBox" DesignTimeRectangle="710, 496, 522, 54" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT i0116'" FullSelectorArgument="&lt;webctrl id='i0116' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='i0116' tag='INPUT' type='email' class='form-control ltr_override input ext-input text-box ext-text-box' aaname='' /&gt;" Guid="1acfa87a-9474-4452-ac17-59ee4abeb3e8" InformativeScreenshot="92ba7769622a77a075900842c363926b.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="707, 436, 528, 42" ElementType="Text" FriendlyName="'Sign in'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Sign in' check:innerText='Sign in' /&gt;" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="1" DelayBefore="1" DisplayName="ESCRIBIR EN INPUT 'CORREO ELECTRONICO'" EmptyFieldMode="MultiLine" sap:VirtualizedContainerService.HintSize="334,222.66666666666663" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Text="[in_Config(&quot;MedalliaUser&quot;).ToString]" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" DesignTimeRectangle="710, 496, 522, 54" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT i0116'" FullSelectorArgument="&lt;webctrl id='i0116' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='i0116' tag='INPUT' type='email' class='form-control ltr_override input ext-input text-box ext-text-box' aaname='' /&gt;" Guid="3ea5ad9d-999d-4cd5-abff-e95e024158d1" InformativeScreenshot="9eb620472c93f6a321c2022b774d1183.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="707, 436, 528, 42" ElementType="Text" FriendlyName="'Sign in'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Sign in' check:innerText='Sign in' /&gt;" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="3" DisplayName="PRESIONAR ENTER" sap:VirtualizedContainerService.HintSize="388,138.66666666666666" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+                <ui:SendHotkey.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="73183c50-9dd0-4587-8e0f-b7868e76c90b">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:SendHotkey.Target>
+              </ui:SendHotkey>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="1" DelayBefore="1" DisplayName="ESCRIBIR CONTRASENIA" EmptyFieldMode="MultiLine" sap:VirtualizedContainerService.HintSize="388,220" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Text="[in_Config(&quot;MedalliaPassword&quot;).ToString]" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvElementArea="707, 572, 527, 58" CvType="InputBox" DesignTimeRectangle="710, 574, 522, 54" DesignTimeScaleFactor="1.5" ElementType="InputBoxPassword" FriendlyName="'3ras3_un4JM'" FullSelectorArgument="&lt;webctrl id='i0118' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='i0118' tag='INPUT' type='password' class='form-control input ext-input text-box ext-text-box show-reveal-password ext-show-reveal-password' aaname='' /&gt;" Guid="2ee1e0c9-0e13-489d-9db0-913172e15ae8" InformativeScreenshot="dd83cf74c85bb211dbd6685dbd1ef3f1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="705, 521, 251, 40" CvTextArgument="Enter password" CvType="Text" DesignTimeRectangle="707, 514, 528, 42" ElementType="Text" FriendlyName="'Enter password'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Enter password' check:innerText='Enter password' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="PRESIONAR ENTER" sap:VirtualizedContainerService.HintSize="388,138.66666666666666" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SpecialKey="True">
+                <ui:SendHotkey.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="73183c50-9dd0-4587-8e0f-b7868e76c90b">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:SendHotkey.Target>
+              </ui:SendHotkey>
+            </Sequence>
+            <Sequence DisplayName="DESCARGAR ARCHIVOS EXCEL" sap:VirtualizedContainerService.HintSize="2322.6666666666665,8179.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="2260.6666666666665,8063.333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_UnidadesNegocio]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:String">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:String" Name="UnidadNegocio" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="2226.6666666666665,7874.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2184.6666666666665,146" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Iniciando descarga de archivo para: &quot; + UnidadNegocio.ToUpper + &quot;...&quot;]" />
+                      <uix:NCheckState DisplayName="VERIFICAR SI EL SITIO DE MEDALLIA ESTA DISPONIBLE." sap:VirtualizedContainerService.HintSize="2184.6666666666665,7601.333333333333" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="3" Version="V3">
+                        <uix:NCheckState.IfExists>
+                          <Sequence DisplayName="SI EL SITIO ESTA DISPONIBLE" sap:VirtualizedContainerService.HintSize="1114.6666666666667,7381.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" sap:VirtualizedContainerService.HintSize="1052.6666666666667,526" sap2010:WorkflowViewState.IdRef="If_2">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,171.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="GetText" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" Version="V3" />
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,171.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_2&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" Version="V3" />
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1052.6666666666667,349.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,269.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="1" DelayBefore="1" DisplayName="SELECCIONAR BOTÓN FILTRO" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1823, 346, 48, 44" CvType="Icon" DesignTimeRectangle="1829, 465, 36, 36" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl aria-label='Mostrar filtros' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Mostrar filtros' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" Guid="ebf44bbd-ec29-490e-94c8-f31c8ecf345a" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMHSURBVFhH7ZfLTxNRFIf9i3SDj4UmxsSFMS59JehCjS5c6QYVIYKKBBaihipi1AQXxqrBRzSRh49oojFG7QNoaRHbWkspUlqBYoHj/Gbunc60TXvb6UUS+ZKTMLdnhi9z79xz7ipa5qwIWuX/FXznSdDxrlHa3jJIO9s8dPFZmOLT8+xXcaQI3n4dpdU1X3JiW/MAjURTLEuMigu6gtO60KHrPrr/IUYdfRGqqv2qjh3u9LFMMUyCduVhtp6fwnG1J5Izts/mVUUwrUbeDCV08fPdwZz7eMDBiElwz2WP/hCr0fr0B3tqhg31Du33E7n5PPZe8bJsDZNg44MgHejwCcdBZQqzx7acc6n/6OitEfZUDf/YrC6x65I35z4ecDBS8TXY747rIm3PwzQ6nqKP/iRVt2tTv6N1kGWKUXFBUHcvoEtmR58rzrLEkCIIrvVGaPNZbboR+23D6t5YKtIEOeHJOZosY4PmSBe0irDg79QC3Xk7TvX2ADU/DtFL9xT7RS5Cglg7xvXE41jXN5Yhj6KCE8k0bTzjVIXW1zno5N3vdOSGX5dsyNq3Ko1J0B2aUfcsY2BKIbKpwUmBWKbQY7q5ZK9zKue+cgMORkyChUpdU3eIZWWoqmWlq+azKddKFCx1hQRPKVNrJDm7kDfPahQUzIf9fUy/+YVDqwLp+UVqfBhUx9addtBcelEdl0FRQVDdPqxLbm1y01pFil/ffDXGsuQgJBhN/FG7Ey6FWKO0TJ39cuWAkCBnQPnCnnz6pXy1cYrPlF++SqEkwX/BkgjibeOt4+1jFkpBuiDWKdarcf1iPWNdiyBVEF84l8KXjx2AX2NnEEGaIPZG7JGQwZ6JvRNgL+WS2GOLYRLcXcFTXYtyquN/o+oYQVUy5hoD1cyINMELj7RKg3qdDep6dj6PgoL5uplyYyicOWai8+GgI0JnhHF0Stn3FexmKg16RS6JHhK9JHpKXKPHRK9ZDKmCAF03l+SB7lz0hCddEOD8gnMMphTTjfONKEsiaIUVQassc0Givz9qD2MMW3EkAAAAAElFTkSuQmCC" InformativeScreenshot="f2cabd60a80089023670f8a5b2838455.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvTextArea="108, 249, 393, 49" CvTextArgument="El Puerto de Liverpool" CvType="Text" DesignTimeRectangle="35, 231, 480, 72" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='IMG' type='' class='' aaname='Logotipo de la empresa El Puerto de Liverpool, S.A.B. de C.V.' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1052.6666666666667,349.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,269.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NSelectItem DelayAfter="2" DelayBefore="2" DisplayName="SELECCIONAR 'ÁREA DESCRIPCIÓN' " sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Seguros" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NSelectItem.Items>
+                                      <scg:List x:TypeArguments="x:String" Capacity="14">
+                                        <x:String>SPA</x:String>
+                                        <x:String>Diseño de Interiores</x:String>
+                                        <x:String>BX</x:String>
+                                        <x:String>Mesa de Regalos</x:String>
+                                        <x:String>Crédito</x:String>
+                                        <x:String>Ventas a Distancia</x:String>
+                                        <x:String>Seguros</x:String>
+                                        <x:String>Ventas</x:String>
+                                        <x:String>Sastrería</x:String>
+                                        <x:String>Click &amp; Collect</x:String>
+                                        <x:String>Apartamás</x:String>
+                                        <x:String>Kioskos</x:String>
+                                        <x:String>Alimentos y Bebidas</x:String>
+                                        <x:String>Dulceria</x:String>
+                                      </scg:List>
+                                    </uix:NSelectItem.Items>
+                                    <uix:NSelectItem.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="358, 877, 61, 47" CvTextArea="380, 893, 16, 15" CvTextArgument="+" CvType="Button" DesignTimeRectangle="362, 579, 54, 42" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'+'" FullSelectorArgument="&lt;webctrl id='pfe_lp_store_area_descripcion_enum-control' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='pfe_lp_store_area_descripcion_enum-control' tag='BUTTON' type='button' class='sc-48vjs5-0 gQMVka sc-11gutst-4 hhFwoS' aaname='+ ' check:innerText='+' /&gt;" Guid="aa51de6f-5385-4d7a-b337-52480eb30fb2" InformativeScreenshot="d086e666206961400028041657a73d65.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvTextArea="44, 882, 160, 28" CvTextArgument="Area descripcion" CvType="Text" DesignTimeRectangle="47, 583, 163, 30" ElementType="Text" FriendlyName="'Área descripción'" FullSelectorArgument="&lt;webctrl id='pfe_lp_store_area_descripcion_enum-control__label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id='pfe_lp_store_area_descripcion_enum-control__label' tag='LABEL' type='' class='sc-ois7j2-3 eZQnFy' aaname='Área descripción' check:innerText='Área descripción' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NSelectItem.Target>
+                                  </uix:NSelectItem>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1052.6666666666667,866" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="472,786" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If Condition="[UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" sap:VirtualizedContainerService.HintSize="410,675.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+                                    <If.Then>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="376,246" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="GetText" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NSelectItem DelayAfter="2" DelayBefore="2" DisplayName="SELECCIONAR LIVERPOOL" sap:VirtualizedContainerService.HintSize="334,158.66666666666666" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Liverpool" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                          <uix:NSelectItem.Items>
+                                            <scg:List x:TypeArguments="x:String" Capacity="2">
+                                              <x:String>Liverpool</x:String>
+                                              <x:String>Suburbia</x:String>
+                                            </scg:List>
+                                          </uix:NSelectItem.Items>
+                                          <uix:NSelectItem.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="358, 833, 61, 46" CvTextArea="380, 848, 16, 15" CvTextArgument="+" CvType="Button" DesignTimeRectangle="362, 835, 54, 42" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'+'" FullSelectorArgument="&lt;webctrl id='pfk_lp_programas_marca_global_enum-control' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='pfk_lp_programas_marca_global_enum-control' tag='BUTTON' type='button' class='sc-48vjs5-0 gQMVka sc-11gutst-4 hhFwoS' aaname='+ ' check:innerText='+' /&gt;" Guid="9219f31d-79f7-43ac-9a45-9c805a703cbd" InformativeScreenshot="c5709c2fc6b85e8c0e7b44780d3a901b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target CvElementArea="358, 833, 61, 46" CvTextArea="380, 848, 16, 15" CvTextArgument="+" CvType="Button" DesignTimeRectangle="383, 845, 13, 21" ElementType="Text" FriendlyName="'+'" FullSelectorArgument="&lt;webctrl aaname='+' parentid='pfk_lp_programas_marca_global_enum-control' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='+' parentid='pfk_lp_programas_marca_global_enum-control' tag='DIV' type='' class='sc-11gutst-5 gKFAgz' check:innerText='+' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NSelectItem.Target>
+                                        </uix:NSelectItem>
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="376,246" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NSelectItem DelayAfter="2" DelayBefore="2" DisplayName="SELECCIONAR SUBURBIA" sap:VirtualizedContainerService.HintSize="334,158.66666666666666" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Suburbia" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                          <uix:NSelectItem.Items>
+                                            <scg:List x:TypeArguments="x:String" Capacity="2">
+                                              <x:String>Liverpool</x:String>
+                                              <x:String>Suburbia</x:String>
+                                            </scg:List>
+                                          </uix:NSelectItem.Items>
+                                          <uix:NSelectItem.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="358, 833, 61, 46" CvTextArea="380, 848, 16, 15" CvTextArgument="+" CvType="Button" DesignTimeRectangle="362, 835, 54, 42" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'+'" FullSelectorArgument="&lt;webctrl id='pfk_lp_programas_marca_global_enum-control' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='pfk_lp_programas_marca_global_enum-control' tag='BUTTON' type='button' class='sc-48vjs5-0 gQMVka sc-11gutst-4 hhFwoS' aaname='+ ' check:innerText='+' /&gt;" Guid="9219f31d-79f7-43ac-9a45-9c805a703cbd" InformativeScreenshot="c5709c2fc6b85e8c0e7b44780d3a901b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target CvElementArea="358, 833, 61, 46" CvTextArea="380, 848, 16, 15" CvTextArgument="+" CvType="Button" DesignTimeRectangle="383, 845, 13, 21" ElementType="Text" FriendlyName="'+'" FullSelectorArgument="&lt;webctrl aaname='+' parentid='pfk_lp_programas_marca_global_enum-control' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='+' parentid='pfk_lp_programas_marca_global_enum-control' tag='DIV' type='' class='sc-11gutst-5 gKFAgz' check:innerText='+' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NSelectItem.Target>
+                                        </uix:NSelectItem>
+                                      </Sequence>
+                                    </If.Else>
+                                  </If>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1052.6666666666667,349.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,269.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_61">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR BOTÓN 'APLICAR'" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1761, 898, 126, 56" CvTextArea="1785, 912, 76, 25" CvTextArgument="Aplicar" CvType="Button" DesignTimeRectangle="1765, 1053, 118, 51" DesignTimeScaleFactor="1.5" FriendlyName="'CANVAS'" FullSelectorArgument="&lt;webctrl idx='3' parentid='main-content-for-skip-link' tag='CANVAS' /&gt;" FuzzyAccuracy="0.8" FuzzySelectorArgument="&lt;webctrl type='' parentid='main-content-for-skip-link' tag='CANVAS' class='ink' aaname='' /&gt;" Guid="e2eaef53-73f4-4f07-91c3-5cd39c0baba7" ImageBase64="" InformativeScreenshot="59db9344bd4f17ca53089928dc3ea227.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                                            <uix:Target CvElementArea="1566, 896, 188, 58" CvTextArea="1592, 914, 136, 19" CvTextArgument="Guardar filtro" CvType="Button" DesignTimeRectangle="1570, 1053, 181, 51" FriendlyName="'CANVAS'" FullSelectorArgument="&lt;webctrl idx='2' parentid='main-content-for-skip-link' tag='CANVAS' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' parentid='main-content-for-skip-link' tag='CANVAS' class='ink' aaname='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                            <uix:Target CvTextArea="1415, 462, 120, 22" CvTextArgument="Restablecer" CvType="Text" DesignTimeRectangle="1393, 1053, 163, 51" FriendlyName="'CANVAS'" FullSelectorArgument="&lt;webctrl parentid='main-content-for-skip-link' tag='CANVAS' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='main-content-for-skip-link' tag='CANVAS' type='' class='ink' aaname='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1052.6666666666667,884" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="1016,804" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NCheckState DisplayName="VIRIFICAR SI LA OPCIÓN EN CINTA NO ESTA COMO OPCION PRINCIPAL" sap:VirtualizedContainerService.HintSize="954,693.3333333333334" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NCheckState.IfExists>
+                                      <Sequence DisplayName="SELECCIONAR OPCION ANALISIS DENTRO DEL DROPDOWN LIST" sap:VirtualizedContainerService.HintSize="450,473.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="ABRIR DROWPDOWN LIST" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                          <uix:NClick.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1222, 247, 31, 29" CvType="ArrowButton" DesignTimeRectangle="1219, 242, 39, 39" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;header&amp;gt;section&amp;gt;div&amp;gt;nav&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;div&amp;gt;span&amp;gt;button&amp;gt;span' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='SPAN' class='sc-1m6lox2-2 jpgxPG' aaname='' /&gt;" Guid="ea271b94-849a-494b-aeea-f2fba64d5385" InformativeScreenshot="81a097bd4503af8081f4062719c77ca5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target CvTextArea="33, 363, 239, 28" CvTextArgument="Resumen Tienda" CvType="Text" DesignTimeRectangle="17, 303, 1819, 126" ElementType="List" FriendlyName="'UL'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;header&amp;gt;section&amp;gt;div&amp;gt;nav&amp;gt;div&amp;gt;ul' idx='2' tag='UL' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-1wdyq3o-0 feruhs' tag='UL' aaname='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NClick.Target>
+                                        </uix:NClick>
+                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR OPCION ANALISIS" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                          <uix:NClick.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="969, 374, 78, 21" CvTextArgument="Analisis" CvType="Text" DesignTimeRectangle="948, 359, 309, 54" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Análisis'" FullSelectorArgument="&lt;webctrl aaname='Análisis' parentid=':r1:' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Análisis' parentid=':r1:' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Análisis' /&gt;" Guid="07d82032-efe7-4c87-8aa7-608889cdf66c" InformativeScreenshot="6c6417c52cc5774fd5761d64bc552362.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target CvTextArea="969, 308, 159, 21" CvTextArgument="Cierre de Circulo" CvType="Text" DesignTimeRectangle="948, 293, 309, 54" ElementType="Text" FriendlyName="'Cierre de Círculo'" FullSelectorArgument="&lt;webctrl parentid=':r1:' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid=':r1:' tag='A' type='' class='sc-7scfjp-0 loGcNS' aaname='Cierre de Círculo' check:innerText='Cierre de Círculo' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NClick.Target>
+                                        </uix:NClick>
+                                      </Sequence>
+                                    </uix:NCheckState.IfExists>
+                                    <uix:NCheckState.IfNotExists>
+                                      <Sequence DisplayName="SELECCIONAR OPCION ANALISIS EN LA CINTA PRINCIPAL" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR OPCION ANALISIS" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                          <uix:NClick.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1032, 249, 84, 21" CvTextArgument="Analisis" CvType="Text" DesignTimeRectangle="1018, 219, 116, 84" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Análisis'" FullSelectorArgument="&lt;webctrl aaname='Análisis' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Análisis' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Análisis' /&gt;" Guid="0ae0fdaa-e0f4-44a1-bdf7-8297524fe714" InformativeScreenshot="a4c2892e9c3468484ac4c3d54efd42bd.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target CvTextArea="872, 249, 129, 22" CvTextArgument="Comentarios" CvType="Text" DesignTimeRectangle="856, 219, 163, 84" ElementType="Text" FriendlyName="'Comentarios'" FullSelectorArgument="&lt;webctrl aaname='Comentarios' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Comentarios' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Comentarios' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NClick.Target>
+                                        </uix:NClick>
+                                      </Sequence>
+                                    </uix:NCheckState.IfNotExists>
+                                    <uix:NCheckState.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1034, 249, 170, 21" CvTextArgument="Cierre de Circulo" CvType="Text" DesignTimeRectangle="1018, 219, 204, 84" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Cierre de Círculo'" FullSelectorArgument="&lt;webctrl aaname='Cierre de Círculo' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Cierre de Círculo' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Cierre de Círculo' /&gt;" Guid="bd0494d1-d284-49a9-8cb8-8430b6dbc132" InformativeScreenshot="0240197af2a51a1cdb76e053e86f3685.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvTextArea="33, 363, 239, 28" CvTextArgument="Resumen Tienda" CvType="Text" DesignTimeRectangle="17, 303, 1819, 126" ElementType="List" FriendlyName="'UL'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;header&amp;gt;section&amp;gt;div&amp;gt;nav&amp;gt;div&amp;gt;ul' idx='2' tag='UL' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-1wdyq3o-0 feruhs' tag='UL' aaname='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NCheckState.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NCheckState>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1052.6666666666667,1005.3333333333334" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,925.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR OPCION CLASIFICACION" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/326?roleId=614&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.calculation=29&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="261, 365, 132, 24" CvTextArgument="Clasificacion" CvType="Text" DesignTimeRectangle="247, 303, 162, 126" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Clasificación'" FullSelectorArgument="&lt;webctrl aaname='Clasificación' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Clasificación' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Clasificación' /&gt;" Guid="5c62a174-050e-48c1-a9c1-06dddbe2aeba" InformativeScreenshot="ed21431169d2498f4a5a32fd7a98d1ce.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Análisis - Calificaciones' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvTextArea="32, 362, 199, 30" CvTextArgument="Calificaciones" CvType="Text" DesignTimeRectangle="35, 303, 212, 126" ElementType="Text" FriendlyName="'Calificaciones'" FullSelectorArgument="&lt;webctrl aaname='Calificaciones' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Calificaciones' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Calificaciones' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                  <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Se seleccionan los filtros por segunda vez pero en diferente contexto (previamente se selecciono ANALISIS y CLASIFICACION" ClickType="Single" DisplayName="SELECCIONAR FILTROS" sap:VirtualizedContainerService.HintSize="388,218.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_15" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1823, 454, 47, 44" CvType="Icon" DesignTimeRectangle="1830, 465, 36, 36" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl aria-label='Mostrar filtros' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Mostrar filtros' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" Guid="7cd6c196-968b-4c9e-b8ed-17234649c765" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMHSURBVFhH7ZfLTxNRFIf9i3SDj4UmxsSFMS59JehCjS5c6QYVIYKKBBaihipi1AQXxqrBRzSRh49oojFG7QNoaRHbWkspUlqBYoHj/Gbunc60TXvb6UUS+ZKTMLdnhi9z79xz7ipa5qwIWuX/FXznSdDxrlHa3jJIO9s8dPFZmOLT8+xXcaQI3n4dpdU1X3JiW/MAjURTLEuMigu6gtO60KHrPrr/IUYdfRGqqv2qjh3u9LFMMUyCduVhtp6fwnG1J5Izts/mVUUwrUbeDCV08fPdwZz7eMDBiElwz2WP/hCr0fr0B3tqhg31Du33E7n5PPZe8bJsDZNg44MgHejwCcdBZQqzx7acc6n/6OitEfZUDf/YrC6x65I35z4ecDBS8TXY747rIm3PwzQ6nqKP/iRVt2tTv6N1kGWKUXFBUHcvoEtmR58rzrLEkCIIrvVGaPNZbboR+23D6t5YKtIEOeHJOZosY4PmSBe0irDg79QC3Xk7TvX2ADU/DtFL9xT7RS5Cglg7xvXE41jXN5Yhj6KCE8k0bTzjVIXW1zno5N3vdOSGX5dsyNq3Ko1J0B2aUfcsY2BKIbKpwUmBWKbQY7q5ZK9zKue+cgMORkyChUpdU3eIZWWoqmWlq+azKddKFCx1hQRPKVNrJDm7kDfPahQUzIf9fUy/+YVDqwLp+UVqfBhUx9addtBcelEdl0FRQVDdPqxLbm1y01pFil/ffDXGsuQgJBhN/FG7Ey6FWKO0TJ39cuWAkCBnQPnCnnz6pXy1cYrPlF++SqEkwX/BkgjibeOt4+1jFkpBuiDWKdarcf1iPWNdiyBVEF84l8KXjx2AX2NnEEGaIPZG7JGQwZ6JvRNgL+WS2GOLYRLcXcFTXYtyquN/o+oYQVUy5hoD1cyINMELj7RKg3qdDep6dj6PgoL5uplyYyicOWai8+GgI0JnhHF0Stn3FexmKg16RS6JHhK9JHpKXKPHRK9ZDKmCAF03l+SB7lz0hCddEOD8gnMMphTTjfONKEsiaIUVQassc0Givz9qD2MMW3EkAAAAAElFTkSuQmCC" InformativeScreenshot="b43660d499f565a86c7505ac0ef28ae4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Análisis - Clasificación' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target DesignTimeRectangle="1491, 435, 112, 84" FriendlyName="'Filtros3 más...'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='7' parentid='main-content-for-skip-link' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-1wdyq3o-2 fWHpjJ' parentid='main-content-for-skip-link' tag='DIV' aaname='' check:innerText='Filtros&amp;#xD;&amp;#xA;3 más...' /&gt;" SearchSteps="FuzzySelector" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NClick>
+                                  <uix:NSelectItem DelayAfter="2" DelayBefore="2" DisplayName="SELECCIONAR FILTRO CLASIFICACION" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="Área descripción" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NSelectItem.Items>
+                                      <scg:List x:TypeArguments="x:String" Capacity="20">
+                                        <x:String>Vendedor</x:String>
+                                        <x:String>Empleado</x:String>
+                                        <x:String>Asesor</x:String>
+                                        <x:String>Tienda</x:String>
+                                        <x:String>Zona</x:String>
+                                        <x:String>Estado</x:String>
+                                        <x:String>Área descripción</x:String>
+                                        <x:String>Práctica descripción</x:String>
+                                        <x:String>Descripción sección</x:String>
+                                        <x:String>Jefe</x:String>
+                                        <x:String>Gerente</x:String>
+                                        <x:String>Director</x:String>
+                                        <x:String>Descripción de dirección</x:String>
+                                        <x:String>Método de contacto</x:String>
+                                        <x:String>Prácticas VAS</x:String>
+                                        <x:String>Servicio VAS</x:String>
+                                        <x:String>Submarca clave</x:String>
+                                        <x:String>Descripción de submarca</x:String>
+                                        <x:String>Nombre Boutique</x:String>
+                                        <x:String>Zona Boutique</x:String>
+                                      </scg:List>
+                                    </uix:NSelectItem.Items>
+                                    <uix:NSelectItem.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1320, 800, 96, 21" CvTextArgument="Vendedor" CvType="Text" DesignTimeRectangle="1299, 787, 484, 48" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'Vendedor'" FullSelectorArgument="&lt;webctrl id='segment-ranker-control' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='segment-ranker-control' tag='BUTTON' type='button' class='sc-1m9xizp-2 ekjeKk' aaname='Vendedor' check:innerText='Vendedor' /&gt;" Guid="5d0f0bb1-9ec8-4687-89f9-a91b86f15c5a" InformativeScreenshot="1a16b21e2ff805704ff9fc7b0cb8ba70.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Análisis - Clasificación' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvElementArea="1297, 785, 486, 53" CvType="InputBox" DesignTimeRectangle="1324, 801, 91, 21" ElementType="Text" FriendlyName="'Vendedor'" FullSelectorArgument="&lt;webctrl parentid='segment-ranker-control' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='segment-ranker-control' tag='DIV' type='' class='sc-1m9xizp-3 iQJOcd' aaname='Vendedor' check:innerText='Vendedor' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NSelectItem.Target>
+                                  </uix:NSelectItem>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="APLICAR SEGUNDO FILTRO" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_46" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="30" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1761, 833, 126, 56" CvTextArea="1785, 848, 76, 25" CvTextArgument="Aplicar" CvType="Button" DesignTimeRectangle="1764, 859, 120, 53" DesignTimeScaleFactor="1.5" FriendlyName="'CANVAS'" FullSelectorArgument="&lt;webctrl idx='3' parentid='main-content-for-skip-link' tag='CANVAS' /&gt;" FuzzyAccuracy="0.73" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' aaname='Aplicar' /&gt;" Guid="470df2cc-e39a-4fe9-b1ce-0075faf4452e" ImageBase64="" InformativeScreenshot="fbc1effd316cb2b65fd16a4fa3b102a3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Análisis - Clasificación' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvElementArea="1566, 830, 187, 59" CvTextArea="1592, 848, 136, 21" CvTextArgument="Guardar filtro" CvType="Button" DesignTimeRectangle="1570, 860, 181, 51" FriendlyName="'CANVAS'" FullSelectorArgument="&lt;webctrl idx='2' parentid='main-content-for-skip-link' tag='CANVAS' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' parentid='main-content-for-skip-link' tag='CANVAS' class='ink' aaname='' /&gt;" SearchSteps="Selector, FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR ARCHIVO GENERADO SEGUROS" sap:VirtualizedContainerService.HintSize="1052.6666666666667,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_19" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="30" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="177, 767, 79, 24" CvTextArgument="Seguros" CvType="Text" DesignTimeRectangle="179, 763, 77, 28" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Seguros'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='sc-7scfjp-0 loGcNS' aaname='Seguros' check:innerText='Seguros' /&gt;" Guid="8db6bc77-d14b-4e4c-91fd-d0c8f9d371e6" InformativeScreenshot="6ba0d2496eaa43ac6cee2a38736e96e5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Análisis - Clasificación' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArea="176, 704, 166, 28" CvTextArgument="Area descripcion" CvType="Text" DesignTimeRectangle="179, 704, 162, 28" ElementType="Text" FriendlyName="'Área descripción'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Área descripción' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Área descripción' type='' tag='SPAN' class='' check:innerText='Área descripción' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Verificamos que si, en Descargas no existe al menos un archivo con la nomenclatura que tienen los archivos generados por Medallia  + hora, entonces intente descargar dicho archivo nuevamente." Condition="[System.IO.File.Exists(NuevoNombreArchivo)]" DisplayName="VERIFICAR SI EL ARCHIVO YA FUE DESCARGADO" sap:VirtualizedContainerService.HintSize="1052.6666666666667,1813.3333333333333" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2" MaxIterations="3">
+                              <ui:InterruptibleDoWhile.Body>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538,1632" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR BOTON DESCARGA" sap:VirtualizedContainerService.HintSize="496,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_44" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1454, 250, 36, 35" CvType="Icon" DesignTimeRectangle="1460, 255, 24, 24" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' /&gt;" FuzzyAccuracy="0.69" FuzzySelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" Guid="b0942e5c-1488-4dcc-b444-825c28c90c91" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFfSURBVEhL7ZHdSgJREIB7xMggzLrZiNKb7CIpNU2y1bXtj6Iiug2K6KoeIYRIlk2T6Bky7dJsZWqmOcuC+6PL4tV+MHBmzjDfGc4EjJlQaMv55RWFH3wJ01u7FH4IhbaEQjdCoS2h0A1P4UerDUa/z9k/dkLDMKjXC0+hFE9BOl+BbvebK4NCvFvPlSGRzHLFGU+hpr9CZDZOgl7vh2pWIcrwQdijN96o5sZQf4jS6VgCNrf3SZopqBR43sgrdIc9w2AKH6s11z8QmxbkI0hlS7CWkSFXPKBaTatz1yA4E2cLTOFUdAlu7h44s0dsOjmzSBGJLntuhjNxtsAU4oDr23vOnBFSlD0961x1BmfibMHIQqTRfAftpcmZO4EIR8FRGJNWQNk74yw4SuopzC+scmYRlv8u8CVy5YReFUTsKMc0Uz28YItF2Prs0Ia4KTYFEXNSkmTtzhdbLMLxAPALBiNycigd6TEAAAAASUVORK5CYII=" InformativeScreenshot="140cb6d4b1397009b801c0e88d51c739.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvElementArea="1402, 251, 31, 32" CvType="Icon" DesignTimeRectangle="1406, 255, 24, 24" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;header&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;a&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;div&amp;gt;svg' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='svg' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIoSURBVEhL7Zb7S5NRGMf9E7ObrjTLWzWNEsHsAuUPEWK/hGJqmUronBIs14Vi0sVGynQ5llhY0myVbbmZMTDm9tXn6Qnel53pOSv6yQ88cN7vuXzeczwvswj/mV1hDplMBpGlKD59/sptU4yEU4FZVNQ2Yk9JDRe1Z16HpVcPbeHa2k+UHqlHdV0zvA99XFXOszh07DRSqZSM2hkt4fr6L/TcdvGugrNvJAUCMyHOevvdPEaHHYUT/gDKqxpQsrW7m30uSX+TzWbR3TuEg+V1PMb/alp68rOtMBiaw17HcXR0DWx7bHTc1zv7sM9xAqHwvKRq8gqXv8V4VyTTgXbbfqMfjopTiMVXJM0lr5AmH926hRsGV5/GllWeQWfPHUlyUQoTyVU+npG7DyTRxzUyhv2HnVhJrEpiRykcf+bn27ewsCiJPvNv3/Pc5xOTkthRCj3eJzwpmfwhiT7x7wmeS9+pCqWQjqW4tJYvgik0h4Su0TFJ7CiFg8Me/hwKhV52yH1PnuzsCgvCXOj28HdYKPSytIYKpfDcpVbU1DfLkzmVJ5twoeWaPNmxCZeiX9DRPcDXmqThuXcFVdPFq7zLrluD/J+BFZtweNTLsn9ZtKYVm3A5Fle+MdWV1nZegH7z/mTUpoz6rGOtRWtaUf4NVUxOBXnx85fb4Hv6Eo99L7hNGfXpoi0k7j8ax4EyJ0uoqE2ZCUZCIp1O48NiBB8jUW6bYiz8O4BNYY1j1vOEsO4AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Excel' 1111" sap:VirtualizedContainerService.HintSize="496,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_45" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1071, 402, 52, 21" CvTextArgument="Excel" CvType="Text" DesignTimeRectangle="1049, 387, 424, 54" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'Excel'" FullSelectorArgument="&lt;webctrl aaname='Excel' parentid=':rf:' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Excel' parentid=':rf:' tag='BUTTON' type='button' class='sc-1a3m684-0 sc-11jzzm9-0 kELszo emXKTp' check:innerText='Excel' /&gt;" Guid="f13cde40-b98e-414d-8ec4-cfbbf32c1f8d" InformativeScreenshot="572dc3434d0f031c565f89170e6f1993.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvElementArea="1454, 251, 35, 35" CvType="Icon" DesignTimeRectangle="1460, 255, 24, 24" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' /&gt;" FuzzyAccuracy="0.69" FuzzySelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFfSURBVEhL7ZHdSgJREIB7xMggzLrZiNKb7CIpNU2y1bXtj6Iiug2K6KoeIYRIlk2T6Bky7dJsZWqmOcuC+6PL4tV+MHBmzjDfGc4EjJlQaMv55RWFH3wJ01u7FH4IhbaEQjdCoS2h0A1P4UerDUa/z9k/dkLDMKjXC0+hFE9BOl+BbvebK4NCvFvPlSGRzHLFGU+hpr9CZDZOgl7vh2pWIcrwQdijN96o5sZQf4jS6VgCNrf3SZopqBR43sgrdIc9w2AKH6s11z8QmxbkI0hlS7CWkSFXPKBaTatz1yA4E2cLTOFUdAlu7h44s0dsOjmzSBGJLntuhjNxtsAU4oDr23vOnBFSlD0961x1BmfibMHIQqTRfAftpcmZO4EIR8FRGJNWQNk74yw4SuopzC+scmYRlv8u8CVy5YReFUTsKMc0Uz28YItF2Prs0Ia4KTYFEXNSkmTtzhdbLMLxAPALBiNycigd6TEAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                  <Sequence sap2010:Annotation.AnnotationText="Esta secuencia identifica el archivo descargado en carpeta Downloads. Valida la existencia del archivo y lo mueve a temporal; en caso de que no se detecte el archivo, se reintentará  automáticamente la  descarga." DisplayName="MOVER ARCHIVOS A TEMPORAL" sap:VirtualizedContainerService.HintSize="496,1147.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Delay Duration="00:00:20" sap:VirtualizedContainerService.HintSize="434,91.33333333333333" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                                    <Assign DisplayName="ASIGNACION 1" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="s:String[]">[ListaDescargas]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[Directory.GetFiles(
+    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\Downloads\",
+    "El Puerto de Liverpool, S.A.B. de C.V._responses_export_*.xlsx"
+)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="ASIGNACION 2" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[PathArchivo]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[ListaDescargas(0)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="ASIGNACION 3" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[NombreArchivo]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[System.IO.Path.GetFileNameWithoutExtension(PathArchivo)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="ASIGNACION 4" sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[NuevoNombreArchivo]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[NombreArchivo + "_" + UnidadNegocio.ToLower]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_Config(&quot;Temporal&quot;).ToString]" DisplayName="MOVER ARCHIVO A TEMPORAL" sap:VirtualizedContainerService.HintSize="434,161.33333333333334" sap2010:WorkflowViewState.IdRef="MoveFile_5" Path="[PathArchivo]" />
+                                    <ui:RenameFileX DisplayName="Rename File" FilePath="[in_Config(&quot;Temporal&quot;).ToString + NombreArchivo + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="434,144.66666666666666" sap2010:WorkflowViewState.IdRef="RenameFileX_2" KeepExtension="True" NewName="[NuevoNombreArchivo]" />
+                                  </Sequence>
+                                </Sequence>
+                              </ui:InterruptibleDoWhile.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InterruptibleDoWhile>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="954,479.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,399.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NCheckState sap2010:Annotation.AnnotationText="En algunos casos el botón de descarga se activa automáticamente y activa un hover, lo que rompe la secuencia esperada porque el selector ya no encuentra el siguiente elemento. Por eso, antes de continuar, se selecciona un elemento X, si el elemento sigue existiendo con un click lo quitamos. Si no, se descarta y el flujo continúa sin afectar la ejecución." DisplayName="VERIFICAR SI HOVER DE DESCARGAS ESTA ACTIVO" sap:VirtualizedContainerService.HintSize="388,288.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_8" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NCheckState.IfExists>
+                                      <Sequence DisplayName="HOVER ACTIVO" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR ELEMENTO ALEATORIO PARA QUITAR HOVER" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_31" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                          <uix:NClick.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="32, 368, 73, 30" CvTextArgument="Lista" CvType="Text" DesignTimeRectangle="35, 309, 86, 126" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Lista'" FullSelectorArgument="&lt;webctrl aaname='Lista' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Lista' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Lista' /&gt;" Guid="d8d0e6fa-1cdc-4999-939e-5abe87b40c10" InformativeScreenshot="d762ee0c82bb39f85d59cdf7d9fbc1d0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target CvTextArea="137, 372, 78, 22" CvTextArgument="Detalle" CvType="Text" DesignTimeRectangle="121, 309, 110, 126" ElementType="Text" FriendlyName="'Detalle'" FullSelectorArgument="&lt;webctrl aaname='Detalle' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Detalle' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Detalle' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NClick.Target>
+                                        </uix:NClick>
+                                      </Sequence>
+                                    </uix:NCheckState.IfExists>
+                                    <uix:NCheckState.Target>
+                                      <uix:TargetAnchorable CvElementArea="1509, 233, 147, 69" CvTextArea="1544, 257, 87, 24" CvTextArgument="Exportar" CvType="Button" DesignTimeRectangle="1523, 239, 130, 58" DesignTimeScaleFactor="1.5" FriendlyName="'Exportar'" FullSelectorArgument="&lt;ctrl name='Información general - Resumen' role='document' /&gt;&lt;ctrl name='Exportar' role='tool tip' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Información general - Resumen' role='document' /&gt;&lt;ctrl name='Exportar' role='tool tip' /&gt;&lt;ctrl automationid='' role='grouping' check:text='Exportar' /&gt;" Guid="71e4ea09-4508-4916-a394-67de8c7bdd1b" InformativeScreenshot="bb971cd372645670b1998325fb292ae6.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Información general - Resumen - Google Chrome' /&gt;" SearchSteps="Selector, FuzzySelector, CV" SelectionStrategy="AA" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvTextArea="1473, 266, 13, 19" CvTextArgument="1" CvType="Text" DesignTimeRectangle="1445, 226, 55, 84" ElementType="Button" FriendlyName="'menu button Exportar'" FullSelectorArgument="&lt;ctrl name='Información general - Resumen' role='document' /&gt;&lt;ctrl name='Exportar' role='menu button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Información general - Resumen' role='document' /&gt;&lt;ctrl name='Exportar' role='menu button' automationid='' /&gt;" SearchSteps="Selector, FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NCheckState.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NCheckState>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <Sequence DisplayName="REINICIAR FILTROS" sap:VirtualizedContainerService.HintSize="954,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,146" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Reiniciando filtros...&quot;]" />
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Filtro de'" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_38" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1823, 459, 48, 45" CvType="Icon" DesignTimeRectangle="1821, 457, 52, 49" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'chrome.exe Comentarios'" Guid="764e3049-56a8-4138-aee0-a934ccabe73d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAxCAYAAACVtYpYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMpSURBVGhD7ZjLT9RQFIf5i3SDj4UmxsSFMS59JehCjS5c6QYVIYKKBBaihlHEqAkujKMGlWgiDx/RRGOMOg/eg8jAODyUAQQGB+bYX3tvp85MJtfe0jakX3KSaXs6vV96H+e2KJ1O02qKIlpleEJuxxNyO56Q2/GE3I7tQu96Z+hE8xDtqO2mXfW9dOlZjBJzS+yqPLYK3Xk9TmtKv+TE9pouGhxPsiw5bBMKRed0gcM3BujBh0lq7IhTcdlX9dyRpgGWKYeQkF95uK/th3Bca4vnnNvv61Mbjm5m5E3PjC56oSWacx8PtEEEIaG9V3r1h8pGXeso+9cMGysC2vWTufk89l3tY9mFERKqehilg40DwnFI6VLZ57aeD6kNO3Z7kP2rRmRsQW/07st9OffxQBtEsG0MdYYTesPrn8doaCJJHyOzVNKgdcWddd0sUw7bhED5/WFdKjs6QgmWJYetQuB6e5y2nNO6H+KAr19dm6zCdiFObGqRpixcUDmOCa0U0kK/k8t09+0EVfiHqebJCL0MT7MrziAlhL5vHA88jjd/Yxn2Y1ro52yKNp0NqgIbygN06t53OnozoktVCq4bViMkFB6ZV9cMY6CLoeGbK4M0PJkpLNH9uFR7cDrnPrOBNoggJFSo9KluGWFZGYrLWClT+vmfXJmwtPQpJHRa6WpGZheW8+bJhqVC+fC/n9Qf9iKgrfKppTRVPYqq59afCdBiKq2etxPTQqCkoV+X2lYdpnWKBD++9WqMZdmLlND4zB+1euYSiLXKFqCp0xkZICXE6VJmoKeffimzWoIS89aXM/+DJUJuwlEhvE28VbxdvGUrcEwI4wzjzTj+MB4xLmVwRAgzIJfAzIgZkh9j5pTBdiGsTVij0HisWVi7ANYyLoU1zixCQnss/OpT2zqq/0ZVYQRVhzHXGKhWRLBd6OJjrZJAvZcN6sLsfB6WCuWrts1GTyzz2QqVOQcVOyp3nEcln32fpdW21WCvxKWwh8JeCnsqHGOPhb2WWRwRAtjVcike2P3KfgFyTAjg+wO+Q6CLofvh+4QsjgqtBJ6Q2/GE3I4n5G6I/gJ/5NDJMiJPRwAAAABJRU5ErkJggg==" InformativeScreenshot="ec99d748defc2ba3a83b4b68c7530252.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="1043, 435, 200, 84" FriendlyName="'Filtro de'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='5' parentid='main-content-for-skip-link' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-1j7bynv-4 kNOfDT' parentid='main-content-for-skip-link' tag='DIV' aaname='' check:innerText='Filtro de puntuación&amp;#xD;&amp;#xA;NPS Tienda › Todo' /&gt;" SearchSteps="FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NClick.Target>
+                              </uix:NClick>
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'CANVAS'" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_39" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1415, 945, 120, 21" CvTextArgument="Restablecer" CvType="Text" DesignTimeRectangle="1393, 1049, 163, 51" DesignTimeScaleFactor="1.5" FriendlyName="'CANVAS'" FullSelectorArgument="&lt;webctrl parentid='main-content-for-skip-link' tag='CANVAS' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='main-content-for-skip-link' tag='CANVAS' type='' class='ink' aaname='' /&gt;" Guid="3d3f2c38-4a75-41ab-9279-1380f91bcb11" InformativeScreenshot="f20a4446d0f49521f5808746809d60cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="3">
+                                        <uix:Target CvElementArea="1567, 927, 187, 59" CvTextArea="1592, 945, 136, 21" CvTextArgument="Guardar filtro" CvType="Button" DesignTimeRectangle="1570, 1049, 181, 51" FriendlyName="'CANVAS'" FullSelectorArgument="&lt;webctrl idx='2' parentid='main-content-for-skip-link' tag='CANVAS' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' parentid='main-content-for-skip-link' tag='CANVAS' class='ink' aaname='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                        <uix:Target CvTextArea="45, 960, 173, 21" CvTextArgument="Filtros adicionales" CvType="Text" DesignTimeRectangle="47, 948, 315, 48" FriendlyName="'Filtros adicionales'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='29' parentid='main-content-for-skip-link' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-ois7j2-1 cLOQDy' parentid='main-content-for-skip-link' tag='DIV' aaname='' check:innerText='Filtros adicionales' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                        <uix:Target CvTextArea="1320, 365, 225, 19" CvTextArgument="Introducir palabra clave" CvType="Text" DesignTimeRectangle="1299, 351, 484, 48" ElementType="InputBox" FriendlyName="'INPUT search-control'" FullSelectorArgument="&lt;webctrl id='search-control' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='search-control' tag='INPUT' type='text' class='sc-1jhrbmc-0 djFmRZ' aaname='Registros de búsqueda' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NClick.Target>
+                              </uix:NClick>
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Información general'" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_37" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_bp_store_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="108, 249, 393, 49" CvTextArgument="El Puerto de Liverpool" CvType="Text" DesignTimeRectangle="35, 231, 480, 72" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='IMG' type='' class='' aaname='Logotipo de la empresa El Puerto de Liverpool, S.A.B. de C.V.' /&gt;" Guid="47152b3c-1e02-455d-b123-8e334b08b6de" InformativeScreenshot="ffd1f7fc504a204b02e78948741286ee.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target CvTextArea="578, 252, 261, 32" CvTextArgument="Informacion general" CvType="Text" DesignTimeRectangle="581, 225, 275, 84" ElementType="Text" FriendlyName="'Información general'" FullSelectorArgument="&lt;webctrl aaname='Información general' isleaf='1' parentid='ReactRoot' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Información general' isleaf='1' parentid='ReactRoot' tag='A' type='' class='sc-7scfjp-0 loGcNS' check:innerText='Información general' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NClick.Target>
+                              </uix:NClick>
+                            </Sequence>
+                          </Sequence>
+                        </uix:NCheckState.IfExists>
+                        <uix:NCheckState.IfNotExists>
+                          <Sequence DisplayName="SI EL SITIO NO ESTA DISPONIBLE" sap:VirtualizedContainerService.HintSize="1016,784" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NCheckState DisplayName="VERIFICAR EXCESO DE LIMITES DE INICIO DE SESION" sap:VirtualizedContainerService.HintSize="954,482" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                              <uix:NCheckState.IfExists>
+                                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,262" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="LOG SITIO NO DISPONIBLE" sap:VirtualizedContainerService.HintSize="388,146" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Se excedió el número de inicios de sesión...&quot;]" />
+                                </Sequence>
+                              </uix:NCheckState.IfExists>
+                              <uix:NCheckState.IfNotExists>
+                                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,106.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfNotExists>
+                              <uix:NCheckState.Target>
+                                <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/sessionOverLimit.do?v=bkoh3ba.pynH" DesignTimeRectangle="11, 225, 1920, 914" DesignTimeScaleFactor="1.5" FriendlyName="'Session limit'" FullSelectorArgument="&lt;webctrl id='login' tag='BODY' /&gt;" FuzzySelectorArgument="&lt;webctrl id='login' tag='BODY' type='' class='' aaname='        ' check:innerText='Session limit exceeded&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;You have exceeded the allowed maximum number of simultaneous sessions.' /&gt;" Guid="08c3da60-4d37-4318-b7e3-90cd917a0161" ImageBase64="" InformativeScreenshot="e75867402f7a50a7b5b89699c93979a3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Session Limit Exceeded - Medallia' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" />
+                              </uix:NCheckState.Target>
+                            </uix:NCheckState>
+                            <ui:LogMessage DisplayName="LOG SITIO NO DISPONIBLE" sap:VirtualizedContainerService.HintSize="954,146" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Hay problemas con el navegador....&quot;]" />
+                          </Sequence>
+                        </uix:NCheckState.IfNotExists>
+                        <uix:NCheckState.Target>
+                          <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="110, 324, 391, 49" CvTextArgument="El Puerto de Liverpool" CvType="Text" DesignTimeRectangle="35, 231, 480, 72" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl tag='IMG' /&gt;" FuzzyAccuracy="0.89" FuzzySelectorArgument="&lt;webctrl tag='IMG' type='' class='' aaname='Logotipo de la empresa El Puerto de Liverpool, S.A.B. de C.V.' /&gt;" Guid="91392cb8-0b65-4150-b7e3-bbcbfd990674" ImageBase64="" InformativeScreenshot="9af9d132dba28b51f474690dfa96444c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target CvTextArea="33, 369, 239, 28" CvTextArgument="Resumen Tienda" CvType="Text" DesignTimeRectangle="17, 309, 1819, 126" ElementType="List" FriendlyName="'UL'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;header&amp;gt;section&amp;gt;div&amp;gt;nav&amp;gt;div&amp;gt;ul' idx='2' tag='UL' /&gt;" FuzzyAccuracy="0.89" FuzzySelectorArgument="&lt;webctrl type='' class='sc-1wdyq3o-0 feruhs' tag='UL' aaname='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NCheckState.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NCheckState>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEach>
+            </Sequence>
+            <Sequence DisplayName="SALIR DE PORTAL MEDALLIA" sap:VirtualizedContainerService.HintSize="2224,472" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR DROPDOWN PERFIL" sap:VirtualizedContainerService.HintSize="388,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_35" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="3" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1563, 251, 33, 33" CvType="Icon" DesignTimeRectangle="1556, 243, 48, 48" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl parentid='menuOpenAction' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='menuOpenAction' tag='SPAN' type='' class='sc-1m6lox2-2 hvWBYq' aaname='' /&gt;" Guid="6c3e6de1-6a15-4bbc-b27e-8896c76f65ea" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOQSURBVGhD7ZgJTxNBFID9iSoqlwhquAqlyCEEFCEccspV5RZRESKCCOGuigVCBG3EaCKgRg3hKEcFKQGhffaNr+m1LXR2iRuzX/IS5u1sO19nZ/YNJ+A/QxGSO4qQ3FGE5I4iJHcUIbmjCMkdRUjuHIvQ9rYZhnR6yC2sAlXiNQi6EM8C/84rrIbh52NgNpupt7RIKrRiXIM79Q8gIDgGTgZGgiY1B4rKaqDl4ROov9vGZEIvadi1M6EqaGxuh7V1E90tDZIJ6cenbIOMhUDbTPT269gsCWG1WmF27gto61qYVGBYPEy/naGr4pFE6GnPEPvVUzMLYHVtg7KHs2xchaS0XHbvyIsxyopDtNDYxDQbUE5BBezu7lH26OzvH0BBsRZOBUWBYeYjZfkRJbS8YoSz51Vw5WqubWD7lHUw+doA2toWNnMY+Dfm3MF7s/LKIeSiBra2flGWD1FCxbdq4VxYHCwurVDGwah+EiKiU9jsOQfm8Jo7G6afbP3VNT2iDB/cQj8WFtkA77d2UsbB3PxXUCff8JCxB17DPu60dfSwHVLMLHELPe7qY8/95qbnl+M7SEjEObCPO7hJ4DXdy3HK+A+3UHpWISSn51HLFfyl3QXcA/sIge+ukvI6avkPt1BkfLrX572nb0RQwjmwjxBllQ1sK+eFWwgXcHtHL7Vc+TT7WVDCObCPELgmsZrghVsIa7PO7gFqedJhW2MhEQkeIpjDa97Acig4XE0t/+EWiknIgNrGVmoJ0z886rLbJaRks5wvyqoaIS7xOrX8h1sIX4SZOaXU8s637wu26loP+ompI5VF0eoMW9VRSS3/4RbC+u10cLTXd4bh3QfIyC5xedwwcGZxW7ZYrNTTwdKykfXB4pYXbiGsDoS+fG/vN5Rrm1wkhAJlzTs7dNdfsDTCa8bVdcr4D7cQUlpRz3Yk+yxZLBbIzq/wGLy3wO35wHYPgo8mVgnVNfdYmxdRQnigw+L0ZsltNrDu3mHBgfuKgZFRVnGrk7LY2chk2qRP50OUEGI/PuDJNDwq2WPAh8VlVRr7QbCMemN4T5/Kj2ghpOvZoOBg/YlB3Sv6NHFIIoTgETwgJFZwsL4CKw4pZsaOZEIIVsu4qO3/JPEVuPYamtvYOUhKJBWyg7seHg/wBRmryWSLHUslrADyi6rZAc99y5aKYxH6lyhCckcRkjuKkNxRhOSOIiR3FCF5A/AHog83+MQrbfMAAAAASUVORK5CYII=" InformativeScreenshot="3406549dbbcfa10ca9365bab85a3f4fb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                        <uix:Target CvTextArea="1619, 242, 114, 19" CvTextArgument="Total Tiendas" CvType="Text" DesignTimeRectangle="1622, 239, 109, 27" ElementType="Text" FriendlyName="'Total Tiendas'" FullSelectorArgument="&lt;webctrl aaname='Total Tiendas' parentid='menuOpenAction' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Total Tiendas' parentid='menuOpenAction' tag='SPAN' type='' class='sc-1fat7yj-1 gUfyww' check:innerText='Total Tiendas' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        <uix:Target CvElementArea="1510, 250, 30, 35" CvType="Icon" DesignTimeRectangle="1514, 255, 24, 24" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl parentid='myReportsTrigger' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='myReportsTrigger' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAESSURBVEhLY/hPZzBCLbz/4PH/qobu/yHRWf8DwlNJwiA9NU29/x88fAI1DRVgtbC0ug2scenKDf9XrN5MEl6yYv3/oMj0/5X1nVDTUAFWC0GWTZ6+AMojHfROmvM/Ii4HykMFWC0EBQ3IteSC5as2gc3ABkYtJAuMWogBRi0kBEYtxACjFhICVLfw69evYIwLgPRSxcKv3779X7560/+oxHwwBqn59v07VBYBKPYhyKIVazaDLQHJgZofIAxiRyXkgeWQLSbbh8g+gll0+epNqKr/YDbcYqAakFqQxWT5sKi8GW4RqI1z8fJ1qCwmAMmB1MAsBukl2UIQRvcRIYDsY5IsJNUidACzGBvAaiHtwP//AJvOT9+fZs7RAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR CERRAR SESION" sap:VirtualizedContainerService.HintSize="388,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_36" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="3" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1583, 728, 120, 21" CvTextArgument="Cerrar sesion" CvType="Text" DesignTimeRectangle="1573, 712, 308, 54" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'Cerrar sesión'" FullSelectorArgument="&lt;webctrl aaname='Cerrar sesión' parentid=':r3:' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Cerrar sesión' parentid=':r3:' tag='BUTTON' type='' class='sc-b3k98j-1 jAIaRD' check:innerText='Cerrar sesión' /&gt;" Guid="e5a394f5-ce91-4528-b37b-28ff84e69ce4" InformativeScreenshot="ea38856c702b6e63e4ff0b0666e6e686.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvElementArea="1532, 720, 34, 34" CvType="Icon" DesignTimeRectangle="1537, 724, 36, 33" FriendlyName="'DIV'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;div' idx='7' parentid=':r3:' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-uyo1lf-2 khGRWV' parentid=':r3:' tag='DIV' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAlCAYAAAAwYKuzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAF+SURBVFhH7ZfPSwJBFMf7u0Pp4CodMgj6YbRZaPmTXTUtMiuoW8coJNMi69C9rMNu8NrvMM4hiNWdGdliP/AOs7x5fng77u6bo5ATCcoiBN/eP6ha71BqOUvziVXfQF610aHR6JNX0IMQLFpt9sM7hQM6vbjyDeQhv1w74RX0IASNtEl7lSO+mox8+ZDt04kQRDfQmWlAPvbp5H8LXt/e00qmwFd6kBL8SfP4krL7DXIcl1+RR6lg/+GZ4sl12srZyiSVCoLeYEjx1AZt7lrkul/8anCUCwJIxrxOmvm6tKQWQdDtPSqR/FVw+PLKiuM8BY1kepvVzZVavOr0aBVMLJmsLl6LQdF2i2+6A4oZa/pusQzs/CmQA8oFVf05xigVvOs/ic45bggf1HbrXKkckBIM/ccC8rFPJ39H0PAeqiW7zVeTgfyZffJjaFpYzFDNO+jojF9YzTOWX/EmQZ0IQYydmNDG70+/mPnYGVYiQVkiQVkiQVkiQVlCLkj0DS48TEI4EKJPAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 1942, 1150" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAABiSURBVDhP7cyxDYBADENRT8JIrMQytwQsRUmZM5bcOdU1FFj6VfSCZ9+qC9xxobre+//gEw/WN+5q4+pEdclH6LgEnXyEjkvQyUfouASdfISOS9DJR+i4BJ18hI5L0MmvDZhNnuSD8tzgJQAAAABJRU5ErkJggg==" InformativeScreenshot="29bab203ccf4a8932a5c86035768c513.jpg" Selector="&lt;html app='chrome.exe' url='https://liverpool.medallia.com/sso/liverpool/' /&gt;" Title="Sign in to your account" Url="https://liverpool.medallia.com/sso/liverpool/" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

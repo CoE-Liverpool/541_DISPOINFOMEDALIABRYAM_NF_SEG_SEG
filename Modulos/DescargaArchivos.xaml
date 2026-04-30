@@ -1,0 +1,713 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Inicio_De_Sesión" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_UnidadesNegocio" Type="InArgument(s:String[])" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1488,3394.6666666666665</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Inicio_De_Sesión_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Python.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Terminal</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Módulo InicioDeSesion: se encarga de iniciar sesión en el portal de Medallia y, una vez dentro, descarga los documentos necesarios para el tratamiento y luego los sube a los sheets correspondientes por cada unidad de negocio" DisplayName="MODULO: INICIO DE SESION" sap:VirtualizedContainerService.HintSize="1312,3330" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="PathArchivo" />
+      <Variable x:TypeArguments="x:String" Name="Temporal" />
+      <Variable x:TypeArguments="x:String" Name="NuevoNombreArchivo" />
+      <Variable x:TypeArguments="x:String" Name="NombreArchivo" />
+      <Variable x:TypeArguments="s:String[]" Name="ListaDescargas" />
+      <Variable x:TypeArguments="x:String" Name="NpsGlobal" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="PANTALLA DE INICIO DE SESION" sap:VirtualizedContainerService.HintSize="1250,3188.6666666666665" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="1216,2969.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="INTENTAR INGRESAR A PORTAL MEDALLIA" sap:VirtualizedContainerService.HintSize="1154,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_32">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NCheckState sap2010:Annotation.AnnotationText="Determinamos que si existen sesiones o cuentas guardas nos loggeamos con la cuenta del bot exclusivamente." DisplayName="DETERMINAR SI EXISTEN CUENTAS GUARDADAS" sap:VirtualizedContainerService.HintSize="388,132.66666666666666" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                <uix:NCheckState.IfExists>
+                  <Sequence DisplayName="EXISTEN CUENTAS GUARDADAS / REGISTRADAS" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR 'USE ANOTHER ACCOUNT'" sap:VirtualizedContainerService.HintSize="388,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvTextArea="795, 755, 208, 22" CvTextArgument="Use another account" CvType="Text" DesignTimeRectangle="779, 729, 456, 72" DesignTimeScaleFactor="1.5" FriendlyName="'Use another account'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='2' parentid='otherTile' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='table-cell text-left content' parentid='otherTile' tag='DIV' aaname='                                                      ' check:innerText='Use another account' /&gt;" Guid="2c8a7249-00e0-4778-b793-872526427ee6" InformativeScreenshot="1851ffc1be6e02d2d0ea7b83802bdf7a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvElementArea="703, 727, 78, 75" CvTextArea="720, 743, 43, 43" CvType="Icon" DesignTimeRectangle="707, 729, 72, 72" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentid='otherTile' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentid='otherTile' tag='IMG' type='' class='tile-img' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOQSURBVHhe7ZuLruogEEXvp/k7fo//6FujxleMkZPlTSut0xZaSqeGnezEnIN0WFEYBvxnkryUgHkqAfPUYMAej4e5XC7meDya3W5n1uu1WS6XZrFYmPl8/jav+Rv/ow1teQ/vHUrRgD2fz/dg9/t9AUpb0wd90Sd9x1LvwK7Xq9lut+KgQ5pn8Ky+1Quw1+tlTqeTWa1W4uD6NM/k2cTQh4IDO5/PQb5yXU0MxBJawYDd7/f35CwFP6SJidhCKQiww+EgBqvJxBhCnYCxvG82GzFAjSbWrilJa2C3200Magwm9rZqBYzcRwpkTGYMbeQNjJVHCmCMbrOKegH7hU9W2b6fNGdgY56zmuwzpzkBY2WRHvRLdl09nYCNKXVoa8bookZgY0hKQ9klua0FxpZC6viX3bSNqgWmcW/YtxlznSqBDZVvzWYzM5lM3ua11KZv1+VnIjBqSUOVaDQAY+xV9TQRGAU4qaMY1gAMw0CSCGyISmlmLcBgIOkLGHVxqYNY1gIMS2cEX8BiHFjUWRMwWJRVAMZxlfTGmNYEDJeP8ArANFQjtAErVzMKwDgYld4U09qAwcRWAZiG4zFtwGBiKwempYSjDRi2Sz85MC3VVI3A7HksB8bNGKlxbGsEBptMOTCuE0mNY1sjMNhkyoFpKeVoBGaXfHJgXFyTGse2RmCwyZQDC5VSMMgunk6nOTBeS218LMXoazu1yIFJDds4G6wWSzG2caYEzNGZ0lfSweJXMk361RYn/ZRWVFtMK1LiWm0xcU1bo2qLW6O0+a62uPlO5Z1qi+UdFCq16GJtwOyUAhWApRL1t2tL1BrmMW3A7PkLFYClY7Zv1x6zoXSQ+3HjQS5KVwU+droqgNJlFI/LKChdd/K87pQu1HleqEPpyqasSmBIS8knpu1SjqRaYOna+bdqgaH0w4aiGoGh9NOZj5yAaSn99Gm7hFMnJ2Ao/fzvv5yBIS1V2ZAuVyOa5AUMDZWf9eG6fKtK3sDQL3zSfD9ZmVoBQ2Oe03zmrLJaA0OsLGNKOYjVdTWsUidgmcaQ3LokpS4KAgyxpdC49ySmpu2Oj4IBy8TKo+G4jhjarIJNCg4MUUuiADdE5ZZn8uyqelZX9QLMFnXxGAcrPEOqwYdW78AycVxF7sPBaIivLH3QF32Wj8L6VDRgZbG8M1huxnCdiMmZi2s2TF7zN/5HG9rynq6pQRcNBmycMuYPLbuvOjF6LwwAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </uix:NCheckState.IfExists>
+                <uix:NCheckState.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvTextArea="705, 549, 260, 33" CvTextArgument="Pick an account" CvType="Text" DesignTimeRectangle="707, 543, 528, 42" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Pick an account'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Pick an account' check:innerText='Pick an account' /&gt;" Guid="d3e6e568-f11f-42bd-936c-ad42a8869c4d" ImageBase64="" InformativeScreenshot="92511703f27f603b7def6e6181042828.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="720, 743, 283, 43" CvTextArgument="+ Use another account" CvType="Text" DesignTimeRectangle="641, 711, 660, 108" ElementType="Button" FriendlyName="'Use another account'" FullSelectorArgument="&lt;webctrl id='otherTile' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='otherTile' tag='DIV' type='' class='table' aaname='                                      ' check:innerText='Use another account' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NCheckState.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NCheckState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR INPUT 'INICIAR SESION'" sap:VirtualizedContainerService.HintSize="388,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvElementArea="702, 462, 533, 49" CvType="InputBox" DesignTimeRectangle="710, 496, 522, 54" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT i0116'" FullSelectorArgument="&lt;webctrl id='i0116' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='i0116' tag='INPUT' type='email' class='form-control ltr_override input ext-input text-box ext-text-box' aaname='' /&gt;" Guid="1acfa87a-9474-4452-ac17-59ee4abeb3e8" InformativeScreenshot="92ba7769622a77a075900842c363926b.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="707, 436, 528, 42" ElementType="Text" FriendlyName="'Sign in'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Sign in' check:innerText='Sign in' /&gt;" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="1" DelayBefore="1" DisplayName="ESCRIBIR EN INPUT 'CORREO ELECTRONICO'" EmptyFieldMode="MultiLine" sap:VirtualizedContainerService.HintSize="388,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Text="[in_Config(&quot;MedalliaUser&quot;).ToString]" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" DesignTimeRectangle="710, 496, 522, 54" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT i0116'" FullSelectorArgument="&lt;webctrl id='i0116' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='i0116' tag='INPUT' type='email' class='form-control ltr_override input ext-input text-box ext-text-box' aaname='' /&gt;" Guid="3ea5ad9d-999d-4cd5-abff-e95e024158d1" InformativeScreenshot="9eb620472c93f6a321c2022b774d1183.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="707, 436, 528, 42" ElementType="Text" FriendlyName="'Sign in'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Sign in' check:innerText='Sign in' /&gt;" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="3" DisplayName="PRESIONAR ENTER" sap:VirtualizedContainerService.HintSize="388,139.33333333333334" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+                <ui:SendHotkey.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="73183c50-9dd0-4587-8e0f-b7868e76c90b">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:SendHotkey.Target>
+              </ui:SendHotkey>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="1" DelayBefore="1" DisplayName="ESCRIBIR CONTRASENIA" EmptyFieldMode="MultiLine" sap:VirtualizedContainerService.HintSize="388,222.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Text="[in_Config(&quot;MedalliaPassword&quot;).ToString]" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://login.microsoftonline.com/2d2e7209-0a7a-4df4-8ed8-cff731a5d661/saml2" CvElementArea="707, 572, 527, 58" CvType="InputBox" DesignTimeRectangle="710, 574, 522, 54" DesignTimeScaleFactor="1.5" ElementType="InputBoxPassword" FriendlyName="'3ras3_un4JM'" FullSelectorArgument="&lt;webctrl id='i0118' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='i0118' tag='INPUT' type='password' class='form-control input ext-input text-box ext-text-box show-reveal-password ext-show-reveal-password' aaname='' /&gt;" Guid="2ee1e0c9-0e13-489d-9db0-913172e15ae8" InformativeScreenshot="dd83cf74c85bb211dbd6685dbd1ef3f1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign in to your account' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="705, 521, 251, 40" CvTextArgument="Enter password" CvType="Text" DesignTimeRectangle="707, 514, 528, 42" ElementType="Text" FriendlyName="'Enter password'" FullSelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='heading' tag='DIV' type='' class='' aaname='Enter password' check:innerText='Enter password' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="PRESIONAR ENTER" sap:VirtualizedContainerService.HintSize="388,139.33333333333334" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SpecialKey="True">
+                <ui:SendHotkey.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="73183c50-9dd0-4587-8e0f-b7868e76c90b">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:SendHotkey.Target>
+              </ui:SendHotkey>
+            </Sequence>
+            <Sequence DisplayName="DESCARGAR ARCHIVOS EXCEL" sap:VirtualizedContainerService.HintSize="1154,2214" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1092,2098" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_UnidadesNegocio]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:String">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:String" Name="UnidadNegocio" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1058,1908" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1016,147.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Iniciando descarga de archivo para: &quot; + UnidadNegocio.ToUpper + &quot;...&quot;]" />
+                      <uix:NCheckState DisplayName="VERIFICAR SI EL SITIO DE MEDALLIA ESTA DISPONIBLE." sap:VirtualizedContainerService.HintSize="1016,1633.3333333333333" sap2010:WorkflowViewState.IdRef="NCheckState_7" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                        <uix:NCheckState.IfExists>
+                          <Sequence DisplayName="SI EL SITIO ESTA DISPONIBLE" sap:VirtualizedContainerService.HintSize="696,5596.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="634,528" sap2010:WorkflowViewState.IdRef="If_2">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,172" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="GetText" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NGoToUrl DisplayName="NAVEGAR HACIA DOCUMENTO LIVERPOOL" sap:VirtualizedContainerService.HintSize="334,84.66666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" Version="V3" />
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,172" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NGoToUrl DisplayName="NAVEGAR HACIA DOCUMENTO SUBURBIA" sap:VirtualizedContainerService.HintSize="334,84.66666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_2&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" Version="V3" />
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR ARCHIVO GENERADO SEGUROS" sap:VirtualizedContainerService.HintSize="634,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_19" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="30" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/691?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="177, 767, 79, 24" CvTextArgument="Seguros" CvType="Text" DesignTimeRectangle="179, 763, 77, 28" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Seguros'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='sc-7scfjp-0 loGcNS' aaname='Seguros' check:innerText='Seguros' /&gt;" Guid="8db6bc77-d14b-4e4c-91fd-d0c8f9d371e6" InformativeScreenshot="6ba0d2496eaa43ac6cee2a38736e96e5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Análisis - Clasificación' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArea="176, 704, 166, 28" CvTextArgument="Area descripcion" CvType="Text" DesignTimeRectangle="179, 704, 162, 28" ElementType="Text" FriendlyName="'Área descripción'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Área descripción' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Área descripción' type='' tag='SPAN' class='' check:innerText='Área descripción' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Verificamos que si, en Descargas no existe al menos un archivo con la nomenclatura que tienen los archivos generados por Medallia  + hora, entonces intente descargar dicho archivo nuevamente." Condition="[System.IO.File.Exists(NuevoNombreArchivo)]" DisplayName="VERIFICAR SI EL ARCHIVO YA FUE DESCARGADO" sap:VirtualizedContainerService.HintSize="634,832.6666666666666" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2" MaxIterations="3">
+                              <ui:InterruptibleDoWhile.Body>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="492,632.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR BOTON DESCARGA" sap:VirtualizedContainerService.HintSize="450,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_44" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1454, 250, 36, 35" CvType="Icon" DesignTimeRectangle="1460, 255, 24, 24" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' /&gt;" FuzzyAccuracy="0.69" FuzzySelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" Guid="b0942e5c-1488-4dcc-b444-825c28c90c91" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFfSURBVEhL7ZHdSgJREIB7xMggzLrZiNKb7CIpNU2y1bXtj6Iiug2K6KoeIYRIlk2T6Bky7dJsZWqmOcuC+6PL4tV+MHBmzjDfGc4EjJlQaMv55RWFH3wJ01u7FH4IhbaEQjdCoS2h0A1P4UerDUa/z9k/dkLDMKjXC0+hFE9BOl+BbvebK4NCvFvPlSGRzHLFGU+hpr9CZDZOgl7vh2pWIcrwQdijN96o5sZQf4jS6VgCNrf3SZopqBR43sgrdIc9w2AKH6s11z8QmxbkI0hlS7CWkSFXPKBaTatz1yA4E2cLTOFUdAlu7h44s0dsOjmzSBGJLntuhjNxtsAU4oDr23vOnBFSlD0961x1BmfibMHIQqTRfAftpcmZO4EIR8FRGJNWQNk74yw4SuopzC+scmYRlv8u8CVy5YReFUTsKMc0Uz28YItF2Prs0Ia4KTYFEXNSkmTtzhdbLMLxAPALBiNycigd6TEAAAAASUVORK5CYII=" InformativeScreenshot="140cb6d4b1397009b801c0e88d51c739.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvElementArea="1402, 251, 31, 32" CvType="Icon" DesignTimeRectangle="1406, 255, 24, 24" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;header&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;a&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;div&amp;gt;svg' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='svg' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIoSURBVEhL7Zb7S5NRGMf9E7ObrjTLWzWNEsHsAuUPEWK/hGJqmUronBIs14Vi0sVGynQ5llhY0myVbbmZMTDm9tXn6Qnel53pOSv6yQ88cN7vuXzeczwvswj/mV1hDplMBpGlKD59/sptU4yEU4FZVNQ2Yk9JDRe1Z16HpVcPbeHa2k+UHqlHdV0zvA99XFXOszh07DRSqZSM2hkt4fr6L/TcdvGugrNvJAUCMyHOevvdPEaHHYUT/gDKqxpQsrW7m30uSX+TzWbR3TuEg+V1PMb/alp68rOtMBiaw17HcXR0DWx7bHTc1zv7sM9xAqHwvKRq8gqXv8V4VyTTgXbbfqMfjopTiMVXJM0lr5AmH926hRsGV5/GllWeQWfPHUlyUQoTyVU+npG7DyTRxzUyhv2HnVhJrEpiRykcf+bn27ewsCiJPvNv3/Pc5xOTkthRCj3eJzwpmfwhiT7x7wmeS9+pCqWQjqW4tJYvgik0h4Su0TFJ7CiFg8Me/hwKhV52yH1PnuzsCgvCXOj28HdYKPSytIYKpfDcpVbU1DfLkzmVJ5twoeWaPNmxCZeiX9DRPcDXmqThuXcFVdPFq7zLrluD/J+BFZtweNTLsn9ZtKYVm3A5Fle+MdWV1nZegH7z/mTUpoz6rGOtRWtaUf4NVUxOBXnx85fb4Hv6Eo99L7hNGfXpoi0k7j8ax4EyJ0uoqE2ZCUZCIp1O48NiBB8jUW6bYiz8O4BNYY1j1vOEsO4AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="DESCARGAR ARCHIVO EXCEL GENERADO" sap:VirtualizedContainerService.HintSize="450,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_45" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1071, 402, 52, 21" CvTextArgument="Excel" CvType="Text" DesignTimeRectangle="1049, 387, 424, 54" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'Excel'" FullSelectorArgument="&lt;webctrl aaname='Excel' parentid=':rf:' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Excel' parentid=':rf:' tag='BUTTON' type='button' class='sc-1a3m684-0 sc-11jzzm9-0 kELszo emXKTp' check:innerText='Excel' /&gt;" Guid="f13cde40-b98e-414d-8ec4-cfbbf32c1f8d" InformativeScreenshot="572dc3434d0f031c565f89170e6f1993.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvElementArea="1454, 251, 35, 35" CvType="Icon" DesignTimeRectangle="1460, 255, 24, 24" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' /&gt;" FuzzyAccuracy="0.69" FuzzySelectorArgument="&lt;webctrl parentid='openExportMenu' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFfSURBVEhL7ZHdSgJREIB7xMggzLrZiNKb7CIpNU2y1bXtj6Iiug2K6KoeIYRIlk2T6Bky7dJsZWqmOcuC+6PL4tV+MHBmzjDfGc4EjJlQaMv55RWFH3wJ01u7FH4IhbaEQjdCoS2h0A1P4UerDUa/z9k/dkLDMKjXC0+hFE9BOl+BbvebK4NCvFvPlSGRzHLFGU+hpr9CZDZOgl7vh2pWIcrwQdijN96o5sZQf4jS6VgCNrf3SZopqBR43sgrdIc9w2AKH6s11z8QmxbkI0hlS7CWkSFXPKBaTatz1yA4E2cLTOFUdAlu7h44s0dsOjmzSBGJLntuhjNxtsAU4oDr23vOnBFSlD0961x1BmfibMHIQqTRfAftpcmZO4EIR8FRGJNWQNk74yw4SuopzC+scmYRlv8u8CVy5YReFUTsKMc0Uz28YItF2Prs0Ia4KTYFEXNSkmTtzhdbLMLxAPALBiNycigd6TEAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                  <Sequence sap2010:Annotation.AnnotationText="Esta secuencia identifica el archivo descargado en carpeta Downloads. Valida la existencia del archivo y lo mueve a temporal; en caso de que no se detecte el archivo, se reintentará  automáticamente la  descarga." DisplayName="MOVER ARCHIVOS A TEMPORAL" sap:VirtualizedContainerService.HintSize="450,146.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Delay Duration="00:00:20" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                                    <Assign DisplayName="ASIGNACION 1" sap:VirtualizedContainerService.HintSize="434,88.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="s:String[]">[ListaDescargas]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[Directory.GetFiles(
+    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\Downloads\",
+    "El Puerto de Liverpool, S.A.B. de C.V._responses_export_*.xlsx"
+)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="ASIGNACION 2" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[PathArchivo]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[ListaDescargas(0)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="ASIGNACION 3" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[NombreArchivo]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[System.IO.Path.GetFileNameWithoutExtension(PathArchivo)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="ASIGNACION 4" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[NuevoNombreArchivo]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[NombreArchivo + "_" + UnidadNegocio.ToLower]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_Config(&quot;Temporal&quot;).ToString]" DisplayName="MOVER ARCHIVO A TEMPORAL" sap:VirtualizedContainerService.HintSize="434,164.66666666666666" sap2010:WorkflowViewState.IdRef="MoveFile_5" Path="[PathArchivo]" />
+                                    <ui:RenameFileX DisplayName="Rename File" FilePath="[in_Config(&quot;Temporal&quot;).ToString + NombreArchivo + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="434,148" sap2010:WorkflowViewState.IdRef="RenameFileX_2" KeepExtension="True" NewName="[NuevoNombreArchivo]" />
+                                  </Sequence>
+                                </Sequence>
+                              </ui:InterruptibleDoWhile.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InterruptibleDoWhile>
+                            <Sequence DisplayName="EXTRAER TNP Y METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="634,3661.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="DEV: ENTRANDO A MODULO METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="572,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Intentando extraer métricas globales para &quot; +UnidadNegocio+&quot;...&quot;]" />
+                              <If Condition="[UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="572,528" sap2010:WorkflowViewState.IdRef="If_5">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="376,172" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="GetText" />
+                                      <Variable x:TypeArguments="x:String" Name="NpsGlobal" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NGoToUrl DisplayName="NAVEGAR HACIA METRICAS LIVERPOOL" sap:VirtualizedContainerService.HintSize="334,84.66666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_8" Url="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22&amp;m.e55d0479-a64a-4724-b1c0-1185eda914c5.highlight=%22sentiment%22" Version="V3" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="376,172" sap2010:WorkflowViewState.IdRef="Sequence_80">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NGoToUrl DisplayName="NAVEGAR HACIA DOCUMENTO SUBURBIA" sap:VirtualizedContainerService.HintSize="334,84.66666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_9" Url="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfk_lp_programas_marca_global_enum=370_2&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" Version="V3" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not System.Text.RegularExpressions.Regex.IsMatch(NpsGlobal, &quot;\b\d{2}\.\d+\b&quot;)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="572,759.3333333333334" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_7" MaxIterations="6">
+                                <ui:InterruptibleDoWhile.Body>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,621.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,147.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;entro&quot;]" />
+                                    <uix:NGetText DelayAfter="5" DelayBefore="5" DisplayName="EXTRAER VALOR NPS GLOBAL" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" TextString="[NpsGlobal]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22&amp;m.e55d0479-a64a-4724-b1c0-1185eda914c5.highlight=%22sentiment%22&amp;m.8d5c4943-7341-4dd6-8521-212a355f6b2d.multiMetricSortValue=%22label%22&amp;m.8d5c4943-7341-4dd6-8521-212a355f6b2d.multiMetricSortDirection=%22DESC%22" CvTextArea="302, 473, 138, 57" CvType="AnyWordGroup" DesignTimeRectangle="305, 619, 135, 66" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'90.2'" FullSelectorArgument="&lt;webctrl aaname='90.2' parentid='undefined-view-panel' tag='SPAN' /&gt;" FuzzyAccuracy="0.72" FuzzyMatches="10000" FuzzySelectorArgument="&lt;webctrl tag='SPAN' class='sc-w9ln1y-0 dwyosf' parentid='*-view-panel' aaname='*.*' /&gt;" Guid="f75a6e20-b710-4057-8736-923628b5a0aa" ImageBase64="" InformativeScreenshot="f1604847ed17a4d88332dc9fe0ecc280.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target CvTextArea="147, 440, 365, 25" CvTextArgument="Mes actual: Metrica Principal Liverpool" CvType="Text" DesignTimeRectangle="149, 436, 362, 30" ElementType="Text" FriendlyName="'Mes actual:'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span' idx='3' isleaf='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-1mbccyg-0 csFPVg' isleaf='1' tag='SPAN' aaname='             Mes actual:              Metrica Principal Liverpool         ' check:innerText='Mes actual: Metrica Principal Liverpool' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,147.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;-&gt;&quot; + NpsGlobal]" />
+                                  </Sequence>
+                                </ui:InterruptibleDoWhile.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InterruptibleDoWhile>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="572,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="[UiPath.Core.Activities.LogLevel.Fatal]" Message="[&quot;Valor de: &quot; + NpsGlobal]" />
+                              <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Descargar metricas de Liverpool Globales (No solo de Seguros, también de las otras áreas)" Condition="[System.IO.File.Exists(NuevoNombreArchivo)]" DisplayName="VERIFICAR SI EL ARCHIVO YA FUE DESCARGADO" sap:VirtualizedContainerService.HintSize="572,1814" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_8" MaxIterations="3">
+                                <ui:InterruptibleDoWhile.Body>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538,1645.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_82">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="3" DelayBefore="3" DisplayName="Click 'TablaHoraBarra'" sap:VirtualizedContainerService.HintSize="496,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_59" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22&amp;m.e55d0479-a64a-4724-b1c0-1185eda914c5.highlight=%22sentiment%22" CvElementArea="1799, 380, 36, 49" CvType="Icon" DesignTimeRectangle="1800, 389, 36, 36" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl aria-role='img' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;button&amp;gt;svg' idx='3' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='img' type='' class='sc-1d4iol7-0 fSiweQ' tag='svg' aaname='' /&gt;" Guid="0af55dd1-d8b8-47dc-88c5-d0d132ed611d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACiSURBVFhH7dQxCoUwEEVR120ndta/chdWtu5s5P7OtPMCD2YuDIRUhwlkCfMamK2B2eoAr/uJ7Tj/w1mVBAho3X+fUSElQLY2ArlTVANo/8QEiK0xKhzJgLNqYLYGZqsDtP5mAFl/1GxtBHKnqAbQ/okJEFtjVDiSAWfVwGwNzFYHaP3NALL+qNnaCOROUQ2g/RMTILbGqHAkA86qgdnMgREv5Wlv8SADbPAAAAAASUVORK5CYII=" InformativeScreenshot="205d829f8f134c74da019efa00979479.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                              <uix:Target DesignTimeRectangle="1533, 383, 249, 54" FriendlyName="'TablaHoraBarra'" FullSelectorArgument="&lt;webctrl aria-role='tablist' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='2' tag='DIV' /&gt;" FuzzyAccuracy="0.81" FuzzySelectorArgument="&lt;webctrl aria-role='tablist' type='' class='sc-1hrxdcu-2 iNeNDd sc-16crsct-1 ipyqEn __breakpoint_480__' tag='DIV' aaname='' check:innerText='Tabla&amp;#xD;&amp;#xA;Hora&amp;#xD;&amp;#xA;Barra' /&gt;" SearchSteps="FuzzySelector" />
+                                              <uix:Target DesignTimeRectangle="1634, 587, 202, 90" FriendlyName="'CSAT CAPACITACION'" FullSelectorArgument="&lt;webctrl aria-labelledby=':rcv:' tag='TABLE' /&gt;&lt;webctrl tableCol='9' tableRow='1' tag='DIV' /&gt;" FuzzyAccuracy="0.85" FuzzySelectorArgument="&lt;webctrl aria-labelledby=':rcv:' tag='TABLE' /&gt;&lt;webctrl type='' class='sc-y8bbwx-3 jZtjOK' tag='DIV' aaname='' check:innerText='CSAT CAPACITACION' /&gt;" SearchSteps="FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                    </uix:NClick>
+                                    <uix:NSelectItem DisplayName="Select Item 'BUTTON'" sap:VirtualizedContainerService.HintSize="496,159.33333333333334" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Excel" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                                      <uix:NSelectItem.Items>
+                                        <scg:List x:TypeArguments="x:String" Capacity="5">
+                                          <x:String>PDF</x:String>
+                                          <x:String>PowerPoint</x:String>
+                                          <x:String>Imagen</x:String>
+                                          <x:String>Excel</x:String>
+                                          <x:String>Ajustes PDF</x:String>
+                                        </scg:List>
+                                      </uix:NSelectItem.Items>
+                                      <uix:NSelectItem.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.pfk_lp_programas_marca_global_enum=370_2&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22&amp;m.e55d0479-a64a-4724-b1c0-1185eda914c5.highlight=%22sentiment%22" CvElementArea="1800, 381, 36, 49" CvType="Icon" DesignTimeRectangle="1800, 388, 36, 36" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'BUTTON'" FullSelectorArgument="&lt;webctrl aria-labelledby=':re0:' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-labelledby=':re0:' tag='BUTTON' type='button' class='sc-1a3m684-0 sc-18q2bhg-0 kELszo jOuOpy sc-lt20rn-2 hXuLgV' aaname='' /&gt;" Guid="b0798cf8-67c6-41eb-9161-1788d69dd0f9" InformativeScreenshot="c581ace0f64cc41a455a6d338c16bb4e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                              <uix:Target DesignTimeRectangle="1634, 586, 202, 90" FriendlyName="'CSAT CAPACITACION'" FullSelectorArgument="&lt;webctrl aria-labelledby=':re1:' tag='TABLE' /&gt;&lt;webctrl tableCol='9' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-labelledby=':re1:' tag='TABLE' /&gt;&lt;webctrl type='' class='sc-y8bbwx-3 jZtjOK' tag='DIV' aaname='' check:innerText='CSAT CAPACITACION' /&gt;" SearchSteps="FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NSelectItem.Target>
+                                    </uix:NSelectItem>
+                                    <Sequence sap2010:Annotation.AnnotationText="Esta secuencia identifica el archivo descargado en carpeta Downloads. Valida la existencia del archivo y lo mueve a temporal; en caso de que no se detecte el archivo, se reintentará  automáticamente la  descarga." DisplayName="MOVER ARCHIVOS A TEMPORAL" sap:VirtualizedContainerService.HintSize="496,1159.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Delay Duration="00:00:20" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                                      <Assign DisplayName="ASIGNACION 1" sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="s:String[]">[ListaDescargas]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[Directory.GetFiles(
+    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\Downloads\",
+    "ExpressReport.xlsx"
+)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="ASIGNACION 2" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[PathArchivo]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[ListaDescargas(0)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="ASIGNACION 3" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[NombreArchivo]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[System.IO.Path.GetFileNameWithoutExtension(PathArchivo)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="ASIGNACION 4" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[NuevoNombreArchivo]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[NombreArchivo + "_" + UnidadNegocio.ToLower]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_Config(&quot;Temporal&quot;).ToString]" DisplayName="MOVER ARCHIVO A TEMPORAL" sap:VirtualizedContainerService.HintSize="434,164.66666666666666" sap2010:WorkflowViewState.IdRef="MoveFile_7" Path="[PathArchivo]" />
+                                      <ui:RenameFileX DisplayName="Rename File" FilePath="[in_Config(&quot;Temporal&quot;).ToString + NombreArchivo + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="434,148" sap2010:WorkflowViewState.IdRef="RenameFileX_4" KeepExtension="True" NewName="[NuevoNombreArchivo]" />
+                                    </Sequence>
+                                  </Sequence>
+                                </ui:InterruptibleDoWhile.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InterruptibleDoWhile>
+                            </Sequence>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="634,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Ha finalizado la descarga para &quot; + UnidadNegocio +&quot;...&quot;]" />
+                          </Sequence>
+                        </uix:NCheckState.IfExists>
+                        <uix:NCheckState.IfNotExists>
+                          <Sequence DisplayName="SI EL SITIO NO ESTA DISPONIBLE" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NCheckState DisplayName="VERIFICAR EXCESO DE LIMITES DE INICIO DE SESION" sap:VirtualizedContainerService.HintSize="954,482" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Version="V3">
+                              <uix:NCheckState.IfExists>
+                                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,262" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="LOG SITIO NO DISPONIBLE" sap:VirtualizedContainerService.HintSize="388,146" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Se excedió el número de inicios de sesión...&quot;]" />
+                                </Sequence>
+                              </uix:NCheckState.IfExists>
+                              <uix:NCheckState.IfNotExists>
+                                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,106.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfNotExists>
+                              <uix:NCheckState.Target>
+                                <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/sessionOverLimit.do?v=bkoh3ba.pynH" DesignTimeRectangle="11, 225, 1920, 914" DesignTimeScaleFactor="1.5" FriendlyName="'Session limit'" FullSelectorArgument="&lt;webctrl id='login' tag='BODY' /&gt;" FuzzySelectorArgument="&lt;webctrl id='login' tag='BODY' type='' class='' aaname='        ' check:innerText='Session limit exceeded&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;You have exceeded the allowed maximum number of simultaneous sessions.' /&gt;" Guid="08c3da60-4d37-4318-b7e3-90cd917a0161" ImageBase64="" InformativeScreenshot="e75867402f7a50a7b5b89699c93979a3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Session Limit Exceeded - Medallia' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" />
+                              </uix:NCheckState.Target>
+                            </uix:NCheckState>
+                            <ui:LogMessage DisplayName="LOG SITIO NO DISPONIBLE" sap:VirtualizedContainerService.HintSize="954,146" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Hay problemas con el navegador....&quot;]" />
+                          </Sequence>
+                        </uix:NCheckState.IfNotExists>
+                        <uix:NCheckState.Target>
+                          <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="110, 324, 391, 49" CvTextArgument="El Puerto de Liverpool" CvType="Text" DesignTimeRectangle="35, 231, 480, 72" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl tag='IMG' /&gt;" FuzzyAccuracy="0.89" FuzzySelectorArgument="&lt;webctrl tag='IMG' type='' class='' aaname='Logotipo de la empresa El Puerto de Liverpool, S.A.B. de C.V.' /&gt;" Guid="91392cb8-0b65-4150-b7e3-bbcbfd990674" ImageBase64="" InformativeScreenshot="9af9d132dba28b51f474690dfa96444c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target CvTextArea="33, 369, 239, 28" CvTextArgument="Resumen Tienda" CvType="Text" DesignTimeRectangle="17, 309, 1819, 126" ElementType="List" FriendlyName="'UL'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;header&amp;gt;section&amp;gt;div&amp;gt;nav&amp;gt;div&amp;gt;ul' idx='2' tag='UL' /&gt;" FuzzyAccuracy="0.89" FuzzySelectorArgument="&lt;webctrl type='' class='sc-1wdyq3o-0 feruhs' tag='UL' aaname='' /&gt;" SearchSteps="FuzzySelector, CV" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NCheckState.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NCheckState>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEach>
+            </Sequence>
+            <Sequence DisplayName="SALIR DE PORTAL MEDALLIA" sap:VirtualizedContainerService.HintSize="1154,474.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR DROPDOWN PERFIL" sap:VirtualizedContainerService.HintSize="388,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_35" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="3" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/303?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_store_area_descripcion_enum&amp;f.question-group=754&amp;f.benchmark=100000004&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.pfe_lp_store_area_descripcion_enum=283_9&amp;f.pfk_lp_programas_marca_global_enum=370_1&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;fi.calculation=29&amp;fi.segment-ranker=e_lp_store_area_descripcion_enum&amp;fi.question-group=754&amp;fi.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;fi.benchmark=100000004&amp;fi.pfe_lp_store_area_descripcion_enum=283_9&amp;fi.pfk_lp_programas_marca_global_enum=370_1&amp;fi.timeperiod=361&amp;fi.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvElementArea="1563, 251, 33, 33" CvType="Icon" DesignTimeRectangle="1556, 243, 48, 48" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl parentid='menuOpenAction' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='menuOpenAction' tag='SPAN' type='' class='sc-1m6lox2-2 hvWBYq' aaname='' /&gt;" Guid="6c3e6de1-6a15-4bbc-b27e-8896c76f65ea" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOQSURBVGhD7ZgJTxNBFID9iSoqlwhquAqlyCEEFCEccspV5RZRESKCCOGuigVCBG3EaCKgRg3hKEcFKQGhffaNr+m1LXR2iRuzX/IS5u1sO19nZ/YNJ+A/QxGSO4qQ3FGE5I4iJHcUIbmjCMkdRUjuHIvQ9rYZhnR6yC2sAlXiNQi6EM8C/84rrIbh52NgNpupt7RIKrRiXIM79Q8gIDgGTgZGgiY1B4rKaqDl4ROov9vGZEIvadi1M6EqaGxuh7V1E90tDZIJ6cenbIOMhUDbTPT269gsCWG1WmF27gto61qYVGBYPEy/naGr4pFE6GnPEPvVUzMLYHVtg7KHs2xchaS0XHbvyIsxyopDtNDYxDQbUE5BBezu7lH26OzvH0BBsRZOBUWBYeYjZfkRJbS8YoSz51Vw5WqubWD7lHUw+doA2toWNnMY+Dfm3MF7s/LKIeSiBra2flGWD1FCxbdq4VxYHCwurVDGwah+EiKiU9jsOQfm8Jo7G6afbP3VNT2iDB/cQj8WFtkA77d2UsbB3PxXUCff8JCxB17DPu60dfSwHVLMLHELPe7qY8/95qbnl+M7SEjEObCPO7hJ4DXdy3HK+A+3UHpWISSn51HLFfyl3QXcA/sIge+ukvI6avkPt1BkfLrX572nb0RQwjmwjxBllQ1sK+eFWwgXcHtHL7Vc+TT7WVDCObCPELgmsZrghVsIa7PO7gFqedJhW2MhEQkeIpjDa97Acig4XE0t/+EWiknIgNrGVmoJ0z886rLbJaRks5wvyqoaIS7xOrX8h1sIX4SZOaXU8s637wu26loP+ompI5VF0eoMW9VRSS3/4RbC+u10cLTXd4bh3QfIyC5xedwwcGZxW7ZYrNTTwdKykfXB4pYXbiGsDoS+fG/vN5Rrm1wkhAJlzTs7dNdfsDTCa8bVdcr4D7cQUlpRz3Yk+yxZLBbIzq/wGLy3wO35wHYPgo8mVgnVNfdYmxdRQnigw+L0ZsltNrDu3mHBgfuKgZFRVnGrk7LY2chk2qRP50OUEGI/PuDJNDwq2WPAh8VlVRr7QbCMemN4T5/Kj2ghpOvZoOBg/YlB3Sv6NHFIIoTgETwgJFZwsL4CKw4pZsaOZEIIVsu4qO3/JPEVuPYamtvYOUhKJBWyg7seHg/wBRmryWSLHUslrADyi6rZAc99y5aKYxH6lyhCckcRkjuKkNxRhOSOIiR3FCF5A/AHog83+MQrbfMAAAAASUVORK5CYII=" InformativeScreenshot="3406549dbbcfa10ca9365bab85a3f4fb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Comentarios - Lista' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                        <uix:Target CvTextArea="1619, 242, 114, 19" CvTextArgument="Total Tiendas" CvType="Text" DesignTimeRectangle="1622, 239, 109, 27" ElementType="Text" FriendlyName="'Total Tiendas'" FullSelectorArgument="&lt;webctrl aaname='Total Tiendas' parentid='menuOpenAction' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Total Tiendas' parentid='menuOpenAction' tag='SPAN' type='' class='sc-1fat7yj-1 gUfyww' check:innerText='Total Tiendas' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        <uix:Target CvElementArea="1510, 250, 30, 35" CvType="Icon" DesignTimeRectangle="1514, 255, 24, 24" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl parentid='myReportsTrigger' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='myReportsTrigger' tag='svg' type='' class='sc-1d4iol7-0 fSiweQ' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAESSURBVEhLY/hPZzBCLbz/4PH/qobu/yHRWf8DwlNJwiA9NU29/x88fAI1DRVgtbC0ug2scenKDf9XrN5MEl6yYv3/oMj0/5X1nVDTUAFWC0GWTZ6+AMojHfROmvM/Ii4HykMFWC0EBQ3IteSC5as2gc3ABkYtJAuMWogBRi0kBEYtxACjFhICVLfw69evYIwLgPRSxcKv3779X7560/+oxHwwBqn59v07VBYBKPYhyKIVazaDLQHJgZofIAxiRyXkgeWQLSbbh8g+gll0+epNqKr/YDbcYqAakFqQxWT5sKi8GW4RqI1z8fJ1qCwmAMmB1MAsBukl2UIQRvcRIYDsY5IsJNUidACzGBvAaiHtwP//AJvOT9+fZs7RAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="SELECCIONAR CERRAR SESION" sap:VirtualizedContainerService.HintSize="388,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_36" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="af63c4c2-a748-465d-8dc4-9db1820e3848" Timeout="3" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://liverpool.medallia.com/sso/liverpool/applications/ex_WEB-9/pages/1396?roleId=614&amp;f.calculation=29&amp;f.segment-ranker=e_lp_retail_empleado_unit&amp;f.question-score=k_lp_nps_tiendas_clickandcollect_scale11&amp;f.benchmark=100000004&amp;f.timeperiod=361&amp;f.reporting-date=k_bp_timezone_response_time&amp;alreftoken=%22b642a8e63298ee397fffad6de61bee9e%22" CvTextArea="1583, 728, 120, 21" CvTextArgument="Cerrar sesion" CvType="Text" DesignTimeRectangle="1573, 712, 308, 54" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'Cerrar sesión'" FullSelectorArgument="&lt;webctrl aaname='Cerrar sesión' parentid=':r3:' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Cerrar sesión' parentid=':r3:' tag='BUTTON' type='' class='sc-b3k98j-1 jAIaRD' check:innerText='Cerrar sesión' /&gt;" Guid="e5a394f5-ce91-4528-b37b-28ff84e69ce4" InformativeScreenshot="ea38856c702b6e63e4ff0b0666e6e686.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Información general - Resumen' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvElementArea="1532, 720, 34, 34" CvType="Icon" DesignTimeRectangle="1537, 724, 36, 33" FriendlyName="'DIV'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;div' idx='7' parentid=':r3:' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='sc-uyo1lf-2 khGRWV' parentid=':r3:' tag='DIV' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAlCAYAAAAwYKuzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAF+SURBVFhH7ZfPSwJBFMf7u0Pp4CodMgj6YbRZaPmTXTUtMiuoW8coJNMi69C9rMNu8NrvMM4hiNWdGdliP/AOs7x5fng77u6bo5ATCcoiBN/eP6ha71BqOUvziVXfQF610aHR6JNX0IMQLFpt9sM7hQM6vbjyDeQhv1w74RX0IASNtEl7lSO+mox8+ZDt04kQRDfQmWlAPvbp5H8LXt/e00qmwFd6kBL8SfP4krL7DXIcl1+RR6lg/+GZ4sl12srZyiSVCoLeYEjx1AZt7lrkul/8anCUCwJIxrxOmvm6tKQWQdDtPSqR/FVw+PLKiuM8BY1kepvVzZVavOr0aBVMLJmsLl6LQdF2i2+6A4oZa/pusQzs/CmQA8oFVf05xigVvOs/ic45bggf1HbrXKkckBIM/ccC8rFPJ39H0PAeqiW7zVeTgfyZffJjaFpYzFDNO+jojF9YzTOWX/EmQZ0IQYydmNDG70+/mPnYGVYiQVkiQVkiQVkiQVlCLkj0DS48TEI4EKJPAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 1942, 1150" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAABiSURBVDhP7cyxDYBADENRT8JIrMQytwQsRUmZM5bcOdU1FFj6VfSCZ9+qC9xxobre+//gEw/WN+5q4+pEdclH6LgEnXyEjkvQyUfouASdfISOS9DJR+i4BJ18hI5L0MmvDZhNnuSD8tzgJQAAAABJRU5ErkJggg==" InformativeScreenshot="29bab203ccf4a8932a5c86035768c513.jpg" Selector="&lt;html app='chrome.exe' url='https://liverpool.medallia.com/sso/liverpool/' /&gt;" Title="Sign in to your account" Url="https://liverpool.medallia.com/sso/liverpool/" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

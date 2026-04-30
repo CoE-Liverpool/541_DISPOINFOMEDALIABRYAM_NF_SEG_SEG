@@ -1,5 +1,5 @@
 {
-  "name": "00_GENERICO_WINDOWS_NEGOCIOS_FINANCIEROS_XX_XX_XX",
+  "name": "541_DISPOINFOMEDALIABRYAM_NF_SEG_SEG",
   "projectId": "649f4468-00fd-48b0-9c0b-0f60cef071f3",
   "description": "Robotic Enterprise Framework Génerico Liverpool Windows",
   "main": "Main.xaml",
@@ -7,6 +7,7 @@
     "UiPath.Excel.Activities": "[2.22.3]",
     "UiPath.GSuite.Activities": "[2.4.3]",
     "UiPath.Mail.Activities": "[1.22.2]",
+    "UiPath.MicrosoftOffice365.Activities": "[3.8.11]",
     "UiPath.Python.Activities": "[1.7.1]",
     "UiPath.System.Activities": "[23.10.5]",
     "UiPath.Terminal.Activities": "[2.7.1]",
