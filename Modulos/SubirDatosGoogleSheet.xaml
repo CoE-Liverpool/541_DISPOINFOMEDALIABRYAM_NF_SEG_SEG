@@ -3,11 +3,12 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_UnidadNegocio" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_InformacionSemanal" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_MetricasGlobales" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1488,6730</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>912.6666666666666,8408</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CargaDatosGS_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -72,6 +73,11 @@
       <x:String>Microsoft.Graph</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>UiPath.Excel.Helpers</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -160,9 +166,11 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
       <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CargaDatosGS" sap:VirtualizedContainerService.HintSize="982.6666666666666,6665.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SUBIR DATOS GOOGLE SHEET" sap:VirtualizedContainerService.HintSize="922.6666666666666,8343.333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="exception_500" />
       <Variable x:TypeArguments="x:String" Name="NombreMes" />
@@ -184,23 +192,26 @@
       <Variable x:TypeArguments="x:String" Name="Rango" />
       <Variable x:TypeArguments="x:String" Name="RutaDescargar" />
       <Variable x:TypeArguments="s:String[]" Name="ListaHojasReverse" />
-      <Variable x:TypeArguments="x:String" Name="NombreHojaAcum" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_TnpAcumulado" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_TNPAcumulado" />
       <Variable x:TypeArguments="x:Int32" Name="Index" />
       <Variable x:TypeArguments="x:String" Name="ServicioColumna" />
       <Variable x:TypeArguments="x:String" Name="ProximaColumna" />
       <Variable x:TypeArguments="x:Int32" Name="FilaEscritura" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="CeldasValues" />
       <Variable x:TypeArguments="x:String" Name="ExperienciaColumna" />
+      <Variable x:TypeArguments="x:String" Name="HojaMetricasGlobales" />
+      <Variable x:TypeArguments="x:String" Name="CeldaMetricasGlobales" />
+      <Variable x:TypeArguments="scg:List(sd:DataRow)" Name="FilasNuevas" />
+      <Variable x:TypeArguments="x:String" Name="GidMensual" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not exception_500.Equals(&quot;&quot;)]" DisplayName="CARGAR INFORMACIÓN EN GOOGLE SHEETS" sap:VirtualizedContainerService.HintSize="920.6666666666666,6248.666666666667" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not exception_500.Equals(&quot;&quot;)]" DisplayName="CARGAR INFORMACIÓN EN GOOGLE SHEETS" sap:VirtualizedContainerService.HintSize="860.6666666666666,8077.333333333333" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <TryCatch DisplayName="Intentar subir archivos" sap:VirtualizedContainerService.HintSize="886.6666666666666,6110.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch DisplayName="Intentar subir archivos" sap:VirtualizedContainerService.HintSize="826.6666666666666,7939.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -208,14 +219,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <Sequence DisplayName="CONSULTAR ARCHIVOS EN GOOGLE DRIVE" sap:VirtualizedContainerService.HintSize="848,5711.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <Sequence DisplayName="CONSULTAR ARCHIVOS EN GOOGLE DRIVE" sap:VirtualizedContainerService.HintSize="788,7700" sap2010:WorkflowViewState.IdRef="Sequence_21">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="ASIGNAR VARIABLE EXCEPCION" sap:VirtualizedContainerService.HintSize="786,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign DisplayName="ASIGNAR VARIABLE EXCEPCION" sap:VirtualizedContainerService.HintSize="726,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[exception_500]</OutArgument>
                 </Assign.To>
@@ -225,7 +236,7 @@
                   </InArgument>
                 </Assign.Value>
               </Assign>
-              <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="SUBIR INFORMACION A GOOGLE SHEET" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="786,5475.333333333333" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
+              <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="SUBIR INFORMACION A GOOGLE SHEET" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="726,7464" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
                 <uga:GSuiteApplicationScope.AuthenticationScopes>
                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                 </uga:GSuiteApplicationScope.AuthenticationScopes>
@@ -234,14 +245,14 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="ugac:IGoogleWorkspaceTarget" Name="GSuiteScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="CARGA DRIVE ARCHIVO REPS" sap:VirtualizedContainerService.HintSize="752,5336" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence DisplayName="CARGA DRIVE ARCHIVO REPS" sap:VirtualizedContainerService.HintSize="692,7324.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="CREAR CARPETAS" sap:VirtualizedContainerService.HintSize="710,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                      <Sequence DisplayName="CREAR CARPETAS" sap:VirtualizedContainerService.HintSize="650,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_27">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="IdCarpetaAnio" />
                         </Sequence.Variables>
@@ -251,7 +262,7 @@
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA HISTORICO REPORTES" FirstResultId="[IdCarpetaReportes]" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="FindFiles_1" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot;+&quot;REPORTES&quot;+&quot;' and parents='&quot;+in_Config(&quot;Id_Carpeta_Principal&quot;).ToString+&quot;'&quot;]" SupportsTeamDrives="False">
+                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA HISTORICO REPORTES" FirstResultId="[IdCarpetaReportes]" sap:VirtualizedContainerService.HintSize="410,82" sap2010:WorkflowViewState.IdRef="FindFiles_1" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot;+&quot;REPORTES&quot;+&quot;' and parents='&quot;+in_Config(&quot;Id_Carpeta_Principal&quot;).ToString+&quot;'&quot;]" SupportsTeamDrives="False">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -259,15 +270,15 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uga:FindFiles>
-                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA HISTORICO REPORTES" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="If_11">
+                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA HISTORICO REPORTES" sap:VirtualizedContainerService.HintSize="410,458" sap2010:WorkflowViewState.IdRef="If_11">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <uga:CreateFolder ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FolderDescription="{x:Null}" ParentFriendlyName="{x:Null}" AuthScopesInvalid="False" DisplayName="CREAR CARPETA REPORTES" FolderName="REPORTES" sap:VirtualizedContainerService.HintSize="334,186.66666666666666" sap2010:WorkflowViewState.IdRef="CreateFolder_5" ParentId="[in_Config(&quot;Id_Carpeta_Principal&quot;).ToString]" ParentIdSelectionMode="Browse" Result="[IdCarpetaReportes]" SupportsTeamDrives="False">
+                            <uga:CreateFolder ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FolderDescription="{x:Null}" ParentFriendlyName="{x:Null}" AuthScopesInvalid="False" DisplayName="CREAR CARPETA REPORTES" FolderName="REPORTES" sap:VirtualizedContainerService.HintSize="388,186.66666666666666" sap2010:WorkflowViewState.IdRef="CreateFolder_5" ParentId="[in_Config(&quot;Id_Carpeta_Principal&quot;).ToString]" ParentIdSelectionMode="Browse" Result="[IdCarpetaReportes]" SupportsTeamDrives="False">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -286,7 +297,7 @@
                             </Sequence>
                           </If.Else>
                         </If>
-                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA POR ANIO" FirstResultId="[IdCarpetaAnio]" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="FindFiles_8" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; + DateTime.Now.ToString(&quot;yyyy&quot;) + &quot;' and parents='&quot; + IdCarpetaReportes.ToString + &quot;'&quot;]" SupportsTeamDrives="False">
+                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA POR ANIO" FirstResultId="[IdCarpetaAnio]" sap:VirtualizedContainerService.HintSize="410,82" sap2010:WorkflowViewState.IdRef="FindFiles_8" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; + DateTime.Now.ToString(&quot;yyyy&quot;) + &quot;' and parents='&quot; + IdCarpetaReportes.ToString + &quot;'&quot;]" SupportsTeamDrives="False">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -294,7 +305,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uga:FindFiles>
-                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA ANIO ACTUAL" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="If_24">
+                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA ANIO ACTUAL" sap:VirtualizedContainerService.HintSize="410,54" sap2010:WorkflowViewState.IdRef="If_24">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -321,7 +332,7 @@
                             </Sequence>
                           </If.Else>
                         </If>
-                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA POR MES" FirstResultId="[IdCarpetaMes]" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="FindFiles_15" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; + DateTime.Now.ToString(&quot;MM_yyyy&quot;) + &quot;' and parents='&quot; + IdCarpetaAnio.ToString + &quot;'&quot;]" SupportsTeamDrives="False">
+                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR CARPETA POR MES" FirstResultId="[IdCarpetaMes]" sap:VirtualizedContainerService.HintSize="410,82" sap2010:WorkflowViewState.IdRef="FindFiles_15" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; + DateTime.Now.ToString(&quot;MM_yyyy&quot;) + &quot;' and parents='&quot; + IdCarpetaAnio.ToString + &quot;'&quot;]" SupportsTeamDrives="False">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -329,7 +340,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uga:FindFiles>
-                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA MES ACTUAL" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="If_13">
+                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE CARPETA MES ACTUAL" sap:VirtualizedContainerService.HintSize="410,54" sap2010:WorkflowViewState.IdRef="If_13">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -357,14 +368,14 @@
                           </If.Else>
                         </If>
                       </Sequence>
-                      <Sequence DisplayName="CREAR SHEETS DE CADA UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="710,5124" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                      <Sequence DisplayName="CREAR SHEETS DE CADA UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="650,7112.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_30">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="ASIGNAR NOMBRE MES" sap:VirtualizedContainerService.HintSize="648,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
+                        <Assign DisplayName="ASIGNAR NOMBRE MES" sap:VirtualizedContainerService.HintSize="588,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[NombreMes]</OutArgument>
                           </Assign.To>
@@ -372,7 +383,7 @@
                             <InArgument x:TypeArguments="x:String">[DateTime.Now.ToString("MMMM", New System.Globalization.CultureInfo("es-ES"))]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <If sap2010:Annotation.AnnotationText="Se determina en que unidad de negocio  se esta realizando la asignación de variables." Condition="[in_UnidadNegocio.Trim.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="648,229.33333333333334" sap2010:WorkflowViewState.IdRef="If_22">
+                        <If sap2010:Annotation.AnnotationText="Asignación de variables por unidad de negocio." Condition="[in_UnidadNegocio.Trim.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO PARA ASIGNACION DE VARIABLES" sap:VirtualizedContainerService.HintSize="588,2609.3333333333335" sap2010:WorkflowViewState.IdRef="If_22">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -381,13 +392,13 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence sap:VirtualizedContainerService.HintSize="476,879.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                            <Sequence sap:VirtualizedContainerService.HintSize="476,1264.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_52">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="ASIGNAR NOMENCLATURA DE SHEET DE GOOGLE LIVERPOOL" sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_11">
+                              <Assign sap2010:Annotation.AnnotationText="Cada unidad de negocio cuenta con un nombre de hoja mensual diferente. Aquí, dicho nombre se genera de manera dinámica con base en la nomenclatura definida por ellfuncional." DisplayName="ASIGNAR NOMBRE DE SHEET DE GOOGLE" sap:VirtualizedContainerService.HintSize="434,148" sap2010:WorkflowViewState.IdRef="Assign_11">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[NombreSheet]</OutArgument>
                                 </Assign.To>
@@ -397,30 +408,63 @@
 DateTime.Now.ToString("MMMM", New System.Globalization.CultureInfo("es-MX")).ToUpper +
 " " + DateTime.Now.Year.ToString]</InArgument>
                                 </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <Assign DisplayName="ASIGNAR NOMBRE TEMPLATE LIVERPOOL" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_13">
+                              <Assign sap2010:Annotation.AnnotationText="Variable que identifica el template sheet que será clonado al inicio de cada mes para generar la nueva hoja de trabajo correspondiente al mes actual." DisplayName="ASIGNAR NOMBRE TEMPLATE" sap:VirtualizedContainerService.HintSize="434,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_13">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[NombreTemplate]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
                                   <InArgument x:TypeArguments="x:String">["LIVERPOOL_TEMPLATE_MENSUAL"]</InArgument>
                                 </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <Assign DisplayName="ASIGNAR NOMBRE DE HOJA PRINCIPAL" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_16">
+                              <Assign sap2010:Annotation.AnnotationText="Variable que identifica la hoja donde se concentran y acumulan los porcentajes y métricas correspondientes a Liverpool." DisplayName="ASIGNAR HOJA DONDE EXISTEN METRICAS MENSUALES" sap:VirtualizedContainerService.HintSize="434,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_35">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[HojaMetricasGlobales]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">EDS ACUMULADO</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <Assign sap2010:Annotation.AnnotationText="Celda inicial desde la cual se comienzan a escribir las métricas dentro de la hoja previamente definida (HojaMetricasGlobales). Esta referencia se utiliza como punto de partida para la carga de información." DisplayName="ASIGNAR CELDA INICAL PARA ESCRITURA DE METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="434,147.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_38">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[CeldaMetricasGlobales]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">C15</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <Assign sap2010:Annotation.AnnotationText="Hoja donde se estará depositando diariamente la información mensual generada por Medallia." DisplayName="ASIGNAR NOMBRE DE HOJA PRINCIPAL" sap:VirtualizedContainerService.HintSize="434,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_16">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[NombreHoja]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
                                   <InArgument x:TypeArguments="x:String">BDD_EDS CS</InArgument>
                                 </Assign.Value>
-                              </Assign>
-                              <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_29">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[NombreHojaAcum]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">["EDS ACUMULADO"]</InArgument>
-                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </Assign>
                               <Assign DisplayName="ASIGNAR RANGO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_18">
                                 <Assign.To>
@@ -436,7 +480,7 @@ DateTime.Now.ToString("MMMM", New System.Globalization.CultureInfo("es-MX")).ToU
                                 </Assign.To>
                                 <Assign.Value>
                                   <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[{
-"Catalogos",
+"CATALOGOS",
 "BDD_EDS CS",
 "EDS CS_ práctica",
 "EDS por tienda",
@@ -456,12 +500,28 @@ DateTime.Now.ToString("MMMM", New System.Globalization.CultureInfo("es-MX")).ToU
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <Sequence sap:VirtualizedContainerService.HintSize="476,879.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                            <Sequence sap:VirtualizedContainerService.HintSize="476,1130" sap2010:WorkflowViewState.IdRef="Sequence_53">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="ASIGNAR HOJA METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_36">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[HojaMetricasGlobales]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">["TNP ACUMULADO"]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign DisplayName="ASIGNAR CELDA METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_37">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[CeldaMetricasGlobales]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">C13</InArgument>
+                                </Assign.Value>
+                              </Assign>
                               <Assign DisplayName="ASIGNAR NOMENCLATURA DE SHEET DE GOOGLE SUBURBIA" sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_12">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[NombreSheet]</OutArgument>
@@ -484,7 +544,7 @@ DateTime.Now.Year.ToString]</InArgument>
                               </Assign>
                               <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_23">
                                 <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[NombreHojaAcum]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String">[HojaMetricasGlobales]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
                                   <InArgument x:TypeArguments="x:String">TNP ACUMULADO</InArgument>
@@ -530,7 +590,7 @@ DateTime.Now.Year.ToString]</InArgument>
                             </Sequence>
                           </If.Else>
                         </If>
-                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR ARCHIVO MENSUAL LIVERPOOL / SUBURBIA" FirstResultId="[idSheetMensual]" sap:VirtualizedContainerService.HintSize="648,82" sap2010:WorkflowViewState.IdRef="FindFiles_10" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; +&#xA;NombreSheet +&#xA;&quot;' and parents='&quot; + IdCarpetaMes.ToString + &quot;'&quot;]" SupportsTeamDrives="False">
+                        <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR ARCHIVO MENSUAL LIVERPOOL / SUBURBIA" FirstResultId="[idSheetMensual]" sap:VirtualizedContainerService.HintSize="588,82" sap2010:WorkflowViewState.IdRef="FindFiles_10" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; +&#xA;NombreSheet +&#xA;&quot;' and parents='&quot; + IdCarpetaMes.ToString + &quot;'&quot;]" SupportsTeamDrives="False">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -538,61 +598,60 @@ DateTime.Now.Year.ToString]</InArgument>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uga:FindFiles>
-                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE ARCHIVO MENSUAL LIVERPOOL / SUBURBIA" sap:VirtualizedContainerService.HintSize="648,2507.3333333333335" sap2010:WorkflowViewState.IdRef="If_16">
+                        <If Condition="[folder1.Count=0]" DisplayName="EXISTE ARCHIVO MENSUAL LIVERPOOL / SUBURBIA" sap:VirtualizedContainerService.HintSize="588,2730" sap2010:WorkflowViewState.IdRef="If_16">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence sap:VirtualizedContainerService.HintSize="614,2323.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                            <Sequence sap:VirtualizedContainerService.HintSize="554,2515.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_38">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="BUSCAR TEMPLATE POR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="572,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_40">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <uga:CreateNewSpreadsheet Columns="{x:Null}" ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FileURL="{x:Null}" ParentFolderName="{x:Null}" Rows="{x:Null}" AuthScopesInvalid="False" DisplayName="CREAR NUEVA PLANTILLA DE SHEET MENSUAL" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="CreateNewSpreadsheet_4" ParentId="[IdCarpetaMes]" ParentIdSelectionMode="Browse" SpreadsheetId="[idSheetMensual]" SpreadsheetName="[NombreSheet]" />
-                                <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR TEMPLATE" FirstResultId="[IdSheetTemplate]" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="FindFiles_18" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; + NombreTemplate +&#xA;&quot;' and parents='&quot; + &#xA;in_Config(&quot;Id_Carpeta_Config_Bot&quot;).ToString + &quot;'&quot;]" SupportsTeamDrives="False">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </uga:FindFiles>
-                              </Sequence>
-                              <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="ACTUALIZAR TEMPLATE PARA LAS METRICAS MENSUALES ANTERIORES Y ACTUALES" sap:VirtualizedContainerService.HintSize="572,1986.6666666666667" sap2010:WorkflowViewState.IdRef="If_25">
+                              <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR TEMPLATE" FirstResultId="[IdSheetTemplate]" sap:VirtualizedContainerService.HintSize="512,82" sap2010:WorkflowViewState.IdRef="FindFiles_18" MaxResults="50" Result="[folder1]" SearchExpression="[(&quot;name = '&quot; + NombreTemplate +&#xA;&quot;' and parents='&quot; + &#xA;in_Config(&quot;Id_Carpeta_Config_Bot&quot;).ToString + &quot;'&quot;)]" SupportsTeamDrives="False">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
+                              </uga:FindFiles>
+                              <If sap2010:Annotation.AnnotationText="El template debe conservar el histórico mensual de la información correspondiente a periodos anteriores. En esta sección se almacenan dichos datos y se habilitan las celdas necesarias para iniciar el nuevo acumulado del mes actual." Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="ACTUALIZAR TEMPLATE PARA LAS METRICAS MENSUALES ANTERIORES Y ACTUALES" sap:VirtualizedContainerService.HintSize="512,216" sap2010:WorkflowViewState.IdRef="If_25">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="538,1802.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_88">
+                                  <Sequence sap:VirtualizedContainerService.HintSize="492,356.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_88">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="DEV: ACTUALIZANDO MÉTRICAS" sap:VirtualizedContainerService.HintSize="496,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Actualizando métricas de sheet mensual para: &quot; + in_UnidadNegocio]" />
-                                    <Sequence DisplayName="ACTUALIZAR VALOR MENSUAL DEL TNP ACUMULADO LIVERPOOL" sap:VirtualizedContainerService.HintSize="496,1530.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_100">
+                                    <ui:LogMessage DisplayName="DEV: ACTUALIZANDO MÉTRICAS" sap:VirtualizedContainerService.HintSize="450,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Actualizando métricas de sheet mensual para: &quot; + in_UnidadNegocio.ToLower +&quot;...&quot;]" />
+                                    <Sequence DisplayName="ACTUALIZAR VALOR MENSUAL DEL TNP ACUMULADO LIVERPOOL" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_100">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Range="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER LIMITE DE COLUMNAS POR SHEET TEMPLATE" sap:VirtualizedContainerService.HintSize="434,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_4" IncludeHeaders="True" Result="[dt_TnpAcumulado]" SheetName="[NombreHojaAcum]" SpreadsheetId="[IdSheetTemplate]" />
-                                      <Assign DisplayName="ASIGNAR INDEX" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_30">
+                                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Range="{x:Null}" sap2010:Annotation.AnnotationText="Aquí se recuperan los datos históricos recabados de meses anteriores, con el fin de identificar las celdas donde deberán escribirse las fórmulas encargadas de realizar las operaciones requeridas por el funcional." AuthScopesInvalid="False" DisplayName="LEER LIMITE DE COLUMNAS POR SHEET TEMPLATE" sap:VirtualizedContainerService.HintSize="434,306.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_4" IncludeHeaders="True" Result="[dt_TNPAcumulado]" SheetName="[HojaMetricasGlobales]" SpreadsheetId="[IdSheetTemplate]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uga:ReadRange>
+                                      <Assign DisplayName="ASIGNAR NUMERO DE COLUMNAS ESCRITOS EN TEMPLATE" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_30">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:Int32">[Index]</OutArgument>
                                         </Assign.To>
@@ -600,33 +659,66 @@ DateTime.Now.Year.ToString]</InArgument>
                                           <InArgument x:TypeArguments="x:Int32">[dt_TnpAcumulado.ColumnCount]</InArgument>
                                         </Assign.Value>
                                       </Assign>
-                                      <Assign DisplayName="ASIGNAR RANGO DINAMICO PARA GENERAR APARTADO DE METRICAS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_31">
+                                      <Assign sap2010:Annotation.AnnotationText="Convertimos el número total de columnas a su equivalente en letra de Excel, con el objetivo de identificar en qué columna deberán escribirse los próximos registros." DisplayName="ASIGNAR LETRA PROXIMA DE CELDA PROXIMA A ESCRIBIR" sap:VirtualizedContainerService.HintSize="434,147.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_31">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:String">[ProximaColumna]</OutArgument>
                                         </Assign.To>
                                         <Assign.Value>
                                           <InArgument x:TypeArguments="x:String">[UiPath.Excel.Helpers.ExcelUtilities.ConvertColumnIndexToColumnLetter(Index + 1)]</InArgument>
                                         </Assign.Value>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
                                       </Assign>
-                                      <Assign DisplayName="ASIGNAR RANGO DINAMICO PARA ESTABLECER ULTIMA COLUMNA ESCRITA" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_32">
+                                      <Assign sap2010:Annotation.AnnotationText="Recorremos una letra para escribir valores de SERVICIO." DisplayName="ASIGNAR CELDA PARA CELDA SERVICIO" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="Assign_32">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:String">[ServicioColumna]</OutArgument>
                                         </Assign.To>
                                         <Assign.Value>
                                           <InArgument x:TypeArguments="x:String">[UiPath.Excel.Helpers.ExcelUtilities.ConvertColumnIndexToColumnLetter(Index - 1)]</InArgument>
                                         </Assign.Value>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
                                       </Assign>
-                                      <Assign DisplayName="ASIGNAR RANGO DINAMICO PARA ESTABLECER ULTIMA COLUMNA ESCRITA" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_33">
+                                      <Assign sap2010:Annotation.AnnotationText="Recorremos una letra para escribir valores de EXPERIENCIA." DisplayName="ASIGNAR CELDA PARA CELDA EXPERIENCIA" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="Assign_33">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:String">[ExperienciaColumna]</OutArgument>
                                         </Assign.To>
                                         <Assign.Value>
                                           <InArgument x:TypeArguments="x:String">[UiPath.Excel.Helpers.ExcelUtilities.ConvertColumnIndexToColumnLetter(Index)]</InArgument>
                                         </Assign.Value>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
                                       </Assign>
-                                      <uga:CopyPasteRange ContinueOnError="{x:Null}" AuthScopesInvalid="False" DisplayName="COPIAR A VALORES NORMALES (SIN FORMULA) DE EDS/TNP PASADO" FromSheetName="EDS ACUMULADO" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="CopyPasteRange_2" PasteOrientation="NORMAL" PasteType="PASTE_VALUES" Range="[ServicioColumna + &quot;4:&quot; + ExperienciaColumna + &quot;8&quot;]" SpreadsheetId="[IdSheetTemplate]" StartingCell="[ServicioColumna + &quot;4&quot;]" ToSheetName="EDS ACUMULADO" />
-                                      <uga:CopyPasteRange ContinueOnError="{x:Null}" AuthScopesInvalid="False" DisplayName="COPIAR METRICAS DE HOJA TEMPLATE" FromSheetName="EDS_ACUMULADO_TEMPLATES" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="CopyPasteRange_4" PasteOrientation="NORMAL" PasteType="PASTE_NORMAL" Range="A1:B7" SpreadsheetId="[IdSheetTemplate]" StartingCell="[ProximaColumna +&quot;2&quot;]" ToSheetName="[NombreHojaAcum]" />
-                                      <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="[UiPath.Excel.Helpers.ExcelUtilities.ConvertColumnIndexToColumnLetter(Index + 1) + &quot;2&quot;]" DisplayName="COLOCAR MES DE METRICA NUEVA" sap:VirtualizedContainerService.HintSize="434,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_8" IsInsideBatchUpdateScope="False" SheetName="[NombreHojaAcum]" SpreadsheetId="[IdSheetTemplate]" Value="[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString(&quot;MMMM yyyy&quot;, New System.Globalization.CultureInfo(&quot;es-MX&quot;)))]" />
+                                      <uga:CopyPasteRange ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Se copian y pegan los valores correspondientes al mes anterior, excluyendo las fórmulas, con el objetivo de conservar el histórico de información." AuthScopesInvalid="False" DisplayName="COPIAR A VALORES NORMALES (SIN FORMULA) DE EDS/TNP PASADO" FromSheetName="EDS ACUMULADO" sap:VirtualizedContainerService.HintSize="434,253.33333333333334" sap2010:WorkflowViewState.IdRef="CopyPasteRange_2" PasteOrientation="NORMAL" PasteType="PASTE_VALUES" Range="[ServicioColumna + &quot;4:&quot; + ExperienciaColumna + &quot;8&quot;]" SpreadsheetId="[IdSheetTemplate]" StartingCell="[ServicioColumna + &quot;4&quot;]" ToSheetName="EDS ACUMULADO">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uga:CopyPasteRange>
+                                      <uga:CopyPasteRange ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Se copia desde EDS_ACUMULADO_TEMPLATES la plantilla de celdas que contiene las fórmulas necesarias, para posteriormente pegarla en el template correspondiente." AuthScopesInvalid="False" DisplayName="COPIAR METRICAS DE HOJA TEMPLATE" FromSheetName="EDS_ACUMULADO_TEMPLATES" sap:VirtualizedContainerService.HintSize="434,270" sap2010:WorkflowViewState.IdRef="CopyPasteRange_4" PasteOrientation="NORMAL" PasteType="PASTE_NORMAL" Range="A1:B7" SpreadsheetId="[IdSheetTemplate]" StartingCell="[ProximaColumna +&quot;2&quot;]" ToSheetName="[HojaMetricasGlobales]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uga:CopyPasteRange>
+                                      <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" sap2010:Annotation.AnnotationText="Se escribe el mes actual en el encabezado de las nuevas columnas generadas." AuthScopesInvalid="False" Cell="[UiPath.Excel.Helpers.ExcelUtilities.ConvertColumnIndexToColumnLetter(Index + 1) + &quot;2&quot;]" DisplayName="COLOCAR MES DE METRICA NUEVA" sap:VirtualizedContainerService.HintSize="434,242" sap2010:WorkflowViewState.IdRef="WriteCell_8" IsInsideBatchUpdateScope="False" SheetName="[HojaMetricasGlobales]" SpreadsheetId="[IdSheetTemplate]" Value="[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString(&quot;MMMM yyyy&quot;, New System.Globalization.CultureInfo(&quot;es-MX&quot;)))]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uga:WriteCell>
                                     </Sequence>
                                   </Sequence>
                                 </If.Then>
@@ -652,7 +744,7 @@ DateTime.Now.Year.ToString]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Range="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER LIMITE DE COLUMNAS POR SHEET TEMPLATE" sap:VirtualizedContainerService.HintSize="434,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_3" IncludeHeaders="True" Result="[dt_TnpAcumulado]" SheetName="[NombreHojaAcum]" SpreadsheetId="[IdSheetTemplate]" />
+                                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Range="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER LIMITE DE COLUMNAS POR SHEET TEMPLATE" sap:VirtualizedContainerService.HintSize="434,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_3" IncludeHeaders="True" Result="[dt_TnpAcumulado]" SheetName="[HojaMetricasGlobales]" SpreadsheetId="[IdSheetTemplate]" />
                                       <Assign DisplayName="ASIGNAR INDEX" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_24">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:Int32">[Index]</OutArgument>
@@ -686,19 +778,21 @@ DateTime.Now.Year.ToString]</InArgument>
                                         </Assign.Value>
                                       </Assign>
                                       <uga:CopyPasteRange ContinueOnError="{x:Null}" AuthScopesInvalid="False" DisplayName="COPIAR A VALORES NORMALES (SIN FORMULA) DE EDS/TNP PASADO" FromSheetName="TNP ACUMULADO" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="CopyPasteRange_5" PasteOrientation="NORMAL" PasteType="PASTE_VALUES" Range="[ServicioColumna + &quot;5:&quot; + ExperienciaColumna + &quot;8&quot;]" SpreadsheetId="[IdSheetTemplate]" StartingCell="[ServicioColumna + &quot;5&quot;]" ToSheetName="TNP ACUMULADO" />
-                                      <uga:CopyPasteRange ContinueOnError="{x:Null}" AuthScopesInvalid="False" DisplayName="COPIAR METRICAS DE HOJA TEMPLATE" FromSheetName="TNP_ACUMULADO_TEMPLATES" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="CopyPasteRange_1" PasteOrientation="NORMAL" PasteType="PASTE_NORMAL" Range="A1:B6" SpreadsheetId="[IdSheetTemplate]" StartingCell="[ProximaColumna +&quot;3&quot;]" ToSheetName="[NombreHojaAcum]" />
-                                      <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="[UiPath.Excel.Helpers.ExcelUtilities.ConvertColumnIndexToColumnLetter(Index + 2) + &quot;3&quot;]" DisplayName="COLOCAR MES EN METRICA NUEVA" sap:VirtualizedContainerService.HintSize="434,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_2" IsInsideBatchUpdateScope="False" SheetName="[NombreHojaAcum]" SpreadsheetId="[IdSheetTemplate]" Value="[DateTime.Now.ToString(&quot;MMMM yyyy&quot;, New System.Globalization.CultureInfo(&quot;es-MX&quot;)).ToUpper]" />
+                                      <uga:CopyPasteRange ContinueOnError="{x:Null}" AuthScopesInvalid="False" DisplayName="COPIAR METRICAS DE HOJA TEMPLATE" FromSheetName="TNP_ACUMULADO_TEMPLATES" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="CopyPasteRange_1" PasteOrientation="NORMAL" PasteType="PASTE_NORMAL" Range="A1:B6" SpreadsheetId="[IdSheetTemplate]" StartingCell="[ProximaColumna +&quot;3&quot;]" ToSheetName="[HojaMetricasGlobales]" />
+                                      <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="[UiPath.Excel.Helpers.ExcelUtilities.ConvertColumnIndexToColumnLetter(Index + 2) + &quot;3&quot;]" DisplayName="COLOCAR MES EN METRICA NUEVA" sap:VirtualizedContainerService.HintSize="434,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_2" IsInsideBatchUpdateScope="False" SheetName="[HojaMetricasGlobales]" SpreadsheetId="[IdSheetTemplate]" Value="[DateTime.Now.ToString(&quot;MMMM yyyy&quot;, New System.Globalization.CultureInfo(&quot;es-MX&quot;)).ToUpper]" />
                                     </Sequence>
                                   </Sequence>
                                 </If.Else>
                               </If>
-                              <Sequence DisplayName="CREAR Y CLONAR TEMPLATE DE LIVERPOOL / SUBURBIA MENSUAL" sap:VirtualizedContainerService.HintSize="572,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                              <Sequence DisplayName="CREAR Y CLONAR TEMPLATE DE LIVERPOOL / SUBURBIA MENSUAL" sap:VirtualizedContainerService.HintSize="512,2050" sap2010:WorkflowViewState.IdRef="Sequence_84">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="DEV: ENTRANDO A CREAR CARPETAS" sap:VirtualizedContainerService.HintSize="450,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Es inicio de mes, creando carpetas para &quot; + in_UnidadNegocio.ToLower + &quot;...&quot;]" />
+                                <uga:CreateNewSpreadsheet Columns="{x:Null}" ContinueOnError="{x:Null}" DriveTarget="{x:Null}" FileURL="{x:Null}" ParentFolderName="{x:Null}" Rows="{x:Null}" AuthScopesInvalid="False" DisplayName="CREAR NUEVO SHEET MENSUAL POR INICIO DE MES" sap:VirtualizedContainerService.HintSize="450,191.33333333333334" sap2010:WorkflowViewState.IdRef="CreateNewSpreadsheet_4" ParentId="[IdCarpetaMes]" ParentIdSelectionMode="Browse" SpreadsheetId="[idSheetMensual]" SpreadsheetName="[NombreSheet]" />
                                 <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="RECORRER CADA HOJA DE TEMPLATE PARA ARCHIVO TEMPORAL" sap:VirtualizedContainerService.HintSize="450,590.6666666666666" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[ListaHojasReverse]">
                                   <ui:ForEach.Body>
                                     <ActivityAction x:TypeArguments="x:String">
@@ -724,38 +818,76 @@ DateTime.Now.Year.ToString]</InArgument>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:ForEach>
-                                <Sequence DisplayName="ACTUALIZAR FECHAS MENSUALES Y ANUAL EN SHEET" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_98">
+                                <Sequence DisplayName="ACTUALIZAR FECHAS MENSUALES DE ESCRITURA EN SHEET" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_98">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" sap:VirtualizedContainerService.HintSize="410,1022.6666666666666" sap2010:WorkflowViewState.IdRef="If_28">
+                                  <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;suburbia&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="410,941.3333333333334" sap2010:WorkflowViewState.IdRef="If_28">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
                                     <If.Then>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_96">
+                                      <Sequence sap:VirtualizedContainerService.HintSize="376,757.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_96">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
+                                        <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="B2" DisplayName="ESCRIBIR ANIO CELDA SUBURBIA 1" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_10" IsInsideBatchUpdateScope="False" SheetName="TNP ACUMULADO" SpreadsheetId="[idSheetMensual]" Value="[&quot;TNP-&quot; + DateTime.Now.ToString(&quot;yyyy&quot;)]" />
+                                        <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="BP2" DisplayName="ESCRIBIR ANIO CELDA SUBURBIA 2" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_11" IsInsideBatchUpdateScope="False" SheetName="TNP" SpreadsheetId="[idSheetMensual]" Value="[Now.ToString(&quot;MMMM&quot;, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;es-ES&quot;)).ToUpper()]" />
+                                        <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="BQ2" DisplayName="ESCRIBIR ANIO CELDA SUBURBIA 3" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_12" IsInsideBatchUpdateScope="False" SheetName="TNP" SpreadsheetId="[idSheetMensual]" Value="[Now.ToString(&quot;MMMM&quot;, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;es-ES&quot;)).ToUpper()]" />
                                       </Sequence>
                                     </If.Then>
                                     <If.Else>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="376,757.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_97">
+                                      <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_97">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="B2" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_5" IsInsideBatchUpdateScope="False" SheetName="TNP ACUMULADO" SpreadsheetId="[idSheetMensual]" Value="[&quot;TNP-&quot; + DateTime.Now.ToString(&quot;yyyy&quot;)]" />
-                                        <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="BP2" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_7" IsInsideBatchUpdateScope="False" SheetName="TNP" SpreadsheetId="[idSheetMensual]" Value="[Now.ToString(&quot;MMMM&quot;, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;es-ES&quot;)).ToUpper()]" />
-                                        <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="BQ2" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_6" IsInsideBatchUpdateScope="False" SheetName="TNP" SpreadsheetId="[idSheetMensual]" Value="[Now.ToString(&quot;MMMM&quot;, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;es-ES&quot;)).ToUpper()]" />
                                       </Sequence>
                                     </If.Else>
                                   </If>
                                 </Sequence>
                                 <uga:DeleteSheet ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="BORRAR HOJA GENERADA AUTOMATICAMENTE" sap:VirtualizedContainerService.HintSize="450,136.66666666666666" sap2010:WorkflowViewState.IdRef="DeleteSheet_6" SheetName="Sheet1" SpreadsheetId="[idSheetMensual]" />
+                                <Sequence DisplayName="OBTENER GID DE HOJA DE INFORMACION DIARIA" sap:VirtualizedContainerService.HintSize="450,591.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_108">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Aquí hay algo importante: por lógica de negocio, necesitamos obtener el GID de la hoja desde donde se recuperan diariamente los datos. Esto permite que, al enviar los correos, cada enlace redireccione exactamente al registro mencionado en el mensaje. En esta sección es donde se obtiene y almacena dicha variable." DisplayName="INVOKE PYTHON: RECUPERAR GID" sap:VirtualizedContainerService.HintSize="388,244" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Modulos\Invoke_Python.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                        <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="Ruta_Script">
+                                        <Literal x:TypeArguments="x:String">Archivos\CONFIGURACION\GetGidSheet.py</Literal>
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="Invoke_Method">
+                                        <Literal x:TypeArguments="x:String">Obtener_GID</Literal>
+                                      </InArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="Return_Python">
+                                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="GidMensual" />
+                                      </OutArgument>
+                                      <InArgument x:TypeArguments="scg:IEnumerable(x:Object)" x:Key="Arguments_Python">
+                                        <VisualBasicValue x:TypeArguments="scg:IEnumerable(x:Object)" ExpressionText="{}{in_Config(&quot;Json_Drive&quot;).ToString, idSheetMensual.ToString, &quot;BDD_EDS CS&quot;}" />
+                                      </InArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:InvokeWorkflowFile>
+                                  <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="BK1" DisplayName="CONSTRUIR URL CON GID DE MANERA MENSUAL" sap:VirtualizedContainerService.HintSize="388,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_14" IsInsideBatchUpdateScope="False" SheetName="BDD_EDS CS" SpreadsheetId="[idSheetMensual]" Value="[GidMensual]" />
+                                </Sequence>
                               </Sequence>
                             </Sequence>
                           </If.Then>
@@ -769,16 +901,17 @@ DateTime.Now.Year.ToString]</InArgument>
                             </Sequence>
                           </If.Else>
                         </If>
-                        <Sequence DisplayName="SUBIR INFORMACION POR DIA" sap:VirtualizedContainerService.HintSize="648,1949.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                        <Sequence DisplayName="SUBIR INFORMACION POR DIA" sap:VirtualizedContainerService.HintSize="588,1335.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_43">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="DEV: ENTRAR A SECUENCIA SUBIR INFORMACION DIARIA" sap:VirtualizedContainerService.HintSize="472,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Leyendo información del sheet de: &quot; + in_UnidadNegocio + &quot;...&quot;]" />
-                          <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER INFORMACION DE SHEET MENSUAL" sap:VirtualizedContainerService.HintSize="472,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_2" IncludeHeaders="True" Range="[Rango]" Result="[dt_InformacionMensual]" SheetName="[NombreHoja]" SpreadsheetId="[idSheetMensual]" />
-                          <Assign sap2010:Annotation.AnnotationText="Determina si escribir en un inicio en la fila 14 (Reglas de negocio) y si no, en el siguiente donde se haya escrito." DisplayName="ASIGNAR FILA PARA ESCRIBIR" sap:VirtualizedContainerService.HintSize="472,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_27">
+                          <ui:LogMessage DisplayName="DEV: ENTRAR A SECUENCIA SUBIR INFORMACION DIARIA" sap:VirtualizedContainerService.HintSize="450,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Leyendo información del sheet de: &quot; + in_UnidadNegocio + &quot;...&quot;]" />
+                          <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER INFORMACION DE SHEET MENSUAL" sap:VirtualizedContainerService.HintSize="450,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_2" IncludeHeaders="True" Range="[Rango]" Result="[dt_InformacionMensual]" SheetName="[NombreHoja]" SpreadsheetId="[idSheetMensual]" />
+                          <uga:WriteRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DataTable="[in_dt_MetricasGlobales]" DisplayName="ESCRIBIR METRICAS GLOBALES TNP/EDS" sap:VirtualizedContainerService.HintSize="450,220" sap2010:WorkflowViewState.IdRef="WriteRange_3" IncludeHeaders="False" IsInsideBatchUpdateScope="False" SheetName="[HojaMetricasGlobales]" SpreadsheetId="[idSheetMensual]" StartingCell="[CeldaMetricasGlobales]" />
+                          <Assign sap2010:Annotation.AnnotationText="Determina si escribir en un inicio en la fila 14 (Reglas de negocio) y si no, en el siguiente donde se haya escrito." DisplayName="ASIGNAR FILA PARA ESCRIBIR" sap:VirtualizedContainerService.HintSize="450,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_27">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[FilaEscritura]</OutArgument>
                             </Assign.To>
@@ -791,21 +924,36 @@ DateTime.Now.Year.ToString]</InArgument>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </Assign>
-                          <Sequence DisplayName="ACTUALIZAR FECHAS DE ESCRITURA EN SHEET" sap:VirtualizedContainerService.HintSize="472,660" sap2010:WorkflowViewState.IdRef="Sequence_95">
+                          <Sequence sap2010:Annotation.AnnotationText="Se colocan fechas de forma dinámica en las celdas necesarias del sheet mensual, con el objetivo de informar al funcional la fecha en que la información fue actualizada." DisplayName="ACTUALIZAR FECHAS DIARIAS DE ESCRITURA EN SHEET" sap:VirtualizedContainerService.HintSize="450,146.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_95">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" sap:VirtualizedContainerService.HintSize="410,549.3333333333334" sap2010:WorkflowViewState.IdRef="If_27">
+                            <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="If_27">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
-                                <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,284" sap2010:WorkflowViewState.IdRef="Sequence_93">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
+                                  <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="D4" DisplayName="ESCRIBIR FECHA DE ACTUALIZACION DEL SHEET" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_9" IsInsideBatchUpdateScope="False" SheetName="EDS CS_ práctica" SpreadsheetId="[idSheetMensual]" Value="[Now.ToString(&quot;dd 'de' MMMM&quot;, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;es-ES&quot;))]">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uga:WriteCell>
                                 </Sequence>
                               </If.Then>
                               <If.Else>
@@ -815,42 +963,65 @@ DateTime.Now.Year.ToString]</InArgument>
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="C1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_4" IsInsideBatchUpdateScope="False" SheetName="Análisis EDS CS" SpreadsheetId="[idSheetMensual]" Value="[&quot;Información Actualizada al &quot; + Now.ToString(&quot;dd 'de' MMMM&quot;, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;es-ES&quot;))]" />
+                                  <uga:WriteCell ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" AuthScopesInvalid="False" Cell="C1" DisplayName="ESCRIBIR FECHA DE ACTUALIZACION DEL SHEET SUBURBIA" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCell_4" IsInsideBatchUpdateScope="False" SheetName="Análisis EDS CS" SpreadsheetId="[idSheetMensual]" Value="[&quot;Información Actualizada al &quot; + Now.ToString(&quot;dd 'de' MMMM&quot;, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;es-ES&quot;))]" />
                                 </Sequence>
                               </If.Else>
                             </If>
                           </Sequence>
-                          <ui:JoinDataTables DataTable1="[in_dt_InformacionSemanal]" DataTable2="[dt_InformacionMensual]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="472,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_1" JoinType="Left" OutputDataTable="[in_dt_InformacionSemanal]">
-                            <ui:JoinDataTables.Arguments>
-                              <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
-                                <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
-                                  <ui:JoinOperationArgument.Column1>
-                                    <InArgument x:TypeArguments="x:String">["ID de Encuesta"]</InArgument>
-                                  </ui:JoinOperationArgument.Column1>
-                                  <ui:JoinOperationArgument.Column2>
-                                    <InArgument x:TypeArguments="x:String">["ID de Encuesta"]</InArgument>
-                                  </ui:JoinOperationArgument.Column2>
-                                </ui:JoinOperationArgument>
-                              </scg:List>
-                            </ui:JoinDataTables.Arguments>
-                          </ui:JoinDataTables>
-                          <ui:FilterDataTable DataTable="[in_dt_InformacionSemanal]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="472,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[in_dt_InformacionSemanal]" SelectColumnsMode="Remove">
-                            <ui:FilterDataTable.Filters>
-                              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
-                                  <ui:FilterOperationArgument.Column>
-                                    <InArgument x:TypeArguments="x:String">["ID de Encuesta_1"]</InArgument>
-                                  </ui:FilterOperationArgument.Column>
-                                </ui:FilterOperationArgument>
-                              </scg:List>
-                            </ui:FilterDataTable.Filters>
-                            <ui:FilterDataTable.SelectColumns>
-                              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                <x:Null />
-                              </scg:List>
-                            </ui:FilterDataTable.SelectColumns>
-                          </ui:FilterDataTable>
-                          <uga:WriteRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DataTable="[in_dt_InformacionSemanal]" DisplayName="ESCRIBIR EN SHEET HISTORICO MENSUAL" sap:VirtualizedContainerService.HintSize="472,220" sap2010:WorkflowViewState.IdRef="WriteRange_1" IncludeHeaders="False" IsInsideBatchUpdateScope="False" SheetName="[NombreHoja]" SpreadsheetId="[idSheetMensual]" StartingCell="[&quot;A&quot; + FilaEscritura.ToString]" />
+                          <Sequence sap2010:Annotation.AnnotationText="En caso de reintento o de volver a ejecutar el bot, es posible que algunas unidades de negocio ya tengan información actualizada previamente insertada. Si no se valida esto, los datos se volverían a cargar, generando duplicados, lo cual debemos evitar." DisplayName="VERIFICAR SI HAY INFORMACION REPETIDA" sap:VirtualizedContainerService.HintSize="450,163.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="ASIGNAR FILAS NO EXISTENTES EN INFORMACION MENSUAL" sap:VirtualizedContainerService.HintSize="510,86" sap2010:WorkflowViewState.IdRef="Assign_42">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="scg:List(sd:DataRow)">[FilasNuevas]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="scg:List(sd:DataRow)" xml:space="preserve">[(From semanal In in_dt_InformacionSemanal.AsEnumerable() 
+Where Not dt_InformacionMensual.AsEnumerable().Any(Function(mensual) mensual("ID de Encuesta").ToString.Trim.Equals(semanal("ID de Encuesta").ToString.Trim)) Select semanal).ToList()]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <If Condition="[FilasNuevas.Count &gt; 0]" DisplayName="DETERMINAR SI NO HAY INFORMACIÓN NUEVA" sap:VirtualizedContainerService.HintSize="510,848.6666666666666" sap2010:WorkflowViewState.IdRef="If_29">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="476,432.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_102">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="ASIGNAR INFORMACION NO SUBIDA (NUEVA" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_43">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="sd:DataTable">[in_dt_InformacionSemanal]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="sd:DataTable">[FilasNuevas.CopyToDataTable()]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <uga:WriteRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DataTable="[in_dt_InformacionSemanal]" DisplayName="ESCRIBIR EN SHEET HISTORICO MENSUAL" sap:VirtualizedContainerService.HintSize="434,220" sap2010:WorkflowViewState.IdRef="WriteRange_4" IncludeHeaders="False" IsInsideBatchUpdateScope="False" SheetName="[NombreHoja]" SpreadsheetId="[idSheetMensual]" StartingCell="[&quot;A&quot; + FilaEscritura.ToString]" />
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,232" sap2010:WorkflowViewState.IdRef="Sequence_103">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="DEV: NO HAY INFORMACION NUEVA DISPONIBLE" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;No hay datos nuevos para subir...&quot;]" />
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </Sequence>
                         </Sequence>
                       </Sequence>
                     </Sequence>
@@ -860,13 +1031,14 @@ DateTime.Now.Year.ToString]</InArgument>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uga:GSuiteApplicationScope>
             </Sequence>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="852.6666666666666,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="792.6666666666666,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -910,23 +1082,16 @@ DateTime.Now.Year.ToString]</InArgument>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InterruptibleDoWhile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="920.6666666666666,306" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_99">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Modulos\EnvioDeCorreo.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Modulos\EnvioDeCorreo.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_UnidadNegocio">liverpool</InArgument>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_InformacionMensual">[dt_InformacionMensual]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ENVIAR CORREOS A DESTINATARIOS" sap:VirtualizedContainerService.HintSize="784.6666666666666,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Modulos\EnvioDeCorreo.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UnidadNegocio">[in_UnidadNegocio]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_InformacionMensual">[dt_InformacionMensual]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_idReporteMensual">[idSheetMensual]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GidHoja">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>

@@ -3,11 +3,14 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_PathFile" Type="InArgument(x:String)" />
     <x:Property Name="in_UnidadNegocio" Type="InArgument(x:String)" />
+    <x:Property Name="in_UNServicio" Type="InArgument(x:String)" />
+    <x:Property Name="in_UNExperiencia" Type="InArgument(x:String)" />
+    <x:Property Name="in_UNNps" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1497.3333333333333,2390</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1222,7722.666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TratamientoDatos_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -148,7 +151,7 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="TratamientoDatos: Módulo que verifica que en la carpeta de Dowloads o Descargas no se quede con archivos de descarga que pueda realizar más de una vez el bot." DisplayName="MODULO: TRATAMIENTO DATOS" sap:VirtualizedContainerService.HintSize="650,2325.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_116">
+  <Sequence sap2010:Annotation.AnnotationText="TratamientoDatos: Módulo que verifica que en la carpeta de Dowloads o Descargas no se quede con archivos de descarga que pueda realizar más de una vez el bot." DisplayName="MODULO: TRATAMIENTO DATOS" sap:VirtualizedContainerService.HintSize="1232,7658" sap2010:WorkflowViewState.IdRef="Sequence_116">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="ArchivosPath" />
       <Variable x:TypeArguments="s:String[]" Name="ArchivosPathOrdenados" />
@@ -167,6 +170,12 @@
       <Variable x:TypeArguments="sd:DataTable" Name="dt_ZonasTienda" />
       <Variable x:TypeArguments="x:Int32" Name="NumeroDeTienda" />
       <Variable x:TypeArguments="x:String" Name="ZonaTienda" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_MetricasGlobales" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="ListaMetricaGlobal" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_MetricasOrdenadas" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_GerentesZonaTienda" />
+      <Variable x:TypeArguments="x:String" Name="Zona" />
+      <Variable x:TypeArguments="x:String" Name="GerenteRegional" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -175,14 +184,14 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage sap2010:Annotation.AnnotationText="" DisplayName="LOG: INICIAR MODULO" sap:VirtualizedContainerService.HintSize="588,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Iniciando tratamiento de archivo para: &quot; + in_UnidadNegocio]">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="" DisplayName="LOG: INICIAR MODULO" sap:VirtualizedContainerService.HintSize="1170,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Iniciando tratamiento de archivo para: &quot; + in_UnidadNegocio +&quot;...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Assign sap2010:Annotation.AnnotationText="El nombre del archivo para Liverpool o Suburbia lleva la misma nomenclatura." DisplayName="ASIGNAR NOMBRE DE ARCHIVO" sap:VirtualizedContainerService.HintSize="588,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_94">
+    <Assign sap2010:Annotation.AnnotationText="El nombre del archivo para Liverpool o Suburbia lleva la misma nomenclatura." DisplayName="ASIGNAR NOMBRE DE ARCHIVO" sap:VirtualizedContainerService.HintSize="1170,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_94">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[PathGeneral]</OutArgument>
       </Assign.To>
@@ -195,11 +204,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Se extraen las Zonas con su identificador, para concatenarlos en el DT final (dt_InformacionSemanak)" DisplayName="OBTENER CATALOGO ZONAS" sap:VirtualizedContainerService.HintSize="588,160.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Modulos\ObtenerCatalogoZonas.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Se extraen las Zonas con su identificador, para concatenarlos en el DT final (dt_InformacionSemanak)" DisplayName="ObtenerCatalogos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1170,160.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Modulos\ObtenerCatalogos.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_UnidadNegocio">[in_UnidadNegocio]</InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ZonasTienda">[dt_ZonasTienda]</OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UnidadNegocio">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UnidadNegocio" />
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ZonasTienda">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_ZonasTienda" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_GerentesZona">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_GerentesZonaTienda" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -207,8 +225,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="LOG: INICIAR FORMATEO DE ARCHIVO POR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="588,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Iniciando formateo de archivo para: &quot; + in_UnidadNegocio + &quot;...&quot;]" />
-    <Sequence sap2010:Annotation.AnnotationText="En esta etapa se realiza la limpieza, organización y transformación de la información. Se eliminan filas innecesarias, se agregan columnas vacías y se filtran únicamente los datos requeridos para su posterior carga en el sheet correspondiente a cada unidad de negocio, de acuerdo con lo definido por el funcional." DisplayName="FORMATEAR ARCHIVO DESCARGADO" sap:VirtualizedContainerService.HintSize="588,1398" sap2010:WorkflowViewState.IdRef="Sequence_135">
+    <Sequence sap2010:Annotation.AnnotationText="En esta etapa se realiza la limpieza, organización y transformación de la información. Se eliminan filas innecesarias, se agregan columnas vacías y se filtran únicamente los datos requeridos para su posterior carga en el sheet correspondiente a cada unidad de negocio, de acuerdo con lo definido por el funcional." DisplayName="FORMATEAR ARCHIVO DESCARGADO" sap:VirtualizedContainerService.HintSize="1170,6930" sap2010:WorkflowViewState.IdRef="Sequence_135">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -216,7 +233,8 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="BUSCAR ARCHIVOS DESCARGADOS" sap:VirtualizedContainerService.HintSize="526,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_107">
+      <ui:LogMessage DisplayName="LOG: INICIAR FORMATEO DE ARCHIVO POR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="1108,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Iniciando formateo de archivo para: &quot; + in_UnidadNegocio + &quot;...&quot;]" />
+      <Assign DisplayName="BUSCAR ARCHIVOS DESCARGADOS" sap:VirtualizedContainerService.HintSize="1108,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_107">
         <Assign.To>
           <OutArgument x:TypeArguments="s:String[]">[NombreArchivoReciente]</OutArgument>
         </Assign.To>
@@ -224,7 +242,7 @@
           <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(in_Config("Temporal").ToString, "*" &amp; in_UnidadNegocio.ToLower &amp; "*.xlsx").Select(Function(archivo) Path.GetFileName(archivo)).ToArray()]</InArgument>
         </Assign.Value>
       </Assign>
-      <If sap2010:Annotation.AnnotationText="Si por alguna razón el archivo reciente no se copio a Temporal o cualquier otra anomalia aquí podemos detener el error." Condition="[Directory.GetFiles(in_Config(&quot;Temporal&quot;).ToString, &quot;*&quot; &amp; in_UnidadNegocio.ToLower &amp; &quot;*.xlsx&quot;).Any()]" DisplayName="DETERMINA SI EL ARCHIVO MAS RECIENTE EXISTE EN TEMPORAL" sap:VirtualizedContainerService.HintSize="526,1083.3333333333333" sap2010:WorkflowViewState.IdRef="If_7">
+      <If sap2010:Annotation.AnnotationText="Si por alguna razón el archivo reciente no se copio a Temporal o cualquier otra anomalia aquí podemos detener el error." Condition="[Directory.GetFiles(in_Config(&quot;Temporal&quot;).ToString, &quot;*&quot; &amp; in_UnidadNegocio.ToLower &amp; &quot;*.xlsx&quot;).Any()]" DisplayName="DETERMINA SI EL ARCHIVO MAS RECIENTE EXISTE EN TEMPORAL" sap:VirtualizedContainerService.HintSize="1108,6464" sap2010:WorkflowViewState.IdRef="If_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -233,19 +251,20 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="492,622" sap2010:WorkflowViewState.IdRef="Sequence_21">
+          <Sequence sap:VirtualizedContainerService.HintSize="1074,6017.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="CONVERTIR ARCHIVO EXCEL A DATATABLE" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <Sequence DisplayName="CONVERTIR ARCHIVO EXCEL A DATA TABLE PARA INFORMACION MENSUAL" sap:VirtualizedContainerService.HintSize="1032,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_23">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="DEV: CONVERTIR ARCHIVO A DATATABLE" sap:VirtualizedContainerService.HintSize="586,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Generando DT para &quot; + in_UnidadNegocio.ToLower + &quot;...&quot;]" />
               <ui:ReadRange AddHeaders="False" sap2010:Annotation.AnnotationText="Necesitamos leerlo por primera vez sin headers, ya que cuenta con columnas cuyo nombre es repetido, se lee sin headers, posterior a ello se itera y de ahí nombramos." DataTable="[dt_DataEncuestas]" DisplayName="LEER ARCHIVO EXCEL DESCARGADO" sap:VirtualizedContainerService.HintSize="586,166.66666666666666" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A4" SheetName="Sheet0" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString + NombreArchivoReciente(0)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -373,15 +392,164 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="Aquí comenzamos a ordenar la información en un nuevo DT acorde a el orden indicado por el funcional." DisplayName="ORDENAR DATATABLE Y ENVIAR A GOOGLE SHEET" sap:VirtualizedContainerService.HintSize="450,130" sap2010:WorkflowViewState.IdRef="Sequence_167">
+            <Sequence DisplayName="CONVERTIR ARCHIVO EXCEL A DATA TABLE PARA INFORMACION METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="1032,404.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_210">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadRange AddHeaders="True" DataTable="[dt_MetricasGlobales]" DisplayName="LEER ARCHIVO EXCEL METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="502.6666666666667,88" sap2010:WorkflowViewState.IdRef="ReadRange_6" Range="A5:I16" SheetName="Sheet0" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString + &quot;ExpressReport_&quot; + in_UnidadNegocio.ToLower + &quot;.xlsx&quot;]" />
+              <If sap2010:Annotation.AnnotationText="Se requiere recabar diariamente métricas globales provenientes de distintas áreas y actualizar la información correspondiente en el sheet mensual." Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO PARA CONSTRUCCION DE METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="502.6666666666667,166" sap2010:WorkflowViewState.IdRef="If_23">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="476,1234" sap2010:WorkflowViewState.IdRef="Sequence_178">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="ASIGNAR LISTA Y ORDEN DE METRICAS GLOBALES DE OTRAS AREAS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_124">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="scg:List(x:String)">[ListaMetricaGlobal]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="scg:List(x:String)">[new List(Of String) From {"SPA", "Ventas", "Diseño de Interiores", "Alimentos y Bebidas", "Ventas a Distancia", "Mesa de Regalos", "Click &amp; Collect", "Crédito", "Seguros", "Sastrería", "BX", "Dulceria"}]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap2010:Annotation.AnnotationText="Este bloque &quot;reescribe&quot; dt_MetricasGlobales tomando una lista de áreas (ListaMetricaGlobal). Si el área ya cuenta con información previa en dt_MetricasGlobales, se recuperan los datos recabados, en caso contrario, se inicializan los valores en 0 ya que por defecto no vienen en 0, vienen vacíos." DisplayName="ORDENAR VALORES DE DATA TABLE DE METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="434,181.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_125">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataTable">[dt_MetricasGlobales]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From nombre In ListaMetricaGlobal
+Let indice = ListaMetricaGlobal.IndexOf(nombre) + 1
+Let filaExistente = dt_MetricasGlobales.AsEnumerable().FirstOrDefault(Function(r) r("Área descripción").ToString.Trim.Equals(nombre))
+Select dt_MetricasGlobales.Clone().Rows.Add(
+    indice, 
+    nombre, 
+    If(filaExistente IsNot Nothing, filaExistente("n.º de registros"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("NPS Global"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("EDS/TNP SECCION/TIENDA EXPERIENCIA"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("EDS/TNP ASESOR/VENDEDOR SERVICIO"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("CSAT AMABILIDAD"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("CSAT ATENCIÓN OPORTUNA"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("CSAT CAPACITACION"), 0)
+)).CopyToDataTable()]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <ui:BuildDataTable DataTable="[dt_MetricasOrdenadas]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;EV&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_EXP&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_MetricasGlobales]" DisplayName="RECORRER dt_DataEncuestas PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="434,468.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,278.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_180">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;Row(&quot;n.º de registros&quot;),&#xA;If(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;) IsNot Nothing, Math.Round(Convert.ToDouble(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;)), 2), 0),&#xA;If(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;) IsNot Nothing, Math.Round(Convert.ToDouble(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;)), 2), 0),&#xA;If(Row(&quot;NPS Global&quot;) IsNot Nothing, Math.Round(Convert.ToDouble(Row(&quot;NPS Global&quot;)), 2), 0)&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="334,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ForEachRow>
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;&quot;=SUM(C15:C26)&quot;,&#xA;in_UNServicio,&#xA;in_UNExperiencia,&#xA;in_UNNps&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="476,724" sap2010:WorkflowViewState.IdRef="Sequence_179">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_130">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="scg:List(x:String)">[ListaMetricaGlobal]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String) From {"Kioskos", "Apartamás", "Crédito", "Ventas", "Seguros", "Sastrería", "Ventas a Distancia", "Click &amp; Collect"}]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_131">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataTable">[dt_MetricasGlobales]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From nombre In ListaMetricaGlobal
+Let indice = ListaMetricaGlobal.IndexOf(nombre) + 1
+Let filaExistente = dt_MetricasGlobales.AsEnumerable().FirstOrDefault(Function(r) r("Área descripción").ToString.Trim.Equals(nombre))
+Select dt_MetricasGlobales.Clone().Rows.Add(
+    indice, 
+    nombre, 
+    If(filaExistente IsNot Nothing, filaExistente("n.º de registros"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("NPS Global"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("EDS/TNP SECCION/TIENDA EXPERIENCIA"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("EDS/TNP ASESOR/VENDEDOR SERVICIO"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("CSAT AMABILIDAD"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("CSAT ATENCIÓN OPORTUNA"), 0),
+    If(filaExistente IsNot Nothing, filaExistente("CSAT CAPACITACION"), 0)
+)).CopyToDataTable()]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:BuildDataTable DataTable="[dt_MetricasOrdenadas]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_9" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;EV&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_EXP&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_MetricasGlobales]" DisplayName="RECORRER dt_DataEncuestas PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,278.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_187">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;Row(&quot;n.º de registros&quot;),&#xA;If(Not String.IsNullOrWhiteSpace(Convert.ToString(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;))), Math.Round(Convert.ToDouble(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;)), 2), 0),&#xA;If(Not String.IsNullOrWhiteSpace(Convert.ToString(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;))), Math.Round(Convert.ToDouble(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;)), 2), 0),&#xA;If(Not String.IsNullOrWhiteSpace(Convert.ToString(Row(&quot;NPS Global&quot;))), Math.Round(Convert.ToDouble(Row(&quot;NPS Global&quot;)), 2), 0)&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="334,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_6" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ForEachRow>
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;&quot;=SUM(C13:C20)&quot;,&#xA;in_UNServicio,&#xA;in_UNExperiencia,&#xA;in_UNNps&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_7" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Aquí comenzamos a ordenar la información en un nuevo DT acorde a el orden indicado por el funcional." DisplayName="ORDENAR DATATABLE Y ENVIAR A GOOGLE SHEET" sap:VirtualizedContainerService.HintSize="1032,4385.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_167">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="ASIGNAR FECHA CORTE INICIO" sap:VirtualizedContainerService.HintSize="800,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_119">
+              <Assign DisplayName="ASIGNAR FECHA CORTE INICIO" sap:VirtualizedContainerService.HintSize="952,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_134">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:DateTime">[InicioRango]</OutArgument>
                 </Assign.To>
@@ -389,7 +557,7 @@
                   <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.Date.AddDays(-1)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign DisplayName="ASIGNAR FECHA CORTE FIN" sap:VirtualizedContainerService.HintSize="800,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_121">
+              <Assign DisplayName="ASIGNAR FECHA CORTE FIN" sap:VirtualizedContainerService.HintSize="952,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_135">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:DateTime">[FinRango]</OutArgument>
                 </Assign.To>
@@ -397,7 +565,7 @@
                   <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.Date.AddSeconds(-1)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="FILTRAR DATOS POR RANGO INICIO Y FIN" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="800,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_16" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="FILTRAR DATOS POR RANGO INICIO Y FIN" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="952,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_16" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
                 <ui:FilterDataTable.Filters>
                   <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                     <ui:FilterOperationArgument BooleanOperator="And" Operator="GTE">
@@ -430,8 +598,8 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:FilterDataTable>
-              <ui:SortDataTable ColumnIndex="{x:Null}" ColumnName="{x:Null}" DataColumn="[dt_DataEncuestas.Columns(&quot;Fecha de respuesta&quot;)]" DataTable="[dt_DataEncuestas]" DisplayName="ORDENAR DATATABLE POR FECHA ASCENDENTE" sap:VirtualizedContainerService.HintSize="800,82" sap2010:WorkflowViewState.IdRef="SortDataTable_3" Order="Ascending" OutputDataTable="[dt_DataEncuestas]" SortOrder="Ascending" />
-              <If sap2010:Annotation.AnnotationText="Se necesita armar el DataTable de forma diferente para cada unidad de negocio, según el orden de columnas y datos que necesite cada una." Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO PARA CONSTRUIR DATATABLE" sap:VirtualizedContainerService.HintSize="800,1871.3333333333333" sap2010:WorkflowViewState.IdRef="If_20">
+              <ui:SortDataTable ColumnIndex="{x:Null}" ColumnName="{x:Null}" DataColumn="[dt_DataEncuestas.Columns(&quot;Fecha de respuesta&quot;)]" DataTable="[dt_DataEncuestas]" DisplayName="ORDENAR DATATABLE POR FECHA ASCENDENTE" sap:VirtualizedContainerService.HintSize="952,82" sap2010:WorkflowViewState.IdRef="SortDataTable_3" Order="Ascending" OutputDataTable="[dt_DataEncuestas]" SortOrder="Ascending" />
+              <If sap2010:Annotation.AnnotationText="Se necesita armar el DataTable de forma diferente para cada unidad de negocio, según el orden de columnas y datos que necesite cada una." Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO PARA CONSTRUIR DATATABLE" sap:VirtualizedContainerService.HintSize="952,3667.3333333333335" sap2010:WorkflowViewState.IdRef="If_20">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -440,26 +608,26 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="766,1656.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_139">
+                  <Sequence sap:VirtualizedContainerService.HintSize="918,2376" sap2010:WorkflowViewState.IdRef="Sequence_139">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:BuildDataTable DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="CONSTRUIR DATATABLE FORMATEADO LIVERPOOL" sap:VirtualizedContainerService.HintSize="724,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_6" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_de_x0020_Encuesta&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_de_x0020_respuesta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Cliente&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Clave_x0020_Vendedor&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ZONA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Numero_x0020_de_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Clave_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NOMBRE_CTE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;AREA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica_x0020_descripción&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SECCION_x002F_TIENDA_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ASESOR_x002F_VENDEDOR_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Encontró_x0020_el_x0020_artículo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Producto_x0020_no_x0020_encontrado&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Realizar_x0020_compra&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_BUSQUEDA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_CHECKOUT&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_TIEMPO_x0020_ATENCION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CAPACITACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_AMABILIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VARIEDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VALOR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CALIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_LIMPIEZA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ORDEN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Comentario_x0020_adicional&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cliente_x0020_quiere_x0020_ser_x0020_contactado&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0033_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0034_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0035_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0036_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0037_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0038_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0039_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_0&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_3&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_5&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_6&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DataEncuestas]" DisplayName="RECORRER dt_DataEncuestas PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="724,1469.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <ui:BuildDataTable DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="CONSTRUIR DATATABLE FORMATEADO LIVERPOOL" sap:VirtualizedContainerService.HintSize="876,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_6" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_de_x0020_Encuesta&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_de_x0020_respuesta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Cliente&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Clave_x0020_Vendedor&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ZONA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Numero_x0020_de_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Clave_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NOMBRE_CTE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;AREA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica_x0020_descripción&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SECCION_x002F_TIENDA_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ASESOR_x002F_VENDEDOR_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Encontró_x0020_el_x0020_artículo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Producto_x0020_no_x0020_encontrado&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Realizar_x0020_compra&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_BUSQUEDA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_CHECKOUT&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_TIEMPO_x0020_ATENCION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CAPACITACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_AMABILIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VARIEDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VALOR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CALIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_LIMPIEZA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ORDEN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Comentario_x0020_adicional&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cliente_x0020_quiere_x0020_ser_x0020_contactado&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0033_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0034_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0035_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0036_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0037_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0038_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0039_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_0&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_3&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_5&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_6&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_7&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_8&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_9&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_0&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_3&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_5&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_6&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_7&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_8&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DataEncuestas]" DisplayName="RECORRER dt_DataEncuestas PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="876,2188.6666666666665" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="690,1279.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="842,1998.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_104">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="Con base en el catálogo proporcionado por el funcional, se determina la zona correspondiente a cada tienda a partir de su número de ID." DisplayName="AGREGAR ZONA POR NUMERO DE TIENDA" sap:VirtualizedContainerService.HintSize="648,960.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_111">
+                            <Sequence sap2010:Annotation.AnnotationText="Con base en los catálogos proporcionados por el funcional, se determina la zona y gerentes de zona correspondientes a cada tienda a partir de datos que hagan match." DisplayName="AGREGAR VALORES DE CATALOGOS POR CADA REGISTRO" sap:VirtualizedContainerService.HintSize="800,1680" sap2010:WorkflowViewState.IdRef="Sequence_111">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -467,7 +635,7 @@
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap2010:Annotation.AnnotationText="Asignar, para cada fila procesada durante la iteración, el valor correspondiente a la clave de tienda." DisplayName="ASIGNAR NUMERO DE TIENDA" sap:VirtualizedContainerService.HintSize="586,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_95">
+                              <Assign sap2010:Annotation.AnnotationText="Asignar, para cada fila procesada durante la iteración, el valor correspondiente a la clave de tienda." DisplayName="ASIGNAR NUMERO DE TIENDA" sap:VirtualizedContainerService.HintSize="738,130.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_95">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:Int32">[NumeroDeTienda]</OutArgument>
                                 </Assign.To>
@@ -480,19 +648,19 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS DE dt_ZonasTienda PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="586,634" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS DE DT_ZONASTIENDA PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="738,1353.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                     </ActivityAction.Argument>
-                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,444" sap2010:WorkflowViewState.IdRef="Sequence_113">
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="704,1163.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_113">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <If Condition="[CInt(CurrentRow(&quot;ID&quot;)) = Cint(NumeroDeTienda)]" DisplayName="DETERMINAR SI EL ELEMENTO QUE SE ITERA ES IGUAL AL ROW DE dt_Encuestas" sap:VirtualizedContainerService.HintSize="510,356.6666666666667" sap2010:WorkflowViewState.IdRef="If_14">
+                                      <If Condition="[CInt(CurrentRow(&quot;ID&quot;)) = Cint(NumeroDeTienda)]" DisplayName="DETERMINAR SI EL ELEMENTO QUE SE ITERA ES IGUAL AL ROW DE DT_ENCUESTAS" sap:VirtualizedContainerService.HintSize="662,1076" sap2010:WorkflowViewState.IdRef="If_14">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -500,13 +668,13 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                         <If.Then>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_114">
+                                          <Sequence sap:VirtualizedContainerService.HintSize="628,892" sap2010:WorkflowViewState.IdRef="Sequence_114">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <Assign DisplayName="ASIGNAR LA ZONA PERTENECIENTE A LA TIENDA PARA AGREGAR EN DT" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_97">
+                                            <Assign DisplayName="ASIGNAR LA ZONA PERTENECIENTE A LA TIENDA PARA AGREGAR EN DT" sap:VirtualizedContainerService.HintSize="586,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_97">
                                               <Assign.To>
                                                 <OutArgument x:TypeArguments="x:String">[ZonaTienda]</OutArgument>
                                               </Assign.To>
@@ -514,6 +682,49 @@
                                                 <InArgument x:TypeArguments="x:String">[CurrentRow("ZONA").ToString]</InArgument>
                                               </Assign.Value>
                                             </Assign>
+                                            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_GerentesZonaTienda]" DisplayName="RECORRER FILAS DE DT_GERENTESZONATIENDA PARA ENCONTRAR NOMBRE GERENTE ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="586,679.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_13">
+                                              <ui:ForEachRow.Body>
+                                                <ActivityAction x:TypeArguments="sd:DataRow">
+                                                  <ActivityAction.Argument>
+                                                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Regional" />
+                                                  </ActivityAction.Argument>
+                                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,489.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_208">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <If sap2010:Annotation.AnnotationText="A partir del registro que tenga &quot;Zona&quot; se buscara el gerente que coincida con el valor de zona que contenga el mismo row perteneciente a el." Condition="[ZonaTienda.Equals(Regional(&quot;Zona&quot;).ToString)]" DisplayName="DETERMINAR SI ZONA ITERADA HACE MATCH CON LA ZONA DEL GERENTE ZONA REGIONAL" sap:VirtualizedContainerService.HintSize="510,402" sap2010:WorkflowViewState.IdRef="If_28">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <If.Then>
+                                                        <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_206">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <Assign DisplayName="ASIGNAR LA ZONA PERTENECIENTE A LA TIENDA PARA AGREGAR EN DT" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_142">
+                                                            <Assign.To>
+                                                              <OutArgument x:TypeArguments="x:String">[GerenteRegional]</OutArgument>
+                                                            </Assign.To>
+                                                            <Assign.Value>
+                                                              <InArgument x:TypeArguments="x:String">[Regional("Nombre").ToString]</InArgument>
+                                                            </Assign.Value>
+                                                          </Assign>
+                                                        </Sequence>
+                                                      </If.Then>
+                                                      <If.Else>
+                                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_207" />
+                                                      </If.Else>
+                                                    </If>
+                                                  </Sequence>
+                                                </ActivityAction>
+                                              </ui:ForEachRow.Body>
+                                            </ui:ForEachRow>
                                           </Sequence>
                                         </If.Then>
                                         <If.Else>
@@ -537,7 +748,7 @@
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:ForEachRow>
                             </Sequence>
-                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;Row(&quot;ID de Encuesta&quot;),&#xA;DateTime.Parse(Row(&quot;Fecha de respuesta&quot;).ToString).ToString(&quot;dd/MM/yyyy HH:mm&quot;),&#xA;Row(&quot;ID Cliente&quot;),&#xA;Row(&quot;Vendedor&quot;),&#xA;ZonaTienda,&#xA;Row(&quot;Clave Tienda&quot;),&#xA;Row(&quot;Nombre del Asesor&quot;),&#xA;Row(&quot;Nombre Tienda de compra&quot;),&#xA;Row(&quot;Nombre del cliente&quot;).ToString + &quot; &quot; + Row(&quot;Apellido paterno&quot;).ToString,&#xA;Row(&quot;Área de visita&quot;),&#xA;If(Row.IsNull(&quot;Práctica&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica&quot;).ToString),&#xA;If(Row.IsNull(&quot;Práctica descripción&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica descripción&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica descripción&quot;).ToString),&#xA;Row(&quot;La encuesta tiene una alerta&quot;),&#xA;Row(&quot;NPS Tienda&quot;),&#xA;Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;),&#xA;Row(&quot;CSAT SERVICIO&quot;),&#xA;Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;),&#xA;&quot;&quot;,&#xA;Row(&quot;Encontró el artículo&quot;),&#xA;Row(&quot;Producto no encontrado&quot;),&#xA;&quot;&quot;,&#xA;Row(&quot;CES BUSQUEDA&quot;),&#xA;Row(&quot;CES CHECKOUT&quot;),&#xA;Row(&quot;CSAT TIEMPO ATENCION&quot;),&#xA;Row(&quot;CSAT CAPACITACION&quot;),&#xA;Row(&quot;CSAT AMABILIDAD&quot;),&#xA;Row(&quot;CSAT VARIEDAD&quot;),&#xA;Row(&quot;CSAT VALOR&quot;),&#xA;Row(&quot;CSAT CALIDAD&quot;),&#xA;Row(&quot;CSAT LIMPIEZA&quot;),&#xA;Row(&quot;CSAT ORDEN&quot;),&#xA;Row(&quot;Comentario adicional&quot;),&#xA;Row(&quot;Solicitud de contacto&quot;),&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)&#xA;}]" DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="648,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;Row(&quot;ID de Encuesta&quot;),&#xA;DateTime.Parse(Row(&quot;Fecha de respuesta&quot;).ToString).ToString(&quot;dd/MM/yyyy HH:mm&quot;),&#xA;Row(&quot;ID Cliente&quot;),&#xA;Row(&quot;Vendedor&quot;),&#xA;ZonaTienda,&#xA;Row(&quot;Clave Tienda&quot;),&#xA;Row(&quot;Nombre del Asesor&quot;),&#xA;Row(&quot;Nombre Tienda de compra&quot;),&#xA;Row(&quot;Nombre del cliente&quot;).ToString + &quot; &quot; + Row(&quot;Apellido paterno&quot;).ToString,&#xA;Row(&quot;Área de visita&quot;),&#xA;If(Row.IsNull(&quot;Práctica&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica&quot;).ToString),&#xA;If(Row.IsNull(&quot;Práctica descripción&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica descripción&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica descripción&quot;).ToString),&#xA;Row(&quot;La encuesta tiene una alerta&quot;),&#xA;Row(&quot;NPS Tienda&quot;),&#xA;Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;),&#xA;Row(&quot;CSAT SERVICIO&quot;),&#xA;Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;),&#xA;&quot;&quot;,&#xA;Row(&quot;Encontró el artículo&quot;),&#xA;Row(&quot;Producto no encontrado&quot;),&#xA;&quot;&quot;,&#xA;Row(&quot;CES BUSQUEDA&quot;),&#xA;Row(&quot;CES CHECKOUT&quot;),&#xA;Row(&quot;CSAT TIEMPO ATENCION&quot;),&#xA;Row(&quot;CSAT CAPACITACION&quot;),&#xA;Row(&quot;CSAT AMABILIDAD&quot;),&#xA;Row(&quot;CSAT VARIEDAD&quot;),&#xA;Row(&quot;CSAT VALOR&quot;),&#xA;Row(&quot;CSAT CALIDAD&quot;),&#xA;Row(&quot;CSAT LIMPIEZA&quot;),&#xA;Row(&quot;CSAT ORDEN&quot;),&#xA;Row(&quot;Comentario adicional&quot;),&#xA;Row(&quot;Solicitud de contacto&quot;),&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;),&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;GerenteRegional&#xA;}]" DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="800,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                           </Sequence>
                         </ActivityAction>
                       </ui:ForEachRow.Body>
@@ -551,26 +762,26 @@
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence sap:VirtualizedContainerService.HintSize="766,1608.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_140">
+                  <Sequence sap:VirtualizedContainerService.HintSize="614,1076.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_140">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:BuildDataTable DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="CONSTRUIR DATATABLE FORMATEADO SUBURBIA" sap:VirtualizedContainerService.HintSize="724,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_5" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_de_x0020_Encuesta&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_de_x0020_respuesta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;MES&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Cliente&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Clave_x0020_Vendedor_x0020_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Zona&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Numero_x0020_de_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NOMBRE_CTE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;AREA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica_x0020_descripción&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SECCION_x002F_TIENDA_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ASESOR_x002F_VENDEDOR_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EXP_x0020_QR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SER_x0020_QR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Realizar_x0020_compra&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_BUSQUEDA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_CHECKOUT&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_TIEMPO_x0020_ATENCION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CAPACITACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_AMABILIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VARIEDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VALOR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CALIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_LIMPIEZA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ORDEN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Comentario_x0020_adicional&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PRACTICA_x0020_-_x0020_AQUE_x0020_SERV_x0020_CORRESPONDE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;No_x0020_Siniestro&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Campaña&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;AREA_x0020_RESPONSABLE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ETIQUETA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Análisis_x0020_Gte_x0020_Promass&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SEGUIMIENTO_x0020__x002F__x0020_SOLUCION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Actividad_x0020_corrección_x0020_y_x0020_prevención&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;FECHA_x0020_ACTIVIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Solucion_x0020_y_x0020_cierre_x0020_de_x0020_la_x0020_Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;DIAGNOTICO-PRACTICA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Marca_x0020_EDS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Marca_x0020_Atención_x0020_OFS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Marca_x0020_Limpieza_x0020_y_x0020_Ord&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Nivel_x0020_de_x0020_Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;FECHA_x0020_DE_x0020_CARGA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0033_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0034_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0035_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0036_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0037_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0038_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0039_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_0&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_3&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_5&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_6&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_7&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_8&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DataEncuestas]" DisplayName="RECORRER DATA TABLE PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="724,1025.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                    <ui:BuildDataTable DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="CONSTRUIR DATATABLE FORMATEADO SUBURBIA" sap:VirtualizedContainerService.HintSize="572,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_5" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_de_x0020_Encuesta&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_de_x0020_respuesta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;MES&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Cliente&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Clave_x0020_Vendedor_x0020_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Zona&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Numero_x0020_de_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NOMBRE_CTE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;AREA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica_x0020_descripción&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SECCION_x002F_TIENDA_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ASESOR_x002F_VENDEDOR_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EXP_x0020_QR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SER_x0020_QR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Realizar_x0020_compra&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_BUSQUEDA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_CHECKOUT&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_TIEMPO_x0020_ATENCION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CAPACITACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_AMABILIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VARIEDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VALOR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CALIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_LIMPIEZA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ORDEN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Comentario_x0020_adicional&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PRACTICA_x0020_-_x0020_AQUE_x0020_SERV_x0020_CORRESPONDE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;No_x0020_Siniestro&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Campaña&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;AREA_x0020_RESPONSABLE&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ETIQUETA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Análisis_x0020_Gte_x0020_Promass&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SEGUIMIENTO_x0020__x002F__x0020_SOLUCION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Actividad_x0020_corrección_x0020_y_x0020_prevención&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;FECHA_x0020_ACTIVIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Solucion_x0020_y_x0020_cierre_x0020_de_x0020_la_x0020_Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;DIAGNOTICO-PRACTICA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Marca_x0020_EDS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Marca_x0020_Atención_x0020_OFS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Marca_x0020_Limpieza_x0020_y_x0020_Ord&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Nivel_x0020_de_x0020_Alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;FECHA_x0020_DE_x0020_CARGA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0032_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0033_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0034_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0035_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0036_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0037_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0038_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0039_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_0&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_3&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_5&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_6&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_7&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0031_8&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DataEncuestas]" DisplayName="RECORRER DATA TABLE PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="572,889.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538,835.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_145">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538,699.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_145">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="Con base en el catálogo proporcionado por el funcional, se determina la zona correspondiente a cada tienda a partir de su número de ID." DisplayName="AGREGAR ZONA POR NUMERO DE TIENDA" sap:VirtualizedContainerService.HintSize="496,516.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_144">
+                            <Sequence sap2010:Annotation.AnnotationText="Con base en el catálogo proporcionado por el funcional, se determina la zona correspondiente a cada tienda a partir de su número de ID." DisplayName="AGREGAR ZONA POR NUMERO DE TIENDA" sap:VirtualizedContainerService.HintSize="496,380.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_144">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -591,7 +802,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>
@@ -636,7 +847,7 @@
                                 </ui:ForEachRow.Body>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -657,20 +868,13 @@
                 </If.Else>
               </If>
             </Sequence>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SUBIR ARCHIVOS A GOOGLE SHEETS" sap:VirtualizedContainerService.HintSize="450,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Modulos\CargaDatosGS.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_UnidadNegocio">[in_UnidadNegocio]</InArgument>
-                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_InformacionSemanal">[dt_InfoEncuestasFormateadas]</InArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <Sequence DisplayName="ELIMINAR ARCHIVOS DE CAREPTA TEMPORAL" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_175">
+            <Sequence DisplayName="ELIMINAR ARCHIVOS DE CAREPTA TEMPORAL" sap:VirtualizedContainerService.HintSize="1032,780" sap2010:WorkflowViewState.IdRef="Sequence_209">
               <Sequence.Variables>
                 <Variable x:TypeArguments="s:String[]" Name="ListaArchivosTemp" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -701,6 +905,14 @@
                 </ui:ForEach.Body>
               </ui:ForEach>
             </Sequence>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CargaDatosGS.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="710,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Modulos\SubirDatosGoogleSheet.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_UnidadNegocio">[in_UnidadNegocio]</InArgument>
+                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_InformacionSemanal">[dt_InfoEncuestasFormateadas]</InArgument>
+                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MetricasGlobales">[dt_MetricasOrdenadas]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
           </Sequence>
         </If.Then>
         <If.Else>

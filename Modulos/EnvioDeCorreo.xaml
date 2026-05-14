@@ -3,11 +3,13 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_UnidadNegocio" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_InformacionMensual" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_idReporteMensual" Type="InArgument(x:String)" />
+    <x:Property Name="in_GidHoja" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>857.3333333333334,2034</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>874.6666666666666,3494</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EvaluarRespuesta_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -109,9 +111,11 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Recibimos un datatable y lo vamos a convertir en un csv" DisplayName="EVALUAR RESPUESTA" sap:VirtualizedContainerService.HintSize="634,1969.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Recibimos un datatable y lo vamos a convertir en un csv" DisplayName="EVALUAR RESPUESTA" sap:VirtualizedContainerService.HintSize="884.6666666666666,3429.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_HTML_TABLE" />
       <Variable x:TypeArguments="x:String" Name="str_HTML">
@@ -129,82 +133,101 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="FILTRAR DATOS POR REGISTROS QUE NECESITEN ENVIO" sap:VirtualizedContainerService.HintSize="572,86" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="sd:DataTable">[in_dt_InformacionMensual]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_dt_InformacionMensual.AsEnumerable().
+    <ui:LogMessage DisplayName="DEV: ENTRANDO MODULOS A ENVIAR CORREOS" sap:VirtualizedContainerService.HintSize="822.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviando correos de alertas para: &quot; + in_UnidadNegocio + &quot;...&quot;]" />
+    <If Condition="[in_dt_InformacionMensual.RowCount &gt;= 1]" DisplayName="DETERMINAR SI HAY ENVIOS PENDIENTES DE IN_DT_INFORMACIONMENSUAL" sap:VirtualizedContainerService.HintSize="822.6666666666666,3103.3333333333335" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="788.6666666666666,2687.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="FILTRAR DATOS POR REGISTROS QUE NECESITEN ENVIO (SI UNO O MAS DE UNO)" sap:VirtualizedContainerService.HintSize="746.6666666666666,86" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[in_dt_InformacionMensual]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_dt_InformacionMensual.AsEnumerable().
 Where(Function(row) row("Control Detonar?").ToString.Trim &lt;&gt; "No").
 CopyToDataTable()]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Sequence DisplayName="ENVIAR CORREO" sap:VirtualizedContainerService.HintSize="572,1702" sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Cred_RPA&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential Cred RPA" sap:VirtualizedContainerService.HintSize="510,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[psw]" Username="[usr]">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:GetRobotCredential>
-      <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Convertir SecureString a String&#xA;Dim plainText As String = New System.Net.NetworkCredential(&quot;&quot;, ssPassword).Password&#xA;&#xA;' Convertir a Base64&#xA;base64Password  = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(plainText))&#xA;" DisplayName="CONVERTIR CONTRASEÑA A BASE64" sap:VirtualizedContainerService.HintSize="510,165.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
-        <ui:InvokeCode.Arguments>
-          <InArgument x:TypeArguments="ss:SecureString" x:Key="ssPassword">[psw]</InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="base64Password ">[str_SecureString]</OutArgument>
-        </ui:InvokeCode.Arguments>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:InvokeCode>
-      <ui:ReadTextFile File="{x:Null}" Content="[str_HTML]" DisplayName="LEER HTML" FileName="[in_Config(&quot;Formatos&quot;).ToString+&quot;Plantilla\PlantillaCorreo.html&quot;]" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:ReadTextFile>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_InformacionMensual]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,894.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-        <ui:ForEachRow.Body>
-          <ActivityAction x:TypeArguments="sd:DataRow">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Encuesta" />
-            </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,704.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_8">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="x:String" Name="HtmlIterado" />
-                <Variable x:TypeArguments="x:String" Name="Destinatarios" />
-                <Variable x:TypeArguments="x:String" Name="Asunto" />
-                <Variable x:TypeArguments="x:String" Name="AsuntoCorreo" />
-              </Sequence.Variables>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="DEV: CONTABILIZAR CUANTOS CORREOS SE ENVIARAN POR DIA" sap:VirtualizedContainerService.HintSize="746.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Correos por envíar el dia de hoy: &quot;+ in_dt_InformacionMensual.Rows.Count.ToString]" />
+          <Sequence DisplayName="ENVIAR CORREO" sap:VirtualizedContainerService.HintSize="746.6666666666666,2289.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_22">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Cred_RPA&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential Cred RPA" sap:VirtualizedContainerService.HintSize="684.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[psw]" Username="[usr]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="ASIGNAR ASUNTO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[AsuntoCorreo]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[Encuesta("Asunto").ToString]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign DisplayName="ASIGNAR  CUERPO HTML" sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_4">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[HtmlIterado]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String" xml:space="preserve">[str_HTML.Replace("[Responsable]", Encuesta("Nombre Gerente Zona").ToString) _
+            </ui:GetRobotCredential>
+            <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Convertir SecureString a String&#xA;Dim plainText As String = New System.Net.NetworkCredential(&quot;&quot;, ssPassword).Password&#xA;&#xA;' Convertir a Base64&#xA;base64Password  = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(plainText))&#xA;" DisplayName="CONVERTIR CONTRASEÑA A BASE64" sap:VirtualizedContainerService.HintSize="684.6666666666666,165.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+              <ui:InvokeCode.Arguments>
+                <InArgument x:TypeArguments="ss:SecureString" x:Key="ssPassword">[psw]</InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="base64Password ">[str_SecureString]</OutArgument>
+              </ui:InvokeCode.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeCode>
+            <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO PARA ENVIO DE CORREOS" sap:VirtualizedContainerService.HintSize="684.6666666666666,1788.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="650.6666666666666,1604.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ReadTextFile File="{x:Null}" Content="[str_HTML]" DisplayName="LEER HTML" FileName="Archivos\FORMATOS\Plantilla\PlantillaCorreo.html" sap:VirtualizedContainerService.HintSize="608.6666666666666,82" sap2010:WorkflowViewState.IdRef="ReadTextFile_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ReadTextFile>
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_InformacionMensual]" DisplayName="RECORRER CADA ROW PARA FORMATEO DE CORREO" sap:VirtualizedContainerService.HintSize="608.6666666666666,1210.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Encuesta" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="574.6666666666666,1020.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="HtmlIterado" />
+                            <Variable x:TypeArguments="x:String" Name="Destinatarios" />
+                            <Variable x:TypeArguments="x:String" Name="Asunto" />
+                            <Variable x:TypeArguments="x:String" Name="AsuntoCorreo" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="ASIGNAR ASUNTO" sap:VirtualizedContainerService.HintSize="532.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_13">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[AsuntoCorreo]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[Encuesta("Asunto").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="ASIGNAR  CUERPO HTML" sap:VirtualizedContainerService.HintSize="532.6666666666666,86" sap2010:WorkflowViewState.IdRef="Assign_14">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[HtmlIterado]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String" xml:space="preserve">[str_HTML.Replace("[Responsable]", Encuesta("Nombre Gerente Zona").ToString) _
 .Replace("[Cliente]", Encuesta("NOMBRE_CTE").ToString) _
 .Replace("[Numero Sucursal]", Encuesta("Numero de Tienda").ToString) _
 .Replace("[Sucursal]", Encuesta("Tienda").ToString.Replace("Liverpool", "").Trim) _
@@ -223,59 +246,97 @@ CopyToDataTable()]</InArgument>
 .Replace("[Amabilidad]", Encuesta("CSAT AMABILIDAD").ToString) _
 .Replace("[Limpieza]", Encuesta("CSAT LIMPIEZA").ToString) _
 .Replace("[Orden]", Encuesta("CSAT ORDEN").ToString) _
-.Replace("[LINK]", Encuesta("link").ToString)]</InArgument>
-                </Assign.Value>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_6">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">cricardov@liverpool.com.mx</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Modulos\Invoke_Python.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Modulos\Invoke_Python.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                    <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="Ruta_Script">
-                    <Literal x:TypeArguments="x:String">Archivos\CONFIGURACION\EmailTNP.py</Literal>
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="Invoke_Method">
-                    <Literal x:TypeArguments="x:String">EmailHTML</Literal>
-                  </InArgument>
-                  <OutArgument x:TypeArguments="x:String" x:Key="Return_Python" />
-                  <InArgument x:TypeArguments="scg:IEnumerable(x:Object)" x:Key="Arguments_Python">
-                    <VisualBasicValue x:TypeArguments="scg:IEnumerable(x:Object)" ExpressionText="{}{usr,str_SecureString,Destinatarios,AsuntoCorreo,HtmlIterado,&quot;prueba@liverpool.com.mx&quot;}" />
-                  </InArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-              </ui:InvokeWorkflowFile>
-              <Assign DisplayName="ASIGNACION DE VALORES" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_5">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[HtmlIterado]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[str_HTML]</InArgument>
-                </Assign.Value>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Assign>
-            </Sequence>
-          </ActivityAction>
-        </ui:ForEachRow.Body>
-      </ui:ForEachRow>
-      <ui:LogMessage DisplayName="MENSAJE" sap:VirtualizedContainerService.HintSize="510,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;CORREO ENVIADO EXITOSAMENTE&quot;]" />
-    </Sequence>
+.Replace("[LINK]", Encuesta("link").ToString) _
+.Replace("[GID]", in_GidHoja) _
+.Replace("[ID_SHEET]", in_idReporteMensual)]</InArgument>
+                            </Assign.Value>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Assign>
+                          <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="532.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_19">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">["cricardov@liverpool.com.mx"]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532.6666666666666,276" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[Encuesta("Destinatario").ToString + ",cricardov@liverpool.com.mx"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                          </ui:CommentOut>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EJECUTAR ARCHIVO PYTHON PARA ENVIO DE CORREO" sap:VirtualizedContainerService.HintSize="532.6666666666666,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Modulos\Invoke_Python.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="Ruta_Script">Archivos\CONFIGURACION\EmailTNP.py</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="Invoke_Method">EmailHTML</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="Return_Python" />
+                              <InArgument x:TypeArguments="scg:IEnumerable(x:Object)" x:Key="Arguments_Python">[{usr,str_SecureString,Destinatarios,AsuntoCorreo,HtmlIterado,"prueba@liverpool.com.mx"}]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                          <Assign DisplayName="ASIGNACION DE VALORES" sap:VirtualizedContainerService.HintSize="532.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_17">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[HtmlIterado]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[str_HTML]</InArgument>
+                            </Assign.Value>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Assign>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEachRow>
+                  <ui:LogMessage DisplayName="DEV: ENVIO EXITOSO DE CORREOS" sap:VirtualizedContainerService.HintSize="608.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Correos para &quot;+in_UnidadNegocio.ToLower+&quot; enviados exitosamente...&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_21" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,232" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="DEV: NO HAY ENVIOS PENDIENTES DE CORREOS" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;El día de hoy no se dispararon alertas para: &quot;+in_UnidadNegocio.ToLower+&quot;...&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
