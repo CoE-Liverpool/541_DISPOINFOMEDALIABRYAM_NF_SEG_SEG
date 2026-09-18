@@ -1,0 +1,669 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FiltroCorreos" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dt_InformacionMensual" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="out_dt_InformacionAlertas" Type="OutArgument(sd:DataTable)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,9680.666666666666</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>FiltroCorreos_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>Google.Apis.Drive.v3.Data</x:String>
+      <x:String>Google.Apis.Requests</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>Google.Apis.Drive.v3</AssemblyReference>
+      <AssemblyReference>Google.Apis</AssemblyReference>
+      <AssemblyReference>Google.Apis.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Python.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Terminal</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="13/07/2026&#xA;Este módulo permite filtrar la información que será utilizada para el envío de correos, considerando las reglas definidas por funcional. Debido a la complejidad y cantidad de validaciones requeridas, este proceso se necesita realizar en UiPath." DisplayName="FILTRO CORREOS" sap:VirtualizedContainerService.HintSize="899.3333333333334,9616" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Alertas" />
+      <Variable x:TypeArguments="x:String" Name="MotivoCorreo" />
+      <Variable x:TypeArguments="x:Int64" Name="DiasDiferencia" />
+      <Variable x:TypeArguments="x:String" Name="Encabezado" />
+      <Variable x:TypeArguments="x:String" Name="AsuntoCorreo" />
+      <Variable x:TypeArguments="x:String" Name="Aviso" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_GerentesZona" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="DEV: ENTRANDO A FILTRANDO CORREOS" sap:VirtualizedContainerService.HintSize="837.3333333333334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Se inicia la validación y filtrado de registros para el envío de correos.&quot;]" />
+    <Assign DisplayName="ASIGNAR HEADERS A DATATABLE DE ALERTAS" sap:VirtualizedContainerService.HintSize="837.3333333333334,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[dt_Alertas]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[in_dt_InformacionMensual.Clone()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" sap2010:Annotation.AnnotationText="Este catálogo se obtiene mediante el módulo SubirDatosGoogleSheet, el cual realiza la consulta de diferentes catálogos y genera archivos temporales con la información recuperada. En este proceso, el catálogo es leído desde la carpeta Temporal." DataTable="[dt_GerentesZona]" DisplayName="LEER CATALOGO DE GERENTES DE ZONA" sap:VirtualizedContainerService.HintSize="837.3333333333334,183.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="Sheet1" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString + &quot;CatalogoGerentesZona.xlsx&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ReadRange>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_InformacionMensual]" DisplayName="RECORRER INFORMACION MENSUAL PARA DEPURAR REGISTROS CON ALERTA" sap:VirtualizedContainerService.HintSize="837.3333333333334,5473.333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Fila" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="803.3333333333334,5283.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="Zona" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[Fila.IsNull(&quot;Análisis Gte Promass&quot;) OrElse String.IsNullOrWhiteSpace(Fila(&quot;Análisis Gte Promass&quot;).ToString)]" DisplayName="VERIFICAR SI NO HAY COMENTARIOS DE RETRO PARA DESCARTAR ALERTAS" sap:VirtualizedContainerService.HintSize="761.3333333333334,4820" sap2010:WorkflowViewState.IdRef="If_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="727.3333333333334,4636" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap2010:Annotation.AnnotationText="De acuerdo con la lógica de negocio, es necesario calcular la cantidad de días transcurridos entre la fecha en que la información es cargada en el Google Sheet y la fecha de ejecución del proceso. Este valor se utiliza para determinar las acciones correspondientes y las alertas que deben enviarse." DisplayName="DETERMINAR ASUNTO Y CONTAR DIAS TRANSCURRIDOS DESDE LA ALERTA" sap:VirtualizedContainerService.HintSize="685.3333333333334,2639.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="FechaDeCarga" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap2010:Annotation.AnnotationText="Se realiza el ajuste del formato de las fechas, ya que Google Sheets puede guardar la información de distintas maneras. Esto permite trabajar con los datos de forma consistente y evita que algunos registros ocasionen problemas durante la ejecución del proceso." DisplayName="PARSEAR CAMPO DE FECHA DE CARGA A DATE" sap:VirtualizedContainerService.HintSize="623.3333333333334,164" sap2010:WorkflowViewState.IdRef="Assign_14">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[FechaDeCarga]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(Fila("FECHA DE CARGA").ToString.Trim, {"dd/MM/yyyy", "dd/MM/yyyy HH:mm:ss", "d/M/yyyy", "d/M/yyyy HH:mm:ss"}, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None).ToString("dd/MM/yyyy")]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <Assign sap2010:Annotation.AnnotationText="Se calcula la cantidad de días transcurridos desde que el registro fue cargado en Google Sheets hasta la ejecución de esta automatización. Esta información se utiliza para determinar las acciones y el envío de correos correspondientes." DisplayName="CALCULAR LOS DIAS DE DIFERENCIA ENTRE FECHA DE SUBIDA Y EJECUCION" sap:VirtualizedContainerService.HintSize="623.3333333333334,164" sap2010:WorkflowViewState.IdRef="Assign_15">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int64">[DiasDiferencia]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32((DateTime.Today - DateTime.ParseExact(Fila("FECHA DE CARGA").ToString.Trim, {"dd/MM/yyyy", "dd/MM/yyyy HH:mm:ss", "d/M/yyyy", "d/M/yyyy HH:mm:ss"}, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None)).TotalDays)]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <ui:IfElseIf DisplayName="DETERMINACION DE VALORES PARA ENCABEZADO DE CORREO" sap:VirtualizedContainerService.HintSize="623.3333333333334,1930" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
+                      <ui:IfElseIf.ConditionBlocks>
+                        <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                          <ui:IfElseIfBlock BlockType="If" Condition="[DiasDiferencia &gt;=0 AND DiasDiferencia &lt;= 3]">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="CASO 1: SI LOS DIAS DE DIFERENCIA ESTAN ENTRE 1 Y 3" sap:VirtualizedContainerService.HintSize="572,827.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="Destinatarios" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="CASO 1: ASIGNAR ENCABEZADO" sap:VirtualizedContainerService.HintSize="510,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Encabezado]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">["🚨 Alerta EDS"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <If sap2010:Annotation.AnnotationText="Se utiliza una estructura IF anidada debido a que pueden existir registros con los mismos valores en el encabezado, pero con diferentes niveles de aviso según la cantidad de días transcurridos." Condition="[DiasDiferencia &lt;= 1]" DisplayName="DETERMINAR NIVEL DE AVISO" sap:VirtualizedContainerService.HintSize="510,591.3333333333334" sap2010:WorkflowViewState.IdRef="If_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="CASO 1: ASIGNAR NIVEL DE AVISO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[Aviso]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">["1°aviso"]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="CASO 1: ASIGNAR NIVEL DE AVISO 2DO AVISO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[Aviso]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">2°aviso</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[DiasDiferencia = 4]">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="CASO 2: SI LOS DIAS DE DIFERENCIA SON 4" sap:VirtualizedContainerService.HintSize="496,321.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="CASO 2: ASIGNAR ENCABEZADO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Encabezado]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">["🚨 Escalamiento EDS"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="CASO 2: ASIGNAR NIVEL DE AVISO 3ER AVISO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Aviso]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">3°aviso</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[DiasDiferencia &gt; 4]">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="CASO 3: SI LOS DIAS DE DIFERENCIA SON MAYORES A 4" sap:VirtualizedContainerService.HintSize="496,321.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="CASO 3: ASIGNAR ENCABEZADO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Encabezado]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">["🚨 URGENTE EDS"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="CASO 3: ASIGNAR NIVEL DE AVISO 4TO AVISO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Aviso]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">4°aviso</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                        </sc:BindingList>
+                      </ui:IfElseIf.ConditionBlocks>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:IfElseIf>
+                    <Assign DisplayName="ASIGNAR ASUNTO DE CORREO CON LOS VALORES YA EVALUADOS" sap:VirtualizedContainerService.HintSize="623.3333333333334,88.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[AsuntoCorreo]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String" xml:space="preserve">[Encabezado &amp; " [" &amp; Aviso &amp; ", " &amp; (DiasDiferencia + 1).ToString &amp; " día(s)] - " &amp;
+Fila("Práctica descripción").ToString &amp; "/" &amp;
+Fila("Numero de Tienda").ToString &amp; ". " &amp;
+Fila("Tienda").ToString.Replace("Liverpool", "").Trim &amp; "/" &amp;
+Fila("Zona").ToString &amp; " Resp: " &amp;
+DateTime.Now.ToString("dd-MMM", New System.Globalization.CultureInfo("es-MX"))]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                  <ui:IfElseIf sap2010:Annotation.AnnotationText="En esta sección se aplican las reglas de negocio definidas para cada caso. Con base en los criterios establecidos, se determina si el registro requiere la generación de una alerta o si no es necesario realizar ninguna acción." DisplayName="DETERMINAR REGLAS PARA DEPURAR REGISTROS DE ALERTA" sap:VirtualizedContainerService.HintSize="685.3333333333334,1869.3333333333333" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+                    <ui:IfElseIf.ConditionBlocks>
+                      <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                        <ui:IfElseIfBlock BlockType="If" Condition="[Fila(&quot;Práctica descripción&quot;).ToString.Trim &lt;&gt; &quot;Código QR&quot; AndAlso&#xA;(&#xA;    (Not String.IsNullOrWhiteSpace(Fila(&quot;NPS&quot;).ToString) AndAlso CInt(Fila(&quot;NPS&quot;).ToString) &lt;= 8) OrElse&#xA;    (Not String.IsNullOrWhiteSpace(Fila(&quot;CSAT TIEMPO ATENCION&quot;).ToString) AndAlso CInt(Fila(&quot;CSAT TIEMPO ATENCION&quot;).ToString) &lt;= 8) OrElse&#xA;    (Not String.IsNullOrWhiteSpace(Fila(&quot;CSAT CAPACITACION&quot;).ToString) AndAlso CInt(Fila(&quot;CSAT CAPACITACION&quot;).ToString) &lt;= 8) OrElse&#xA;    (Not String.IsNullOrWhiteSpace(Fila(&quot;CSAT AMABILIDAD&quot;).ToString) AndAlso CInt(Fila(&quot;CSAT AMABILIDAD&quot;).ToString) &lt;= 8) OrElse&#xA;    (Not String.IsNullOrWhiteSpace(Fila(&quot;CSAT LIMPIEZA&quot;).ToString) AndAlso CInt(Fila(&quot;CSAT LIMPIEZA&quot;).ToString) &lt;= 8) OrElse&#xA;    (Not String.IsNullOrWhiteSpace(Fila(&quot;CSAT ORDEN&quot;).ToString) AndAlso CInt(Fila(&quot;CSAT ORDEN&quot;).ToString) &lt;= 8)&#xA;)]">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="FILAS CANDIDATAS PARA ALERTA DE REGLA UNO" sap:VirtualizedContainerService.HintSize="450,302" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[Fila.ItemArray]" DataTable="[dt_Alertas]" DisplayName="CASO 1: AGREGAR A DATATABLE DE ALERTAS" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Fila(&quot;Práctica descripción&quot;).ToString.Trim.Equals(&quot;Código QR&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(Fila(&quot;NPS&quot;).ToString) AndAlso&#xA;CInt(Fila(&quot;NPS&quot;).ToString) &lt;= 8]">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="FILAS CANDIDATAS PARA ALERTA DE REGLA DOS" sap:VirtualizedContainerService.HintSize="450,302" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[Fila.ItemArray]" DataTable="[dt_Alertas]" DisplayName="CASO 2: AGREGAR A DATATABLE DE ALERTAS" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Fila(&quot;Práctica descripción&quot;).ToString.Equals(&quot;Código Qr&quot;) And Fila(&quot;Alerta&quot;).ToString.Equals(&quot;Sí&quot;)]">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="FILAS CANDIDATAS PARA ALERTA DE REGLA TRES" sap:VirtualizedContainerService.HintSize="450,302" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[Fila.ItemArray]" DataTable="[dt_Alertas]" DisplayName="CASO 3: AGREGAR A DATATABLE DE ALERTAS" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Fila(&quot;Práctica descripción&quot;).ToString.Trim.Equals(&quot;Código QR&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(Fila(&quot;NPS&quot;).ToString) AndAlso&#xA;CInt(Fila(&quot;NPS&quot;).ToString) &lt;= 8 AndAlso&#xA;Fila(&quot;Alerta&quot;).ToString.Trim.Equals(&quot;No&quot;)]">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="FILAS CANDIDATAS PARA ALERTA DE REGLA CUATRO" sap:VirtualizedContainerService.HintSize="450,302" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[Fila.ItemArray]" DataTable="[dt_Alertas]" DisplayName="CASO 4: AGREGAR A DATATABLE DE ALERTAS" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                      </sc:BindingList>
+                    </ui:IfElseIf.ConditionBlocks>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:IfElseIf>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_16" />
+              </If.Else>
+            </If>
+            <Assign DisplayName="ASIGNAR EL VALOR DE TIEMPO A DATATABLE DE ALERTAS" sap:VirtualizedContainerService.HintSize="761.3333333333334,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_16">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[Fila("Tiempo")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int64">[DiasDiferencia]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="ASIGNAR EL VALOR DE ASUNTO A DATABLE DE ALERTAS" sap:VirtualizedContainerService.HintSize="761.3333333333334,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_18">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[Fila("Asunto")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[AsuntoCorreo]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="761.3333333333334,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_32">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[Fila("Control Detonar?")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">["SI"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_GerentesZona]" DisplayName="RECORRER DATATABLE DE ALERTAS PARA ASIGNAR LA ZONA, CORREOS DESTINATARIOS Y NOMBRE DE GERENTE" sap:VirtualizedContainerService.HintSize="837.3333333333334,2885.3333333333335" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Gerente" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="741.3333333333334,2695.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_43">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Alertas]" DisplayName="RECORREMOS EL DATATABLE DE ALERTAS PARA ASIGNACION" sap:VirtualizedContainerService.HintSize="699.3333333333334,2608" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Alerta" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="665.3333333333334,2418" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[Gerente(&quot;Zona&quot;).ToString.Equals(Alerta(&quot;Zona&quot;).ToString)]" DisplayName="DETERMINAR SI LA ZONA DE DATATABLE GERENTES COINCIDE CON DATATABLE ALERTAS" sap:VirtualizedContainerService.HintSize="623.3333333333334,2330.6666666666665" sap2010:WorkflowViewState.IdRef="If_9">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="589.3333333333334,2146.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="547.3333333333334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_15" Message="[&quot;FOLIO:&quot; + Alerta(&quot;ID de Encuesta&quot;).ToString + &#xA;Environment.NewLine +&#xA;&quot;ZONA:&quot; + Alerta(&quot;Zona&quot;).ToString]" />
+                          <ui:IfElseIf DisplayName="ASIGNAR DESTINATARIOS SEGUN LOS DIAS TRANSCURRIDOS" sap:VirtualizedContainerService.HintSize="547.3333333333334,1874.6666666666667" sap2010:WorkflowViewState.IdRef="IfElseIf_6">
+                            <ui:IfElseIf.ConditionBlocks>
+                              <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                                <ui:IfElseIfBlock BlockType="If" Condition="[CInt(Alerta(&quot;Tiempo&quot;).ToString) = 1 OrElse CInt(Alerta(&quot;Tiempo&quot;).ToString) = 2]">
+                                  <ui:IfElseIfBlock.Then>
+                                    <Sequence DisplayName="CASO 1: DIAS TRANSCURRIDOS ENTRE 1 Y 2" sap:VirtualizedContainerService.HintSize="496,321.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="CASO 1: ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Destinatario")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">[Gerente(2)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="ASIGNACION DE VALOR CONTROL DETONAR COMO SI (1)" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_33">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Control Detonar?")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">["SI"]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </ui:IfElseIfBlock.Then>
+                                </ui:IfElseIfBlock>
+                                <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CInt(Alerta(&quot;Tiempo&quot;).ToString) = 3]">
+                                  <ui:IfElseIfBlock.Then>
+                                    <Sequence DisplayName="CASO 2: DIAS TRANSCURRIDOS TRES" sap:VirtualizedContainerService.HintSize="496,321.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="CASO 2: ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Destinatario")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">[Gerente(3)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="ASIGNACION DE VALOR CONTROL DETONAR COMO SI (2)" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_34">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Control Detonar?")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">["SI"]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </ui:IfElseIfBlock.Then>
+                                </ui:IfElseIfBlock>
+                                <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CInt(Alerta(&quot;Tiempo&quot;).ToString) = 4]">
+                                  <ui:IfElseIfBlock.Then>
+                                    <Sequence DisplayName="CASO 3: DIAS TRANSCURRIDOS CUATRO" sap:VirtualizedContainerService.HintSize="496,321.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="CASO 3: ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Destinatario")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">[Gerente(4)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="ASIGNACION DE VALOR CONTROL DETONAR COMO SI (3)" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_35">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Control Detonar?")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">["SI"]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </ui:IfElseIfBlock.Then>
+                                </ui:IfElseIfBlock>
+                                <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CInt(Alerta(&quot;Tiempo&quot;).ToString) &gt;= 5]">
+                                  <ui:IfElseIfBlock.Then>
+                                    <Sequence DisplayName="CASO 1: DIAS TRANSCURRIDOS MAYORES A 5" sap:VirtualizedContainerService.HintSize="496,321.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_30">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Destinatario")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">[Gerente(5)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign DisplayName="ASIGNACION DE VALOR CONTROL DETONAR COMO SI (1)" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_36">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Object">[Alerta("Control Detonar?")]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Object">["SI"]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </ui:IfElseIfBlock.Then>
+                                </ui:IfElseIfBlock>
+                              </sc:BindingList>
+                            </ui:IfElseIf.ConditionBlocks>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:IfElseIf>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="300,80.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <Assign DisplayName="ASIGNAR DATATABLE DE ALERTAS A ARGUMENTO DE SALIDA" sap:VirtualizedContainerService.HintSize="837.3333333333334,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_31">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[out_dt_InformacionAlertas]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[dt_Alertas]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" sap2010:Annotation.AnnotationText="PROVISIONAL: Falta agregar unidad de negocio una vez que indiquen lo de Suburbia." DataTable="[dt_Alertas]" DisplayName="ESCRIBIR DATATABLE DE ALERTAS PARA HISTORICO" sap:VirtualizedContainerService.HintSize="837.3333333333334,161.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRange_10" SheetName="Sheet1" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString + &quot;CorreosEnviados_&quot; + DateTime.Now.ToString(&quot;dd_MM_yyyy&quot;) + &quot;.xlsx&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:WriteRange>
+    <ui:LogMessage DisplayName="DEV: FILTRACION EXITOSA." sap:VirtualizedContainerService.HintSize="837.3333333333334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Se han depurado todos los registros a enviar el d[ia de hoy...&quot;]" />
+  </Sequence>
+</Activity>

@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>857.3333333333334,2466.6666666666665</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1793.3333333333333,2622.6666666666665</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ObtenerCatalogoZonas_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -52,6 +52,8 @@
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
       <x:String>UiPath.GSuite.Activities.Contracts</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -123,9 +125,10 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Se implementa esta secuencia para obtener la zona correspondiente a cada número de tienda a partir de un catálogo en Google Sheets. " DisplayName="OBTENER CATALOGO DE ZONAS PARA COLUMNA ZONA" sap:VirtualizedContainerService.HintSize="782.6666666666666,2402" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Se implementa esta secuencia para obtener la zona correspondiente a cada número de tienda a partir de un catálogo en Google Sheets. " DisplayName="OBTENER CATALOGO DE ZONAS PARA COLUMNA ZONA" sap:VirtualizedContainerService.HintSize="782.6666666666666,2558" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="exception_500" />
       <Variable x:TypeArguments="x:String" Name="NombreTemplate" />
@@ -143,9 +146,9 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not exception_500.Equals(&quot;&quot;)]" DisplayName="OBTENER CATALOGO ZONAS EN GOOGLE SHEET" sap:VirtualizedContainerService.HintSize="720.6666666666666,2260.6666666666665" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not exception_500.Equals(&quot;&quot;)]" DisplayName="OBTENER CATALOGO ZONAS EN GOOGLE SHEET" sap:VirtualizedContainerService.HintSize="720.6666666666666,2416.6666666666665" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <TryCatch DisplayName="Intentar subir archivos" sap:VirtualizedContainerService.HintSize="686.6666666666666,2122.6666666666665" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch DisplayName="Intentar subir archivos" sap:VirtualizedContainerService.HintSize="686.6666666666666,2278.6666666666665" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -153,7 +156,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <Sequence DisplayName="CONSULTAR A DRIVE" sap:VirtualizedContainerService.HintSize="648,1883.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="CONSULTAR A DRIVE" sap:VirtualizedContainerService.HintSize="648,2039.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -170,7 +173,7 @@
                   </InArgument>
                 </Assign.Value>
               </Assign>
-              <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="OBTENER INFORMACION DE ZONAS PARA TIENDAS DE TEMPLATE POR UNIDAD DE NEGOCIO" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="586,1647.3333333333333" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
+              <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="OBTENER INFORMACION DE ZONAS PARA TIENDAS DE TEMPLATE POR UNIDAD DE NEGOCIO" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="586,1803.3333333333333" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
                 <uga:GSuiteApplicationScope.AuthenticationScopes>
                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                 </uga:GSuiteApplicationScope.AuthenticationScopes>
@@ -179,7 +182,7 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="ugac:IGoogleWorkspaceTarget" Name="GSuiteScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="CARGA DRIVE ARCHIVO REPS" sap:VirtualizedContainerService.HintSize="552,1508" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                    <Sequence DisplayName="CARGA DRIVE ARCHIVO REPS" sap:VirtualizedContainerService.HintSize="552,1664" sap2010:WorkflowViewState.IdRef="Sequence_24">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -224,7 +227,8 @@
                       </If>
                       <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" AuthScopesInvalid="False" DisplayName="BUSCAR ARCHIVO TEMPLATE" FirstResultId="[IdFileTemplate]" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="FindFiles_6" MaxResults="50" Result="[folder1]" SearchExpression="[&quot;name = '&quot; +&#xA;NombreTemplate +&#xA;&quot;' and parents='&quot; + in_Config(&quot;Id_Carpeta_Config_Bot&quot;).ToString + &quot;'&quot;]" SupportsTeamDrives="False" />
                       <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER INFORMACION ZONAS POR ID TIENDA" sap:VirtualizedContainerService.HintSize="510,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_2" IncludeHeaders="True" Range="A1:C" Result="[dt_Zonas]" SheetName="CATALOGO ZONAS" SpreadsheetId="[IdFileTemplate]" />
-                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER INFORMACION DESTINATATIOS POR ID TIENDA" sap:VirtualizedContainerService.HintSize="510,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_3" IncludeHeaders="True" Range="A1:F" Result="[dt_GerentesZona]" SheetName="CATALOGOS" SpreadsheetId="[IdFileTemplate]" />
+                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER INFORMACION DESTINATATIOS POR ID TIENDA" sap:VirtualizedContainerService.HintSize="510,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_3" IncludeHeaders="True" Range="A1:F13" Result="[dt_GerentesZona]" SheetName="CATALOGO CORREOS" SpreadsheetId="[IdFileTemplate]" />
+                      <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dt_GerentesZona]" DisplayName="ESCRIBIR CATALOGO GERENTES DE ZONA" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString + &quot;CatalogoGerentesZona.xlsx&quot;]" />
                       <Assign DisplayName="ASIGNAR CATALOGO TIENDAS" sap:VirtualizedContainerService.HintSize="510,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_12">
                         <Assign.To>
                           <OutArgument x:TypeArguments="sd:DataTable">[out_dt_ZonasTienda]</OutArgument>
