@@ -181,7 +181,7 @@
             <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="TXN1" sap:VirtualizedContainerService.HintSize="650,2518.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_131">
+        <Sequence DisplayName="TXN1" sap:VirtualizedContainerService.HintSize="650,1834.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_131">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="UNNps" />
             <Variable x:TypeArguments="x:String" Name="UNExperiencia" />
@@ -195,7 +195,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="588,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Process&quot;]">
+          <ui:LogMessage DisplayName="Log Message Info" sap:VirtualizedContainerService.HintSize="588,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Process&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -203,19 +203,30 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="BORRAR COOKIES" sap:VirtualizedContainerService.HintSize="588,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_250" UnSafe="False" WorkflowFileName="Modulos\BorrarCookies.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <Sequence DisplayName="LEER ARCHIVO DE CONFIGURACION" sap:VirtualizedContainerService.HintSize="588,667.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_135">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,305.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,225.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_143">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="BORRAR COOKIES" sap:VirtualizedContainerService.HintSize="388,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_255" UnSafe="False" WorkflowFileName="Modulos\BorrarCookies.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <Sequence DisplayName="LEER ARCHIVO DE CONFIGURACION" sap:VirtualizedContainerService.HintSize="588,663.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_135">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="OBTENER CATALOGOS DE INFORMACION A GOOGLE DRIVE" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="526,556.6666666666666" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
+            <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="ServiceAccountKey" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="OBTENER CATALOGOS DE INFORMACION A GOOGLE DRIVE" HasDomainWideAccesss="True" sap:VirtualizedContainerService.HintSize="526,552.6666666666666" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyPath="[in_Config(&quot;Json_Drive&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" ServiceAccountEmail="[in_Config(&quot;User_Drive&quot;).ToString]" Services="Unselected" UseConnectionService="False" UserEmail="[in_Config(&quot;User_Drive&quot;).ToString]">
               <uga:GSuiteApplicationScope.AuthenticationScopes>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
               </uga:GSuiteApplicationScope.AuthenticationScopes>
@@ -224,21 +235,21 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ugac:IGoogleWorkspaceTarget" Name="GSuiteScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="CARGA DRIVE ARCHIVO REPS" sap:VirtualizedContainerService.HintSize="492,417.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_134">
+                  <Sequence DisplayName="CARGA DRIVE ARCHIVO REPS" sap:VirtualizedContainerService.HintSize="492,413.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_134">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="OBTENER CATALOGO DE CONFIGURACION DE EJECUCIONES DE GOOGLE SHEET" sap:VirtualizedContainerService.HintSize="450,330" sap2010:WorkflowViewState.IdRef="Sequence_133">
+                    <Sequence DisplayName="OBTENER CATALOGO DE CONFIGURACION DE EJECUCIONES DE GOOGLE SHEET" sap:VirtualizedContainerService.HintSize="450,326" sap2010:WorkflowViewState.IdRef="Sequence_133">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER INFORMACION DE PROCESOS" sap:VirtualizedContainerService.HintSize="388,219.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_3" IncludeHeaders="True" Range="A3:F5" Result="[dt_Configuracion]" SheetName="Sheet1" SpreadsheetId="[in_Config(&quot;IdSheetReprocesos&quot;).ToString]" />
+                      <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="LEER INFORMACION DE PROCESOS" sap:VirtualizedContainerService.HintSize="388,215.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_3" IncludeHeaders="True" Range="A3:F5" Result="[dt_Configuracion]" SheetName="Sheet1" SpreadsheetId="[in_Config(&quot;IdSheetReprocesos&quot;).ToString]" />
                     </Sequence>
                   </Sequence>
                 </ActivityAction>
@@ -252,29 +263,40 @@
               </sap:WorkflowViewStateService.ViewState>
             </uga:GSuiteApplicationScope>
           </Sequence>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="INICIAR SESION Y DESCARGAR ARCHIVOS" sap:VirtualizedContainerService.HintSize="588,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_249" UnSafe="False" WorkflowFileName="Modulos\DescargaArchivos.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-              <InArgument x:TypeArguments="s:String[]" x:Key="in_UnidadesNegocio">[{"liverpool", "suburbia"}]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ValoresCalificaciones">[dt_ValoresCalificaciones]</OutArgument>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Configuracion">[dt_Configuracion]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <If Condition="[dt_Configuracion.Rows(0)(&quot;UNIDAD DE NEGOCIO&quot;).ToString.ToLower.Equals(&quot;liverpool&quot;) and dt_Configuracion.Rows(0)(&quot;PROCESAR INFORMACION&quot;).ToString.ToLower.Equals(&quot;si&quot;)]" DisplayName="DETERMINAR SI LA INFORMACION SE VA A PROCESAR PARA LIVERPOOL" sap:VirtualizedContainerService.HintSize="588,623.3333333333334" sap2010:WorkflowViewState.IdRef="If_3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,358" sap2010:WorkflowViewState.IdRef="Sequence_136">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,305.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,225.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_148">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SUBIR INFORMACION PARA LIVERPOOL" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_236" UnSafe="False" WorkflowFileName="Modulos\TratamientoDatos.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="INICIAR SESION Y DESCARGAR ARCHIVOS" sap:VirtualizedContainerService.HintSize="388,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_259" UnSafe="False" WorkflowFileName="Modulos\DescargaArchivos.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                    <InArgument x:TypeArguments="s:String[]" x:Key="in_UnidadesNegocio">[{"liverpool", "suburbia"}]</InArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ValoresCalificaciones">[dt_ValoresCalificaciones]</OutArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Configuracion">[dt_Configuracion]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <If Condition="[dt_Configuracion.Rows(0)(&quot;UNIDAD DE NEGOCIO&quot;).ToString.ToLower.Equals(&quot;liverpool&quot;) and dt_Configuracion.Rows(0)(&quot;PROCESAR INFORMACION&quot;).ToString.ToLower.Equals(&quot;si&quot;)]" DisplayName="DETERMINAR SI LA INFORMACION SE VA A PROCESAR PARA LIVERPOOL" sap:VirtualizedContainerService.HintSize="588,53.333333333333336" sap2010:WorkflowViewState.IdRef="If_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="528.6666666666666,548.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_136">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SUBIR INFORMACION PARA LIVERPOOL" sap:VirtualizedContainerService.HintSize="486.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_236" UnSafe="False" WorkflowFileName="Modulos\TratamientoDatos.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_PathFile">
@@ -285,22 +307,33 @@
                     <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Configuracion">[dt_Configuracion]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ENVIO DE CORREO A EQUIPO FUNCIONAL LIVERPOOL" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_247" UnSafe="False" WorkflowFileName="Framework\CorreoNF.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Logo">auto</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Saludo">¡Excelente día!</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_NomProceso">Carga de Información Medallia a Google Sheets</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_EstEjecucion">El bot finalizó con éxito</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Descripcion">La carga de información en los archivos mensuales se completó correctamente.</InArgument>
-                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[new DataTable()]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_LinkBoton">https://drive.google.com/drive/u/0/folders/1i32WDbFZOhjmaND-ySCiCkkLQsiXoBQr</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_txtBoton">IR A DRIVE</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_IconBoton">[in_Config("iconDrive").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Destinatarios">cricardov@liverpool.com.mx,mlsanchezm01@liverpool.com.mx</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_TitleCorreo">["DIP NF CARGA DE INFORMACION MEDALLIA " + Now.ToString("dd/MM/yyyy")]</InArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_141">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ENVIO DE CORREO A EQUIPO FUNCIONAL LIVERPOOL" sap:VirtualizedContainerService.HintSize="388,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_247" UnSafe="False" WorkflowFileName="Framework\CorreoNF.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Logo">auto</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Saludo">¡Excelente día!</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_NomProceso">Carga de Información Medallia a Google Sheets</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_EstEjecucion">El bot finalizó con éxito</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Descripcion">La carga de información en los archivos mensuales se completó correctamente.</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[new DataTable()]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_LinkBoton">https://drive.google.com/drive/u/0/folders/1i32WDbFZOhjmaND-ySCiCkkLQsiXoBQr</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_txtBoton">IR A DRIVE</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_IconBoton">[in_Config("iconDrive").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Destinatarios">cricardov@liverpool.com.mx,mlsanchezm01@liverpool.com.mx</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_TitleCorreo">["DIP NF CARGA DE INFORMACION MEDALLIA " + Now.ToString("dd/MM/yyyy")]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                </ui:CommentOut>
               </Sequence>
             </If.Then>
             <If.Else>
@@ -313,21 +346,21 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[dt_Configuracion.Rows(1)(&quot;UNIDAD DE NEGOCIO&quot;).ToString.ToLower.Equals(&quot;suburbia&quot;) and dt_Configuracion.Rows(1)(&quot;PROCESAR INFORMACION&quot;).ToString.ToLower.Equals(&quot;si&quot;)]" DisplayName="DETERMINAR SI LA INFORMACION SE VA A PROCESAR PARA LIVERPOOL" sap:VirtualizedContainerService.HintSize="588,542" sap2010:WorkflowViewState.IdRef="If_4">
+          <If Condition="[dt_Configuracion.Rows(1)(&quot;UNIDAD DE NEGOCIO&quot;).ToString.ToLower.Equals(&quot;suburbia&quot;) and dt_Configuracion.Rows(1)(&quot;PROCESAR INFORMACION&quot;).ToString.ToLower.Equals(&quot;si&quot;)]" DisplayName="DETERMINAR SI LA INFORMACION SE VA A PROCESAR PARA LIVERPOOL" sap:VirtualizedContainerService.HintSize="588,53.333333333333336" sap2010:WorkflowViewState.IdRef="If_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,358" sap2010:WorkflowViewState.IdRef="Sequence_138">
+              <Sequence sap:VirtualizedContainerService.HintSize="528.6666666666666,548.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_138">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SUBIR INFORMACION PARA SUBURBIA" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_238" UnSafe="False" WorkflowFileName="Modulos\TratamientoDatos.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SUBIR INFORMACION PARA SUBURBIA" sap:VirtualizedContainerService.HintSize="486.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_238" UnSafe="False" WorkflowFileName="Modulos\TratamientoDatos.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_PathFile">
@@ -338,22 +371,33 @@
                     <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Configuracion">[dt_Configuracion]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ENVIO DE CORREO A EQUIPO FUNCIONAL SUBURBIA" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_248" UnSafe="False" WorkflowFileName="Framework\CorreoNF.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Logo">Suburbia</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Saludo">¡Excelente día!</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_NomProceso">Carga de Información Medallia a Google Sheets</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_EstEjecucion">El bot finalizó con éxito</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Descripcion">La carga de información en los archivos mensuales se completó correctamente.</InArgument>
-                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[new DataTable()]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_LinkBoton">https://drive.google.com/drive/u/0/folders/1i32WDbFZOhjmaND-ySCiCkkLQsiXoBQr</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_txtBoton">IR A DRIVE</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_IconBoton">[in_Config("iconDrive").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Destinatarios">cricardov@liverpool.com.mx,msantos@gpmass.com</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_TitleCorreo">["DIP NF CARGA DE INFORMACION MEDALLIA " + Now.ToString("dd/MM/yyyy")]</InArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_142">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ENVIO DE CORREO A EQUIPO FUNCIONAL SUBURBIA" sap:VirtualizedContainerService.HintSize="388,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_248" UnSafe="False" WorkflowFileName="Framework\CorreoNF.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Logo">Suburbia</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Saludo">¡Excelente día!</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_NomProceso">Carga de Información Medallia a Google Sheets</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_EstEjecucion">El bot finalizó con éxito</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Descripcion">La carga de información en los archivos mensuales se completó correctamente.</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[new DataTable()]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_LinkBoton">https://drive.google.com/drive/u/0/folders/1i32WDbFZOhjmaND-ySCiCkkLQsiXoBQr</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_txtBoton">IR A DRIVE</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_IconBoton">[in_Config("iconDrive").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Destinatarios">cricardov@liverpool.com.mx,msantos@gpmass.com</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_TitleCorreo">["DIP NF CARGA DE INFORMACION MEDALLIA " + Now.ToString("dd/MM/yyyy")]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                </ui:CommentOut>
               </Sequence>
             </If.Then>
             <If.Else>

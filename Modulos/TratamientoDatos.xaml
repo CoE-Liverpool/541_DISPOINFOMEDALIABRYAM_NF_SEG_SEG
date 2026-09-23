@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>900,9057.333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1540,9909.333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TratamientoDatos_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -156,7 +156,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="TratamientoDatos: Módulo que verifica que en la carpeta de Dowloads o Descargas no se quede con archivos de descarga que pueda realizar más de una vez el bot." DisplayName="MODULO: TRATAMIENTO DATOS" sap:VirtualizedContainerService.HintSize="910,8992.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_116">
+  <Sequence sap2010:Annotation.AnnotationText="TratamientoDatos: Módulo que verifica que en la carpeta de Dowloads o Descargas no se quede con archivos de descarga que pueda realizar más de una vez el bot." DisplayName="MODULO: TRATAMIENTO DATOS" sap:VirtualizedContainerService.HintSize="910,9844.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_116">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="ArchivosPath" />
       <Variable x:TypeArguments="s:String[]" Name="ArchivosPathOrdenados" />
@@ -183,6 +183,7 @@
       <Variable x:TypeArguments="x:String" Name="GerenteRegional" />
       <Variable x:TypeArguments="x:String" Name="dt_InformacionGlobal" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_InformacionGlobalActual" />
+      <Variable x:TypeArguments="x:Int32" Name="IndexMetrica" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -224,7 +225,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <Sequence sap2010:Annotation.AnnotationText="En esta etapa se realiza la limpieza, organización y transformación de la información. Se eliminan filas innecesarias, se agregan columnas vacías y se filtran únicamente los datos requeridos para su posterior carga en el sheet correspondiente a cada unidad de negocio, de acuerdo con lo definido por el funcional." DisplayName="FORMATEAR ARCHIVO DESCARGADO" sap:VirtualizedContainerService.HintSize="848,8264.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_135">
+    <Sequence sap2010:Annotation.AnnotationText="En esta etapa se realiza la limpieza, organización y transformación de la información. Se eliminan filas innecesarias, se agregan columnas vacías y se filtran únicamente los datos requeridos para su posterior carga en el sheet correspondiente a cada unidad de negocio, de acuerdo con lo definido por el funcional." DisplayName="FORMATEAR ARCHIVO DESCARGADO" sap:VirtualizedContainerService.HintSize="848,9116.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_135">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -241,7 +242,7 @@
           <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(in_Config("Temporal").ToString, "*" &amp; in_UnidadNegocio.ToLower &amp; "*.xlsx").Select(Function(archivo) Path.GetFileName(archivo)).ToArray()]</InArgument>
         </Assign.Value>
       </Assign>
-      <If sap2010:Annotation.AnnotationText="Si por alguna razón el archivo reciente no se copio a Temporal o cualquier otra anomalia aquí podemos detener el error." Condition="[Directory.GetFiles(in_Config(&quot;Temporal&quot;).ToString, &quot;*&quot; &amp; in_UnidadNegocio.ToLower &amp; &quot;*.xlsx&quot;).Any()]" DisplayName="DETERMINA SI EL ARCHIVO MAS RECIENTE EXISTE EN TEMPORAL" sap:VirtualizedContainerService.HintSize="786,7782" sap2010:WorkflowViewState.IdRef="If_7">
+      <If sap2010:Annotation.AnnotationText="Si por alguna razón el archivo reciente no se copio a Temporal o cualquier otra anomalia aquí podemos detener el error." Condition="[Directory.GetFiles(in_Config(&quot;Temporal&quot;).ToString, &quot;*&quot; &amp; in_UnidadNegocio.ToLower &amp; &quot;*.xlsx&quot;).Any()]" DisplayName="DETERMINA SI EL ARCHIVO MAS RECIENTE EXISTE EN TEMPORAL" sap:VirtualizedContainerService.HintSize="786,8634" sap2010:WorkflowViewState.IdRef="If_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -250,7 +251,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="752,7567.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
+          <Sequence sap:VirtualizedContainerService.HintSize="752,8187.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -391,15 +392,15 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
             </Sequence>
-            <Sequence DisplayName="CONVERTIR ARCHIVO EXCEL A DATA TABLE PARA INFORMACION METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="572,1612.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_210">
+            <Sequence DisplayName="CONVERTIR ARCHIVO EXCEL A DATA TABLE PARA INFORMACION METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="710,2232.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_210">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ReadRange AddHeaders="True" DataTable="[dt_MetricasGlobales]" DisplayName="LEER ARCHIVO EXCEL METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="510,88" sap2010:WorkflowViewState.IdRef="ReadRange_6" Range="A5:I17" SheetName="Sheet0" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString + &quot;ExpressReport_&quot; + in_UnidadNegocio.ToLower + &quot;.xlsx&quot;]" />
-              <If sap2010:Annotation.AnnotationText="Se requiere recabar diariamente métricas globales provenientes de distintas áreas y actualizar la información correspondiente en el sheet mensual." Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO PARA CONSTRUCCION DE METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="510,1374" sap2010:WorkflowViewState.IdRef="If_23">
+              <ui:ReadRange AddHeaders="True" DataTable="[dt_MetricasGlobales]" DisplayName="LEER ARCHIVO EXCEL METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="586,88" sap2010:WorkflowViewState.IdRef="ReadRange_6" Range="A5:I17" SheetName="Sheet0" WorkbookPath="[in_Config(&quot;Temporal&quot;).ToString + &quot;ExpressReport_&quot; + in_UnidadNegocio.ToLower + &quot;.xlsx&quot;]" />
+              <If sap2010:Annotation.AnnotationText="Se requiere recabar diariamente métricas globales provenientes de distintas áreas y actualizar la información correspondiente en el sheet mensual." Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO PARA CONSTRUCCION DE METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="586,1994" sap2010:WorkflowViewState.IdRef="If_23">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -408,13 +409,13 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="476,1240" sap2010:WorkflowViewState.IdRef="Sequence_178">
+                  <Sequence sap:VirtualizedContainerService.HintSize="552,1764.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_178">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="ASIGNAR LISTA Y ORDEN DE METRICAS GLOBALES DE OTRAS AREAS" sap:VirtualizedContainerService.HintSize="434,88.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_124">
+                    <Assign DisplayName="ASIGNAR LISTA Y ORDEN DE METRICAS GLOBALES DE OTRAS AREAS" sap:VirtualizedContainerService.HintSize="510,88.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_124">
                       <Assign.To>
                         <OutArgument x:TypeArguments="scg:List(x:String)">[ListaMetricaGlobal]</OutArgument>
                       </Assign.To>
@@ -435,7 +436,7 @@
 }]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign sap2010:Annotation.AnnotationText="Este bloque &quot;reescribe&quot; dt_MetricasGlobales tomando una lista de áreas (ListaMetricaGlobal). Si el área ya cuenta con información previa en dt_MetricasGlobales, se recuperan los datos recabados, en caso contrario, se inicializan los valores en 0 ya que por defecto no vienen en 0, vienen vacíos." DisplayName="ORDENAR VALORES DE DATA TABLE DE METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="434,184" sap2010:WorkflowViewState.IdRef="Assign_125">
+                    <Assign sap2010:Annotation.AnnotationText="Este bloque &quot;reescribe&quot; dt_MetricasGlobales tomando una lista de áreas (ListaMetricaGlobal). Si el área ya cuenta con información previa en dt_MetricasGlobales, se recuperan los datos recabados, en caso contrario, se inicializan los valores en 0 ya que por defecto no vienen en 0, vienen vacíos." DisplayName="ORDENAR VALORES DE DATA TABLE DE METRICAS GLOBALES" sap:VirtualizedContainerService.HintSize="510,184" sap2010:WorkflowViewState.IdRef="Assign_125">
                       <Assign.To>
                         <OutArgument x:TypeArguments="sd:DataTable">[dt_MetricasGlobales]</OutArgument>
                       </Assign.To>
@@ -461,8 +462,8 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </Assign>
-                    <ui:BuildDataTable DataTable="[dt_MetricasOrdenadas]" DisplayName="CONSTRUIR DATATABLE MOLDE" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;EV&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_EXP&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_MetricasGlobales]" DisplayName="RECORRER DT_DATAENCUESTAS PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="434,468.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                    <ui:BuildDataTable DataTable="[dt_MetricasOrdenadas]" DisplayName="CONSTRUIR DATATABLE MOLDE" sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Rango&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Área_x0020_descripción&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EV&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EDS_x0020_EXP&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_MetricasGlobales]" DisplayName="RECORRER DT_DATAENCUESTAS PARA FORMATEAR" sap:VirtualizedContainerService.HintSize="510,468.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
@@ -474,7 +475,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;    Row(&quot;n.º de registros&quot;),&#xA;    If(IsNumeric(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;).ToString), CDbl(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;)), 0),&#xA;    If(IsNumeric(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;).ToString), CDbl(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;)), 0),&#xA;    If(IsNumeric(Row(&quot;NPS Global&quot;).ToString), CDbl(Row(&quot;NPS Global&quot;)), 0)&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="334,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;&#x9;Row(&quot;Rango&quot;),&#xA;&#x9;Row(&quot;Área descripción&quot;),&#xA;    Row(&quot;n.º de registros&quot;),&#xA;    If(IsNumeric(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;).ToString), CDbl(Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;)), 0),&#xA;    If(IsNumeric(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;).ToString), CDbl(Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;)), 0),&#xA;    If(IsNumeric(Row(&quot;NPS Global&quot;).ToString), CDbl(Row(&quot;NPS Global&quot;)), 0)&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION" sap:VirtualizedContainerService.HintSize="334,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
                           </Sequence>
                         </ActivityAction>
                       </ui:ForEachRow.Body>
@@ -485,11 +486,36 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ForEachRow>
-                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;&quot;=SUM(C15:C26)&quot;,&#xA;in_dt_ValoresCalificaciones.Rows(0)(&quot;TNP_EDS_SERVICIO&quot;),&#xA;in_dt_ValoresCalificaciones.Rows(0)(&quot;TNP_EDS_EXPERIENCIA&quot;),&#xA;in_dt_ValoresCalificaciones.Rows(0)(&quot;TNP_EDS&quot;)&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION VALORES GLOBALES LIVERPOOL" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_11" />
+                    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="EDS SERVICIO" DataTable="[dt_MetricasOrdenadas]" DisplayName="ORDENAR TABLA POR EDS SERVICIO" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="SortDataTable_4" Order="Decending" OutputDataTable="[dt_MetricasOrdenadas]" SortOrder="Descending" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[IndexMetrica]" DataTable="[dt_MetricasOrdenadas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,362.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_15">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Metrica" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_239">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_147">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Object">[Metrica("Rango")]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Object">[IndexMetrica + 1]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                    </ui:ForEachRow>
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;&quot;&quot;,&#xA;&quot;EDS Liverpool&quot;,&#xA;&quot;=SUM(F14:F25)&quot;,&#xA;in_dt_ValoresCalificaciones.Rows(0)(&quot;TNP_EDS_SERVICIO&quot;),&#xA;in_dt_ValoresCalificaciones.Rows(0)(&quot;TNP_EDS_EXPERIENCIA&quot;),&#xA;in_dt_ValoresCalificaciones.Rows(0)(&quot;TNP_EDS&quot;)&#xA;}]" DataTable="[dt_MetricasOrdenadas]" DisplayName="AGREGAR INFORMACION VALORES GLOBALES LIVERPOOL" sap:VirtualizedContainerService.HintSize="510,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_11" />
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence sap:VirtualizedContainerService.HintSize="476,1144.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_179">
+                  <Sequence sap:VirtualizedContainerService.HintSize="476,860.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_179">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -567,15 +593,15 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="ASIGNAR FECHA CORTE INICIO" sap:VirtualizedContainerService.HintSize="648,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_143">
+              <Assign DisplayName="ASIGNAR FECHA CORTE INICIO" sap:VirtualizedContainerService.HintSize="648,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_145">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:DateTime">[InicioRango]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.Date.AddDays(-4)]</InArgument>
+                  <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.Date.AddDays(-1)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign DisplayName="ASIGNAR FECHA CORTE FIN" sap:VirtualizedContainerService.HintSize="648,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_144">
+              <Assign DisplayName="ASIGNAR FECHA CORTE FIN" sap:VirtualizedContainerService.HintSize="648,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_146">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:DateTime">[FinRango]</OutArgument>
                 </Assign.To>
@@ -583,48 +609,15 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                   <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.Date.AddSeconds(-1)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="FILTRAR DATOS POR RANGO INICIO Y FIN" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="648,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_21" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
-                <ui:FilterDataTable.Filters>
-                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                    <ui:FilterOperationArgument BooleanOperator="And" Operator="GTE">
-                      <ui:FilterOperationArgument.Column>
-                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
-                      </ui:FilterOperationArgument.Column>
-                      <ui:FilterOperationArgument.Operand>
-                        <InArgument x:TypeArguments="s:DateTime">[InicioRango]</InArgument>
-                      </ui:FilterOperationArgument.Operand>
-                    </ui:FilterOperationArgument>
-                    <ui:FilterOperationArgument BooleanOperator="And" Operator="LTE">
-                      <ui:FilterOperationArgument.Column>
-                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
-                      </ui:FilterOperationArgument.Column>
-                      <ui:FilterOperationArgument.Operand>
-                        <InArgument x:TypeArguments="s:DateTime">[FinRango]</InArgument>
-                      </ui:FilterOperationArgument.Operand>
-                    </ui:FilterOperationArgument>
-                  </scg:List>
-                </ui:FilterDataTable.Filters>
-                <ui:FilterDataTable.SelectColumns>
-                  <scg:List x:TypeArguments="InArgument" Capacity="4">
-                    <x:Null />
-                  </scg:List>
-                </ui:FilterDataTable.SelectColumns>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:FilterDataTable>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="648,354.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="648,354.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_18">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_234">
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_249">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="_DEV_ : FILTRAR DATOS DE INICIO DE MES A FIN DE MES" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_20" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
+                    <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="FILTRAR DATOS POR RANGO INICIO Y FIN" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_31" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
                       <ui:FilterDataTable.Filters>
                         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                           <ui:FilterOperationArgument BooleanOperator="And" Operator="GTE">
@@ -632,7 +625,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                               <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
                             </ui:FilterOperationArgument.Column>
                             <ui:FilterOperationArgument.Operand>
-                              <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)]</InArgument>
+                              <InArgument x:TypeArguments="s:DateTime">[InicioRango]</InArgument>
                             </ui:FilterOperationArgument.Operand>
                           </ui:FilterOperationArgument>
                           <ui:FilterOperationArgument BooleanOperator="And" Operator="LTE">
@@ -640,7 +633,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                               <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
                             </ui:FilterOperationArgument.Column>
                             <ui:FilterOperationArgument.Operand>
-                              <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month))]</InArgument>
+                              <InArgument x:TypeArguments="s:DateTime">[FinRango]</InArgument>
                             </ui:FilterOperationArgument.Operand>
                           </ui:FilterOperationArgument>
                         </scg:List>
@@ -660,6 +653,39 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                   </Sequence>
                 </ui:CommentOut.Body>
               </ui:CommentOut>
+              <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="_DEV_ : FILTRAR DATOS DE INICIO DE MES A FIN DE MES" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="648,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_32" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="GTE">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="LTE">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month))]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:FilterDataTable>
               <ui:SortDataTable ColumnIndex="{x:Null}" ColumnName="{x:Null}" DataColumn="[dt_DataEncuestas.Columns(&quot;Fecha de respuesta&quot;)]" DataTable="[dt_DataEncuestas]" DisplayName="ORDENAR DATATABLE POR FECHA ASCENDENTE" sap:VirtualizedContainerService.HintSize="648,82" sap2010:WorkflowViewState.IdRef="SortDataTable_3" Order="Ascending" OutputDataTable="[dt_DataEncuestas]" SortOrder="Ascending" />
               <Sequence DisplayName="FORMATEAR PARA INFORMACION GLOBAL" sap:VirtualizedContainerService.HintSize="648,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_214">
                 <sap:WorkflowViewStateService.ViewState>
@@ -669,19 +695,19 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:BuildDataTable DataTable="[dt_InformacionGlobalActual]" DisplayName="CONSTRUIR DT PARA INFORMACION GLOBAL" sap:VirtualizedContainerService.HintSize="410,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_10" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_de_x0020_Encuesta&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Fecha_x0020_de_x0020_respuesta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Clave_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Cliente&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Nombre_x0020_del_x0020_cliente&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Apellido_x0020_paterno&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Nombre_x0020_del_x0020_Asesor&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Vendedor&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Nombre_x0020_Tienda_x0020_de_x0020_compra&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Área_x0020_de_x0020_visita&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Práctica_x0020_descripción&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;La_x0020_encuesta_x0020_tiene_x0020_una_x0020_alerta&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NPS_x0020_Tienda&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EDS_x002F_TNP_x0020_SECCION_x002F_TIENDA_x0020_EXPERIENCIA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;EDS_x002F_TNP_x0020_ASESOR_x002F_VENDEDOR_x0020_SERVICIO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Encontró_x0020_el_x0020_artículo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Producto_x0020_no_x0020_encontrado&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_BUSQUEDA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CES_x0020_CHECKOUT&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_TIEMPO_x0020_ATENCION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CAPACITACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_AMABILIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VARIEDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_VALOR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_CALIDAD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_LIMPIEZA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CSAT_x0020_ORDEN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Comentario_x0020_adicional&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Solicitud_x0020_de_x0020_contacto&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DataEncuestas]" DisplayName="RECORRER INFORMACION PARA CONCATENAR INFORMACION" sap:VirtualizedContainerService.HintSize="410,468.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_14">
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DataEncuestas]" DisplayName="RECORRER INFORMACION PARA CONCATENAR INFORMACION" sap:VirtualizedContainerService.HintSize="410,465.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_14">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Fila" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,278.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_215">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,276.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_215">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Fila(&quot;ID de Encuesta&quot;),&#xA;Fila(&quot;Fecha de respuesta&quot;),&#xA;Fila(&quot;Clave Tienda&quot;),&#xA;Fila(&quot;ID Cliente&quot;),&#xA;Fila(&quot;Nombre del cliente&quot;),&#xA;Fila(&quot;Apellido paterno&quot;),&#xA;Fila(&quot;Nombre del Asesor&quot;),&#xA;Fila(&quot;Vendedor&quot;),&#xA;Fila(&quot;Nombre Tienda de compra&quot;),&#xA;Fila(&quot;Área de visita&quot;),&#xA;Fila(&quot;Práctica&quot;),&#xA;Fila(&quot;Práctica descripción&quot;),&#xA;Fila(&quot;La encuesta tiene una alerta&quot;),&#xA;Fila(&quot;NPS Tienda&quot;),&#xA;Fila(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;),&#xA;Fila(&quot;CSAT SERVICIO&quot;),&#xA;Fila(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;),&#xA;Fila(&quot;Encontró el artículo&quot;),&#xA;Fila(&quot;Producto no encontrado&quot;),&#xA;Fila(&quot;CES BUSQUEDA&quot;),&#xA;Fila(&quot;CES CHECKOUT&quot;),&#xA;Fila(&quot;CSAT TIEMPO ATENCION&quot;),&#xA;Fila(&quot;CSAT CAPACITACION&quot;),&#xA;Fila(&quot;CSAT AMABILIDAD&quot;),&#xA;Fila(&quot;CSAT VARIEDAD&quot;),&#xA;Fila(&quot;CSAT VALOR&quot;),&#xA;Fila(&quot;CSAT CALIDAD&quot;),&#xA;Fila(&quot;CSAT LIMPIEZA&quot;),&#xA;Fila(&quot;CSAT ORDEN&quot;),&#xA;Fila(&quot;Comentario adicional&quot;),&#xA;Fila(&quot;Solicitud de contacto&quot;)&#xA;}]" DataTable="[dt_InformacionGlobalActual]" DisplayName="AGREGAR INFORMACION GLOBAL CON ORDEN DE COLUMNAS" sap:VirtualizedContainerService.HintSize="334,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_8" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Fila(&quot;ID de Encuesta&quot;),&#xA;Fila(&quot;Fecha de respuesta&quot;),&#xA;Fila(&quot;Clave Tienda&quot;),&#xA;Fila(&quot;ID Cliente&quot;),&#xA;Fila(&quot;Nombre del cliente&quot;),&#xA;Fila(&quot;Apellido paterno&quot;),&#xA;Fila(&quot;Nombre del Asesor&quot;),&#xA;Fila(&quot;Vendedor&quot;),&#xA;Fila(&quot;Nombre Tienda de compra&quot;),&#xA;Fila(&quot;Área de visita&quot;),&#xA;Fila(&quot;Práctica&quot;),&#xA;Fila(&quot;Práctica descripción&quot;),&#xA;Fila(&quot;La encuesta tiene una alerta&quot;),&#xA;Fila(&quot;NPS Tienda&quot;),&#xA;Fila(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;),&#xA;Fila(&quot;CSAT SERVICIO&quot;),&#xA;Fila(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;),&#xA;Fila(&quot;Encontró el artículo&quot;),&#xA;Fila(&quot;Producto no encontrado&quot;),&#xA;Fila(&quot;CES BUSQUEDA&quot;),&#xA;Fila(&quot;CES CHECKOUT&quot;),&#xA;Fila(&quot;CSAT TIEMPO ATENCION&quot;),&#xA;Fila(&quot;CSAT CAPACITACION&quot;),&#xA;Fila(&quot;CSAT AMABILIDAD&quot;),&#xA;Fila(&quot;CSAT VARIEDAD&quot;),&#xA;Fila(&quot;CSAT VALOR&quot;),&#xA;Fila(&quot;CSAT CALIDAD&quot;),&#xA;Fila(&quot;CSAT LIMPIEZA&quot;),&#xA;Fila(&quot;CSAT ORDEN&quot;),&#xA;Fila(&quot;Comentario adicional&quot;),&#xA;Fila(&quot;Solicitud de contacto&quot;)&#xA;}]" DataTable="[dt_InformacionGlobalActual]" DisplayName="AGREGAR INFORMACION GLOBAL CON ORDEN DE COLUMNAS" sap:VirtualizedContainerService.HintSize="334,189.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_8" />
                       </Sequence>
                     </ActivityAction>
                   </ui:ForEachRow.Body>
@@ -742,7 +768,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS DE DT_ZONASTIENDA PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS DE DT_ZONASTIENDA PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="738,1353.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>
@@ -842,7 +868,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:ForEachRow>
                             </Sequence>
-                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xD;&#xA;Row(&quot;ID de Encuesta&quot;), &#xD;&#xA;DateTime.Parse(Row(&quot;Fecha de respuesta&quot;).ToString).ToString(&quot;dd/MM/yyyy HH:mm&quot;), &#xD;&#xA;Row(&quot;ID Cliente&quot;),&#xD;&#xA;Row(&quot;Vendedor&quot;), &#xD;&#xA;ZonaTienda, &#xD;&#xA;Row(&quot;Clave Tienda&quot;), &#xD;&#xA;Row(&quot;Nombre del Asesor&quot;),&#xD;&#xA;Row(&quot;Nombre Tienda de compra&quot;),&#xD;&#xA;Row(&quot;Nombre del cliente&quot;).ToString + &quot; &quot; + Row(&quot;Apellido paterno&quot;).ToString,&#xD;&#xA;Row(&quot;Área de visita&quot;),&#xD;&#xA;If(Row.IsNull(&quot;Práctica&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica&quot;).ToString), &#xD;&#xA;If(Row.IsNull(&quot;Práctica descripción&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica descripción&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica descripción&quot;).ToString),&#xD;&#xA;Row(&quot;La encuesta tiene una alerta&quot;),&#xD;&#xA;Row(&quot;NPS Tienda&quot;),&#xD;&#xA;Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;),&#xD;&#xA;&quot;&quot;,&#xD;&#xA;Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;), &#xD;&#xA;&quot;&quot;,&#xD;&#xA;Row(&quot;Encontró el artículo&quot;),&#xD;&#xA;Row(&quot;Producto no encontrado&quot;),&#xD;&#xA;&quot;&quot;,&#xD;&#xA;Row(&quot;CES BUSQUEDA&quot;),&#xD;&#xA;Row(&quot;CES CHECKOUT&quot;),&#xD;&#xA;Row(&quot;CSAT TIEMPO ATENCION&quot;),&#xD;&#xA;Row(&quot;CSAT CAPACITACION&quot;),&#xD;&#xA;Row(&quot;CSAT AMABILIDAD&quot;),&#xD;&#xA;Row(&quot;CSAT VARIEDAD&quot;),&#xD;&#xA;Row(&quot;CSAT VALOR&quot;),&#xD;&#xA;Row(&quot;CSAT CALIDAD&quot;),&#xD;&#xA;Row(&quot;CSAT LIMPIEZA&quot;),&#xD;&#xA;Row(&quot;CSAT ORDEN&quot;),&#x9;&#xD;&#xA;Row(&quot;Comentario adicional&quot;),&#xD;&#xA;Row(&quot;Solicitud de contacto&quot;),&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;),&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;GerenteRegional&#xD;&#xA;}]" DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="AGREGAR INFORMACION MENSUAL LIVERPOOL" sap:VirtualizedContainerService.HintSize="496,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;Row(&quot;ID de Encuesta&quot;), &#xA;DateTime.Parse(Row(&quot;Fecha de respuesta&quot;).ToString).ToString(&quot;dd/MM/yyyy HH:mm&quot;), &#xA;Row(&quot;ID Cliente&quot;),&#xA;Row(&quot;Vendedor&quot;), &#xA;ZonaTienda, &#xA;Row(&quot;Clave Tienda&quot;), &#xA;Row(&quot;Nombre del Asesor&quot;),&#xA;Row(&quot;Nombre Tienda de compra&quot;),&#xA;Row(&quot;Nombre del cliente&quot;).ToString + &quot; &quot; + Row(&quot;Apellido paterno&quot;).ToString,&#xA;Row(&quot;Área de visita&quot;),&#xA;If(Row.IsNull(&quot;Práctica&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica&quot;).ToString), &#xA;If(Row.IsNull(&quot;Práctica descripción&quot;) OrElse String.IsNullOrEmpty(Row(&quot;Práctica descripción&quot;).ToString), &quot;Código Qr&quot;, Row(&quot;Práctica descripción&quot;).ToString),&#xA;Row(&quot;La encuesta tiene una alerta&quot;),&#xA;Row(&quot;NPS Tienda&quot;),&#xA;Row(&quot;EDS/TNP SECCION/TIENDA EXPERIENCIA&quot;),&#xA;&quot;&quot;,&#xA;Row(&quot;EDS/TNP ASESOR/VENDEDOR SERVICIO&quot;), &#xA;&quot;&quot;,&#xA;Row(&quot;Encontró el artículo&quot;),&#xA;Row(&quot;Producto no encontrado&quot;),&#xA;&quot;&quot;,&#xA;Row(&quot;CES BUSQUEDA&quot;),&#xA;Row(&quot;CES CHECKOUT&quot;),&#xA;Row(&quot;CSAT TIEMPO ATENCION&quot;),&#xA;Row(&quot;CSAT CAPACITACION&quot;),&#xA;Row(&quot;CSAT AMABILIDAD&quot;),&#xA;Row(&quot;CSAT VARIEDAD&quot;),&#xA;Row(&quot;CSAT VALOR&quot;),&#xA;Row(&quot;CSAT CALIDAD&quot;),&#xA;Row(&quot;CSAT LIMPIEZA&quot;),&#xA;Row(&quot;CSAT ORDEN&quot;),&#x9;&#xA;Row(&quot;Comentario adicional&quot;),&#xA;Row(&quot;Solicitud de contacto&quot;),&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;),&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;GerenteRegional&#xA;}]" DataTable="[dt_InfoEncuestasFormateadas]" DisplayName="AGREGAR INFORMACION MENSUAL LIVERPOOL" sap:VirtualizedContainerService.HintSize="496,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                           </Sequence>
                         </ActivityAction>
                       </ui:ForEachRow.Body>
@@ -962,34 +988,34 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence DisplayName="ELIMINAR ARCHIVOS DE CAREPTA TEMPORAL" sap:VirtualizedContainerService.HintSize="710,665.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_230">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="s:String[]" Name="ListaArchivosTemp" />
-              </Sequence.Variables>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Eliminando archivos de carpeta temporal....&quot;]" />
-              <Assign DisplayName="ASIGNAR LISTADO DE ARCHIVOS EXISTENTES EN TEMPORAL POR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="486.6666666666667,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_108">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="s:String[]">[ListaArchivosTemp]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(in_Config("Temporal").ToString, "*_"+in_UnidadNegocio.ToLower+".xlsx")]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486.6666666666667,244.66666666666666" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,164.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_235">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="710,665.3333333333334" sap2010:WorkflowViewState.IdRef="CommentOut_15">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="558,585.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_246">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="ELIMINAR ARCHIVOS DE CAREPTA TEMPORAL" sap:VirtualizedContainerService.HintSize="496,474.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_230">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="s:String[]" Name="ListaArchivosTemp" />
+                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="RECORRER LISTADO PARA ELIMINAR ARCHIVOS EXISTENTES EN TEMPORAL" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[ListaArchivosTemp]">
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Eliminando archivos de carpeta temporal....&quot;]" />
+                    <Assign DisplayName="ASIGNAR LISTADO DE ARCHIVOS EXISTENTES EN TEMPORAL POR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_108">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:String[]">[ListaArchivosTemp]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(in_Config("Temporal").ToString, "*_"+in_UnidadNegocio.ToLower+".xlsx")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="RECORRER LISTADO PARA ELIMINAR ARCHIVOS EXISTENTES EN TEMPORAL" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[ListaArchivosTemp]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="x:String">
                           <ActivityAction.Argument>
@@ -1013,9 +1039,9 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ForEach>
                   </Sequence>
-                </ui:CommentOut.Body>
-              </ui:CommentOut>
-            </Sequence>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SUBIR INFORMACION A GOOGLE DRIVE" sap:VirtualizedContainerService.HintSize="710,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Modulos\SubirDatosGoogleSheet.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
@@ -1029,13 +1055,13 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="376,230.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_22">
+          <Sequence sap:VirtualizedContainerService.HintSize="376,232" sap2010:WorkflowViewState.IdRef="Sequence_22">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="LOG: WARN PARA ARCHIVOS NO ENCONTRADOS" sap:VirtualizedContainerService.HintSize="334,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;No hay archivos en la carpeta Temporal....&quot;]">
+            <ui:LogMessage DisplayName="LOG: WARN PARA ARCHIVOS NO ENCONTRADOS" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;No hay archivos en la carpeta Temporal....&quot;]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
