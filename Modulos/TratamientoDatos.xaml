@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1540,9909.333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>900,9909.333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TratamientoDatos_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -515,7 +515,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence sap:VirtualizedContainerService.HintSize="476,860.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_179">
+                  <Sequence sap:VirtualizedContainerService.HintSize="476,1144.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_179">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -609,15 +609,48 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                   <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.Date.AddSeconds(-1)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="648,354.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_18">
+              <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="FILTRAR DATOS POR RANGO INICIO Y FIN" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="648,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_37" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="GTE">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="s:DateTime">[InicioRango]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="LTE">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="s:DateTime">[FinRango]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:FilterDataTable>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="648,354.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_23">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_249">
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,274.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_254">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="FILTRAR DATOS POR RANGO INICIO Y FIN" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_31" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
+                    <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="_DEV_ : FILTRAR DATOS DE INICIO DE MES A FIN DE MES" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_36" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
                       <ui:FilterDataTable.Filters>
                         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                           <ui:FilterOperationArgument BooleanOperator="And" Operator="GTE">
@@ -625,7 +658,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                               <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
                             </ui:FilterOperationArgument.Column>
                             <ui:FilterOperationArgument.Operand>
-                              <InArgument x:TypeArguments="s:DateTime">[InicioRango]</InArgument>
+                              <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)]</InArgument>
                             </ui:FilterOperationArgument.Operand>
                           </ui:FilterOperationArgument>
                           <ui:FilterOperationArgument BooleanOperator="And" Operator="LTE">
@@ -633,7 +666,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                               <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
                             </ui:FilterOperationArgument.Column>
                             <ui:FilterOperationArgument.Operand>
-                              <InArgument x:TypeArguments="s:DateTime">[FinRango]</InArgument>
+                              <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month))]</InArgument>
                             </ui:FilterOperationArgument.Operand>
                           </ui:FilterOperationArgument>
                         </scg:List>
@@ -653,39 +686,6 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                   </Sequence>
                 </ui:CommentOut.Body>
               </ui:CommentOut>
-              <ui:FilterDataTable DataTable="[dt_DataEncuestas]" DisplayName="_DEV_ : FILTRAR DATOS DE INICIO DE MES A FIN DE MES" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="648,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_32" OutputDataTable="[dt_DataEncuestas]" SelectColumnsMode="Remove">
-                <ui:FilterDataTable.Filters>
-                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                    <ui:FilterOperationArgument BooleanOperator="And" Operator="GTE">
-                      <ui:FilterOperationArgument.Column>
-                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
-                      </ui:FilterOperationArgument.Column>
-                      <ui:FilterOperationArgument.Operand>
-                        <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)]</InArgument>
-                      </ui:FilterOperationArgument.Operand>
-                    </ui:FilterOperationArgument>
-                    <ui:FilterOperationArgument BooleanOperator="And" Operator="LTE">
-                      <ui:FilterOperationArgument.Column>
-                        <InArgument x:TypeArguments="x:String">["Fecha de respuesta"]</InArgument>
-                      </ui:FilterOperationArgument.Column>
-                      <ui:FilterOperationArgument.Operand>
-                        <InArgument x:TypeArguments="s:DateTime">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month))]</InArgument>
-                      </ui:FilterOperationArgument.Operand>
-                    </ui:FilterOperationArgument>
-                  </scg:List>
-                </ui:FilterDataTable.Filters>
-                <ui:FilterDataTable.SelectColumns>
-                  <scg:List x:TypeArguments="InArgument" Capacity="4">
-                    <x:Null />
-                  </scg:List>
-                </ui:FilterDataTable.SelectColumns>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:FilterDataTable>
               <ui:SortDataTable ColumnIndex="{x:Null}" ColumnName="{x:Null}" DataColumn="[dt_DataEncuestas.Columns(&quot;Fecha de respuesta&quot;)]" DataTable="[dt_DataEncuestas]" DisplayName="ORDENAR DATATABLE POR FECHA ASCENDENTE" sap:VirtualizedContainerService.HintSize="648,82" sap2010:WorkflowViewState.IdRef="SortDataTable_3" Order="Ascending" OutputDataTable="[dt_DataEncuestas]" SortOrder="Ascending" />
               <Sequence DisplayName="FORMATEAR PARA INFORMACION GLOBAL" sap:VirtualizedContainerService.HintSize="648,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_214">
                 <sap:WorkflowViewStateService.ViewState>
@@ -768,7 +768,7 @@ Select dt_MetricasGlobales.Clone().Rows.Add(
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS DE DT_ZONASTIENDA PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="738,1353.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ZonasTienda]" DisplayName="RECORRER FILAS DE DT_ZONASTIENDA PARA ENCONTRAR ZONA POR TIENDA" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>

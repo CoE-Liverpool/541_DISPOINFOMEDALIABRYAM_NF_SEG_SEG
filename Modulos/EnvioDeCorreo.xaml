@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1088.6666666666667,6662.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1088.6666666666667,5788.666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EvaluarRespuesta_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -151,7 +151,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="ENVIO DE CORREOS" sap:VirtualizedContainerService.HintSize="1098.6666666666667,6598" sap2010:WorkflowViewState.IdRef="Sequence_53">
+  <Sequence DisplayName="ENVIO DE CORREOS" sap:VirtualizedContainerService.HintSize="1098.6666666666667,5724" sap2010:WorkflowViewState.IdRef="Sequence_53">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(sd:DataRow)" Name="FilasConCorreos" />
       <Variable x:TypeArguments="x:Int32" Name="IndexUnidadNegocio" />
@@ -173,7 +173,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="VERIFICAR SI EXISTEN CORREOS A ENVIAR" sap:VirtualizedContainerService.HintSize="1036.6666666666667,6487.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_54">
+    <Sequence DisplayName="VERIFICAR SI EXISTEN CORREOS A ENVIAR" sap:VirtualizedContainerService.HintSize="1036.6666666666667,5613.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_54">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -224,112 +224,123 @@
           </If.Else>
         </If>
       </Sequence>
-      <If Condition="[in_dt_Configuracion.Rows(IndexUnidadNegocio)(&quot;UNIDAD DE NEGOCIO&quot;).ToString.ToLower.Equals(in_UnidadNegocio.ToLower) and in_dt_Configuracion.Rows(IndexUnidadNegocio)(&quot;PROCESAR CORREOS&quot;).ToString.ToLower.Equals(&quot;si&quot;)]" DisplayName="DETERMINAR SI ESTA HABILITADA LA UNIDAD DE NEGOCIO PARA REPROCESO" sap:VirtualizedContainerService.HintSize="974.6666666666666,5512" sap2010:WorkflowViewState.IdRef="If_12">
+      <If Condition="[in_dt_Configuracion.Rows(IndexUnidadNegocio)(&quot;UNIDAD DE NEGOCIO&quot;).ToString.ToLower.Equals(in_UnidadNegocio.ToLower) and in_dt_Configuracion.Rows(IndexUnidadNegocio)(&quot;PROCESAR CORREOS&quot;).ToString.ToLower.Equals(&quot;si&quot;)]" DisplayName="DETERMINAR SI ESTA HABILITADA LA UNIDAD DE NEGOCIO PARA REPROCESO" sap:VirtualizedContainerService.HintSize="974.6666666666666,4638" sap2010:WorkflowViewState.IdRef="If_12">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="940.6666666666666,5096" sap2010:WorkflowViewState.IdRef="Sequence_57">
+          <Sequence sap:VirtualizedContainerService.HintSize="940.6666666666666,4222" sap2010:WorkflowViewState.IdRef="Sequence_57">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[in_dt_Alertas.RowCount &gt;= 1]" DisplayName="DETERMINAR SI EXISTEN REGISTROS EN EL DATA TABLE" sap:VirtualizedContainerService.HintSize="898.6666666666666,5008.666666666667" sap2010:WorkflowViewState.IdRef="If_11">
+            <If Condition="[in_dt_Alertas.RowCount &gt;= 1]" DisplayName="DETERMINAR SI EXISTEN REGISTROS EN EL DATA TABLE" sap:VirtualizedContainerService.HintSize="898.6666666666666,4134.666666666667" sap2010:WorkflowViewState.IdRef="If_11">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="864.6666666666666,4592.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                <Sequence sap:VirtualizedContainerService.HintSize="864.6666666666666,3718.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_55">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="DEV: FILTRANDO DATA TABLE PARA EXOSTENCIA DE CORREOS" sap:VirtualizedContainerService.HintSize="822.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Hay registros nuevos, verificando si hay alertas...&quot;]" />
-                  <If Condition="[in_UnidadNegocio.ToString.ToLower.Equals(&quot;suburbia&quot;)]" DisplayName="QUITAMOS VALORES VACIOS (ESTABLECIDOS POR NEGOCIO) EN CASO DE SER SUBURBIA" sap:VirtualizedContainerService.HintSize="822.6666666666666,1118.6666666666667" sap2010:WorkflowViewState.IdRef="If_15">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="614,853.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="822.6666666666666,244.66666666666666" sap2010:WorkflowViewState.IdRef="CommentOut_19">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,164.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_95">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="FILTRAR CORREOS QUE SI TIENEN ENVIO" sap:VirtualizedContainerService.HintSize="572,766" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                        <If Condition="[in_UnidadNegocio.ToString.ToLower.Equals(&quot;suburbia&quot;)]" DisplayName="QUITAMOS VALORES VACIOS (ESTABLECIDOS POR NEGOCIO) EN CASO DE SER SUBURBIA" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="If_15">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="DEPURAR DATA TABLE Y QUEDARNOS CON FILAS CON CORREO PENDIENTE" sap:VirtualizedContainerService.HintSize="510,86" sap2010:WorkflowViewState.IdRef="Assign_61">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">[FilasConCorreos]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="sd:EnumerableRowCollection(sd:DataRow)" xml:space="preserve">[in_dt_Alertas.AsEnumerable().
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="492,172" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Sequence DisplayName="FILTRAR CORREOS QUE SI TIENEN ENVIO" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="DEPURAR DATA TABLE Y QUEDARNOS CON FILAS CON CORREO PENDIENTE" sap:VirtualizedContainerService.HintSize="510,86" sap2010:WorkflowViewState.IdRef="Assign_61">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">[FilasConCorreos]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="sd:EnumerableRowCollection(sd:DataRow)" xml:space="preserve">[in_dt_Alertas.AsEnumerable().
     Where(Function(row) row("Alerta").ToString.Trim.ToUpper = "SI" OrElse
                         row("Alerta").ToString.Trim.ToUpper = "SÍ")]</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                          <If Condition="[FilasConCorreos.Any()]" DisplayName="DETERMINAR CONTENIDO DE DATA TABLE YA DEPURADA" sap:VirtualizedContainerService.HintSize="510,529.3333333333334" sap2010:WorkflowViewState.IdRef="If_13">
-                            <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_62">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="ASIGNAR VALORES QUE TIENEN CORREO PENDIENTE" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_62">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="sd:DataTable">[in_dt_Alertas]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="sd:DataTable">[FilasConCorreos.CopyToDataTable()]</InArgument>
                                   </Assign.Value>
                                 </Assign>
+                                <If Condition="[FilasConCorreos.Any()]" DisplayName="DETERMINAR CONTENIDO DE DATA TABLE YA DEPURADA" sap:VirtualizedContainerService.HintSize="510,529.3333333333334" sap2010:WorkflowViewState.IdRef="If_13">
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="ASIGNAR VALORES QUE TIENEN CORREO PENDIENTE" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_62">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="sd:DataTable">[in_dt_Alertas]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="sd:DataTable">[FilasConCorreos.CopyToDataTable()]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="ASIGNAR VALORES QUE TIENEN CORREO PENDIENTE" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_63">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="sd:DataTable">[in_dt_Alertas]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="sd:DataTable">[in_dt_Alertas.Clone()]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
                               </Sequence>
-                            </If.Then>
-                            <If.Else>
-                              <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_63">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="ASIGNAR VALORES QUE TIENEN CORREO PENDIENTE" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_63">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="sd:DataTable">[in_dt_Alertas]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="sd:DataTable">[in_dt_Alertas.Clone()]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                              </Sequence>
-                            </If.Else>
-                          </If>
-                        </Sequence>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
                       </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_68">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                  <Sequence DisplayName="REALIZAR ENVIO DE CORREOS" sap:VirtualizedContainerService.HintSize="822.6666666666666,3162" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <Sequence DisplayName="REALIZAR ENVIO DE CORREOS" sap:VirtualizedContainerService.HintSize="822.6666666666666,3545.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_71">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[in_dt_Alertas.RowCount &gt; 0]" DisplayName="DETERMINAR SI HAY ALERTAS PARA ENVIAR" sap:VirtualizedContainerService.HintSize="760.6666666666666,3051.3333333333335" sap2010:WorkflowViewState.IdRef="If_17">
+                    <If Condition="[in_dt_Alertas.RowCount &gt; 0]" DisplayName="DETERMINAR SI HAY ALERTAS PARA ENVIAR" sap:VirtualizedContainerService.HintSize="760.6666666666666,3434.6666666666665" sap2010:WorkflowViewState.IdRef="If_17">
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="726.6666666666666,2635.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                        <Sequence sap:VirtualizedContainerService.HintSize="726.6666666666666,3018.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_72">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -355,7 +366,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:InvokeCode>
-                          <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="684.6666666666666,2158" sap2010:WorkflowViewState.IdRef="If_18">
+                          <If Condition="[in_UnidadNegocio.ToLower.Equals(&quot;liverpool&quot;)]" DisplayName="DETERMINAR UNIDAD DE NEGOCIO" sap:VirtualizedContainerService.HintSize="684.6666666666666,2541.3333333333335" sap2010:WorkflowViewState.IdRef="If_18">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -363,7 +374,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="650.6666666666666,894.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                              <Sequence sap:VirtualizedContainerService.HintSize="650.6666666666666,2357.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_79">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -389,7 +400,7 @@ CopyToDataTable()]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                                 <ui:LogMessage DisplayName="DEV: CONTABILIZAR CUANTOS CORREOS SE ENVIARAN POR DIA" sap:VirtualizedContainerService.HintSize="608.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Correos por envíar el dia de hoy: &quot;+ in_dt_Alertas.Rows.Count.ToString]" />
-                                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Alertas]" DisplayName="RECORRER CADA ROW PARA FORMATEO DE CORREO LIVERPOOL" sap:VirtualizedContainerService.HintSize="608.6666666666666,190" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Alertas]" DisplayName="RECORRER CADA ROW PARA FORMATEO DE CORREO LIVERPOOL" sap:VirtualizedContainerService.HintSize="608.6666666666666,1652.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
                                   <ui:ForEachRow.Body>
                                     <ActivityAction x:TypeArguments="sd:DataRow">
                                       <ActivityAction.Argument>
@@ -446,14 +457,6 @@ CopyToDataTable()]</InArgument>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </Assign>
-                                        <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="532.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_85">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">["cricardov@liverpool.com.mx"]</InArgument>
-                                          </Assign.Value>
-                                        </Assign>
                                         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532.6666666666666,401.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_12">
                                           <ui:CommentOut.Body>
                                             <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="496,321.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_76">
@@ -462,6 +465,14 @@ CopyToDataTable()]</InArgument>
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
+                                              <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_85">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:String">["cricardov@liverpool.com.mx"]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
                                               <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_87">
                                                 <Assign.To>
                                                   <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
@@ -470,17 +481,17 @@ CopyToDataTable()]</InArgument>
                                                   <InArgument x:TypeArguments="x:String">[Encuesta("Destinatario").ToString + ",cricardov@liverpool.com.mx"]</InArgument>
                                                 </Assign.Value>
                                               </Assign>
-                                              <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_71">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">["cricardov@liverpool.com.mx,mlsanchezm01@liverpool.com.mx"]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
                                             </Sequence>
                                           </ui:CommentOut.Body>
                                         </ui:CommentOut>
+                                        <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="532.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_71">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">["cricardov@liverpool.com.mx,mlsanchezm01@liverpool.com.mx"]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
                                         <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="532.6666666666666,92" sap2010:WorkflowViewState.IdRef="Delay_1" />
                                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EJECUTAR ARCHIVO PYTHON PARA ENVIO DE CORREO" sap:VirtualizedContainerService.HintSize="532.6666666666666,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Modulos\Invoke_Python.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
@@ -548,7 +559,7 @@ CopyToDataTable()]</InArgument>
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Encuesta" />
                                       </ActivityAction.Argument>
-                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="574.6666666666666,1205.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="574.6666666666666,1377.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_75">
                                         <Sequence.Variables>
                                           <Variable x:TypeArguments="x:String" Name="HtmlIterado" />
                                           <Variable x:TypeArguments="x:String" Name="Destinatarios" />
@@ -599,33 +610,34 @@ CopyToDataTable()]</InArgument>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </Assign>
-                                        <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="532.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_89">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[Encuesta("Destinatario").ToString + ",cricardov@liverpool.com.mx,msantos@gpmass.com"]</InArgument>
-                                          </Assign.Value>
-                                        </Assign>
-                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532.6666666666666,276" sap2010:WorkflowViewState.IdRef="CommentOut_18">
+                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532.6666666666666,316" sap2010:WorkflowViewState.IdRef="CommentOut_20">
                                           <ui:CommentOut.Body>
-                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_96">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_83">
+                                              <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_89">
                                                 <Assign.To>
                                                   <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
                                                 </Assign.To>
                                                 <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">["cricardov@liverpool.com.mx"]</InArgument>
+                                                  <InArgument x:TypeArguments="x:String">[Encuesta("Destinatario").ToString + ",cricardov@liverpool.com.mx,msantos@gpmass.com"]</InArgument>
                                                 </Assign.Value>
                                               </Assign>
                                             </Sequence>
                                           </ui:CommentOut.Body>
                                         </ui:CommentOut>
+                                        <Assign DisplayName="ASIGNAR DESTINATARIOS" sap:VirtualizedContainerService.HintSize="532.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_90">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[Destinatarios]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">["cricardov@liverpool.com.mx,msantos@gpmass.com"]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="532.6666666666666,92" sap2010:WorkflowViewState.IdRef="Delay_2" />
                                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EJECUTAR ARCHIVO PYTHON PARA ENVIO DE CORREO" sap:VirtualizedContainerService.HintSize="532.6666666666666,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Modulos\Invoke_Python.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
                                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
