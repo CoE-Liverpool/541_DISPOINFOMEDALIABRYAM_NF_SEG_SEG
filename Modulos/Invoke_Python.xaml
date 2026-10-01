@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>847.3333333333334,1364.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>873.3333333333334,1665.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Invoke_Python_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -101,7 +101,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="592,1300" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence sap:VirtualizedContainerService.HintSize="592,1600.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Path" />
       <Variable x:TypeArguments="p:PythonObject" Name="ReturnPython" />
@@ -111,10 +111,10 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[System.Environment.MachineName.Contains(&quot;MTY&quot;)]" DisplayName="Estoy en maquina virtul?" sap:VirtualizedContainerService.HintSize="530,54" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[System.Environment.MachineName.Contains(&quot;MTY&quot;)]" DisplayName="Estoy en maquina virtul?" sap:VirtualizedContainerService.HintSize="530,354.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -139,7 +139,7 @@
         </Assign>
       </If.Else>
     </If>
-    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="FORMATEO FBL3N" sap:VirtualizedContainerService.HintSize="530,1095.3333333333333" sap2010:WorkflowViewState.IdRef="PythonScope_1" Path="[Path]" TargetPlatform="x64" Version="Python 3.8" WorkingFolder="[in_Config(&quot;Config&quot;).ToString]">
+    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="FORMATEO FBL3N" sap:VirtualizedContainerService.HintSize="530,1095.3333333333333" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="C:\Users\CRICARDOV\AppData\Local\Programs\Python\Python310\python310.dll" Path="[Path]" TargetPlatform="x64" Version="Python &gt;=3.10" WorkingFolder="[in_Config(&quot;Config&quot;).ToString]">
       <p:PythonScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -183,7 +183,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </p:InvokeMethod>
-            <TryCatch DisplayName="pruebaTry Catch" sap:VirtualizedContainerService.HintSize="438.6666666666667,321.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="pruebaTry Catch" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
